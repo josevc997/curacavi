@@ -623,11 +623,11 @@ const colegios = [
               item.email
             }}</a>
           </div>
-          <!-- <NuxtImg
+          <NuxtImg
             :src="item.image"
             :alt="item.name"
             class="w-full aspect-[3/4] object-cover rounded-md group-hover:scale-105 group-hover:transition-all group-hover:duration-300 group-hover:ease-linear group-hover:cursor-pointer -z-20"
-          /> -->
+          />
         </div>
         <div
           class="border rounded-md relative group overflow-hidden"
@@ -649,11 +649,11 @@ const colegios = [
               item.email
             }}</a>
           </div>
-          <!-- <NuxtImg
+          <NuxtImg
             :src="item.image"
             :alt="item.name"
             class="w-full aspect-[3/4] object-cover rounded-md group-hover:scale-105 group-hover:transition-all group-hover:duration-500 group-hover:ease-in-out group-hover:cursor-pointer -z-20"
-          /> -->
+          />
         </div>
       </div>
     </section>
@@ -669,15 +669,15 @@ const colegios = [
           class="border border-slate-300 rounded-md"
         >
           <div class="relative text-sm font-medium">
-            <!-- <NuxtImg
+            <NuxtImg
               :src="`/jpg/colegio/placeholder-school.jpg`"
               :alt="colegio.nombre"
               class="w-full aspect-[5/6] object-cover rounded-t-md"
-            /> -->
+            />
             <div
               class="absolute top-0 h-full flex flex-col bg-gradient-to-t from-black/50 to-transparent text-white w-full left-0 justify-between p-2"
             >
-              <p class="w-fit bg-black/50 px-1 py-0.5 flex items-center gap-1 text-white rounded">
+              <p class="w-fit bg-black/50 px-1 py-0.5 flex items-center gap-1 text-white rounded text-xs">
                 <div class="flex">
                   <Icon
                     name="heroicons:currency-dollar-20-solid"
