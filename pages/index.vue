@@ -3,7 +3,7 @@ const alcaldes = [
   {
     name: "Juan Pablo Barros",
     period: "1992 - 1996",
-    image: "/webp/municipalidad/alcaldes/JPBarros.webp",
+    image: "https://curacavi.s3.amazonaws.com/municipalidad/alcaldes/JPBarros.webp",
     email: "alcaldecuracavi@hotmail.com",
   },
 ];
@@ -12,37 +12,37 @@ const concejales = [
   {
     name: "Katterine De La Vega",
     period: "1992 - 1996",
-    image: "/webp/municipalidad/concejales/KDLVega.webp",
+    image: "https://curacavi.s3.amazonaws.com/municipalidad/concejales/KDLVega.webp",
     email: "katherinedelavegafuentes@gmail.com",
   },
   {
     name: "Lidia Araos",
     period: "1992 - 1996",
-    image: "/webp/municipalidad/concejales/LAraos.webp",
+    image: "https://curacavi.s3.amazonaws.com/municipalidad/concejales/LAraos.webp",
     email: "lilyaraos@hotmail.com",
   },
   {
     name: "Maria Arco",
     period: "1992 - 1996",
-    image: "/webp/municipalidad/concejales/MArco.webp",
+    image: "https://curacavi.s3.amazonaws.com/municipalidad/concejales/MArco.webp",
     email: "maria.arco@gmail.com",
   },
   {
     name: "Marcela Sepulveda",
     period: "1992 - 1996",
-    image: "/webp/municipalidad/concejales/MSepulveda.webp",
+    image: "https://curacavi.s3.amazonaws.com/municipalidad/concejales/MSepulveda.webp",
     email: "marcela.masz124@gmail.com",
   },
   {
     name: "Patricio Moncada",
     period: "1992 - 1996",
-    image: "/webp/municipalidad/concejales/PMoncada.webp",
+    image: "https://curacavi.s3.amazonaws.com/municipalidad/concejales/PMoncada.webp",
     email: "patricio.moncada@usach.cl",
   },
   {
     name: "Sandra Ponce",
     period: "1992 - 1996",
-    image: "/webp/municipalidad/concejales/SPonce.webp",
+    image: "https://curacavi.s3.amazonaws.com/municipalidad/concejales/SPonce.webp",
     email: "concejalasandraponce@gmail.com",
   },
 ];
@@ -77,7 +77,7 @@ const colegios = [
     ],
     imagenes: [
       {
-        nombre: "Scolegiocuracavi01.jpg",
+        nombre: "https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg",
       },
     ],
     distancia: 0.0,
@@ -112,7 +112,7 @@ const colegios = [
     ],
     imagenes: [
       {
-        nombre: "4da9f816-8dff-4249-99dc-b06f9ce5cdde.JPG",
+        nombre: "https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg",
       },
     ],
     distancia: 0.0,
@@ -147,7 +147,7 @@ const colegios = [
     ],
     imagenes: [
       {
-        nombre: "Portada1.jpg",
+        nombre: "https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg",
       },
     ],
     distancia: 0.0,
@@ -182,7 +182,7 @@ const colegios = [
     ],
     imagenes: [
       {
-        nombre: "frontiscolegio.jpg",
+        nombre: "https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg",
       },
     ],
     distancia: 0.0,
@@ -215,7 +215,11 @@ const colegios = [
         },
       },
     ],
-    imagenes: [],
+    imagenes: [
+      {
+        nombre: "https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg",
+      },
+    ],
     distancia: 0.0,
     procesosEspeciales: [],
   },
@@ -248,7 +252,7 @@ const colegios = [
     ],
     imagenes: [
       {
-        nombre: "IMG_20190926_150932.jpg",
+        nombre: "https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg",
       },
     ],
     distancia: 0.0,
@@ -282,8 +286,8 @@ const colegios = [
       },
     ],
     imagenes: [
-      {
-        nombre: "colegio+forntis.jpg",
+    {
+        nombre: "https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg",
       },
     ],
     distancia: 0.0,
@@ -316,7 +320,11 @@ const colegios = [
         },
       },
     ],
-    imagenes: [],
+    imagenes: [
+    {
+        nombre: "https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg",
+      },
+    ],
     distancia: 0.0,
     procesosEspeciales: [],
   },
@@ -348,8 +356,8 @@ const colegios = [
       },
     ],
     imagenes: [
-      {
-        nombre: "Imagen1.jpg",
+    {
+        nombre: "https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg",
       },
     ],
     distancia: 0.0,
@@ -383,8 +391,8 @@ const colegios = [
       },
     ],
     imagenes: [
-      {
-        nombre: "epv1.jpg",
+    {
+        nombre: "https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg",
       },
     ],
     distancia: 0.0,
@@ -418,8 +426,8 @@ const colegios = [
       },
     ],
     imagenes: [
-      {
-        nombre: "PORTADA.jpg",
+    {
+        nombre: "https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg",
       },
     ],
     distancia: 0.0,
@@ -452,7 +460,11 @@ const colegios = [
         },
       },
     ],
-    imagenes: [],
+    imagenes: [
+    {
+        nombre: "https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg",
+      },
+    ],
     distancia: 0.0,
     procesosEspeciales: [],
   },
@@ -484,8 +496,8 @@ const colegios = [
       },
     ],
     imagenes: [
-      {
-        nombre: "FRONTIS.jpeg",
+    {
+        nombre: "https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg",
       },
     ],
     distancia: 0.0,
@@ -519,8 +531,8 @@ const colegios = [
       },
     ],
     imagenes: [
-      {
-        nombre: "liceocvi+(1).jpeg",
+    {
+        nombre: "https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg",
       },
     ],
     distancia: 0.0,
@@ -553,7 +565,11 @@ const colegios = [
         },
       },
     ],
-    imagenes: [],
+    imagenes: [
+    {
+        nombre: "https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg",
+      },
+    ],
     distancia: 0.0,
     procesosEspeciales: [],
   },
@@ -585,8 +601,8 @@ const colegios = [
       },
     ],
     imagenes: [
-      {
-        nombre: "CNSC.jpg",
+    {
+        nombre: "https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg",
       },
     ],
     distancia: 0.0,
@@ -670,7 +686,7 @@ const colegios = [
         >
           <div class="relative text-sm font-medium">
             <NuxtImg
-              :src="`/jpg/colegio/placeholder-school.jpg`"
+              :src="colegio.imagenes[0].nombre"
               :alt="colegio.nombre"
               class="w-full aspect-[5/6] object-cover rounded-t-md"
             />
