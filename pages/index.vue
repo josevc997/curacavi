@@ -1,52 +1,4 @@
 <script setup lang="ts">
-const alcaldes = [
-  {
-    name: "Juan Pablo Barros",
-    period: "1992 - 1996",
-    image: "https://curacavi.s3.amazonaws.com/municipalidad/alcaldes/JPBarros.webp",
-    email: "alcaldecuracavi@hotmail.com",
-  },
-];
-
-const concejales = [
-  {
-    name: "Katterine De La Vega",
-    period: "1992 - 1996",
-    image: "https://curacavi.s3.amazonaws.com/municipalidad/concejales/KDLVega.webp",
-    email: "katherinedelavegafuentes@gmail.com",
-  },
-  {
-    name: "Lidia Araos",
-    period: "1992 - 1996",
-    image: "https://curacavi.s3.amazonaws.com/municipalidad/concejales/LAraos.webp",
-    email: "lilyaraos@hotmail.com",
-  },
-  {
-    name: "Maria Arco",
-    period: "1992 - 1996",
-    image: "https://curacavi.s3.amazonaws.com/municipalidad/concejales/MArco.webp",
-    email: "maria.arco@gmail.com",
-  },
-  {
-    name: "Marcela Sepulveda",
-    period: "1992 - 1996",
-    image: "https://curacavi.s3.amazonaws.com/municipalidad/concejales/MSepulveda.webp",
-    email: "marcela.masz124@gmail.com",
-  },
-  {
-    name: "Patricio Moncada",
-    period: "1992 - 1996",
-    image: "https://curacavi.s3.amazonaws.com/municipalidad/concejales/PMoncada.webp",
-    email: "patricio.moncada@usach.cl",
-  },
-  {
-    name: "Sandra Ponce",
-    period: "1992 - 1996",
-    image: "https://curacavi.s3.amazonaws.com/municipalidad/concejales/SPonce.webp",
-    email: "concejalasandraponce@gmail.com",
-  },
-];
-
 const colegios = [
   {
     rbd: 25642,
@@ -609,6 +561,30 @@ const colegios = [
     procesosEspeciales: [],
   },
 ];
+
+interface Candidato {
+  name: string
+  email: string
+  image: string
+  period: string
+  is_active: boolean
+  created_at: string
+}
+
+const client = useSupabaseClient()
+
+const { data: alcaldes } = await useAsyncData('alcalde', async () => {
+  const { data } = await client.from('alcalde').select('*')
+
+  return data as Candidato[]
+})
+
+const { data: concejales } = await useAsyncData('concejal', async () => {
+  const { data } = await client.from('concejal').select('*')
+
+  return data as Candidato[]
+})
+
 </script>
 <template>
   <div class="max-w-7xl mx-auto px-4 py-2 min-h-[200vh]">

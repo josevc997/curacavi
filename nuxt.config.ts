@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxt/devtools",
     "nuxt-mapbox",
+    "@nuxtjs/supabase",
   ],
   // Optionally change the default prefix.
   headlessui: {
@@ -72,5 +73,8 @@ export default defineNuxtConfig({
   },
   mapbox: {
     accessToken: process.env.MAPBOX_TOKEN,
+  },
+  supabase: {
+    redirect: false,
   },
 });
