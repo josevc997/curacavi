@@ -562,8 +562,6 @@ const colegios = [
   },
 ];
 
-const route = useRoute()
-
 const autoridadStore = useAutoridadStore()
 
 const loadingAlcalde = ref(false)
@@ -578,25 +576,11 @@ const handleSearch = async () => {
   loadingConcejales.value = false
 }
 
-const watchRoute = computed(() => route.name)
 await handleSearch()
 
-console.log(route.redirectedFrom);
-onBeforeRouteLeave((to, from, next) => {
-  console.log("B");
-  console.log(to, from);
-  next()
-})
-onBeforeRouteUpdate((to, from, next) => {
-  console.log("A");
-  
-  console.log(to, from);
-  next()
-})
 </script>
 <template>
   <div >
-    <pre>{{watchRoute}}</pre>
     <div class="text-3xl font-medium">Curacavi</div>
 
     <section class="py-10">

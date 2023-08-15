@@ -42,8 +42,6 @@ export const useAutoridadStore = defineStore("autoridades", {
     },
 
     async fetchConcejales() {
-      console.log("fetchConcejales");
-
       const client = useSupabaseClient();
       const { data: concejales } = await useAsyncData("concejal", async () => {
         const { data } = await client.from("concejal").select("*");
