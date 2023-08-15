@@ -9,6 +9,8 @@ specifiers:
   '@pinia/nuxt': ^0.4.11
   '@sidebase/nuxt-auth': 0.6.0-beta.2
   '@types/node': ^18.17.4
+  '@vueuse/core': ^10.3.0
+  '@vueuse/nuxt': ^10.3.0
   autoprefixer: ^10.4.14
   mapbox-gl: ^2.15.0
   nuxt: ^3.6.5
@@ -31,6 +33,8 @@ devDependencies:
   '@nuxtjs/supabase': 1.0.2
   '@sidebase/nuxt-auth': 0.6.0-beta.2
   '@types/node': 18.17.4
+  '@vueuse/core': 10.3.0
+  '@vueuse/nuxt': 10.3.0_nuxt@3.6.5
   autoprefixer: 10.4.14_postcss@8.4.27
   mapbox-gl: 2.15.0
   nuxt: 3.6.5_@types+node@18.17.4
@@ -2270,6 +2274,24 @@ packages:
 
   /@vueuse/metadata/9.13.0:
     resolution: {integrity: sha512-gdU7TKNAUVlXXLbaF+ZCfte8BjRJQWPCa2J55+7/h+yDtzw3vOoGQDRXzI6pyKyo6bXFT5/QoPE4hAknExjRLQ==}
+    dev: true
+
+  /@vueuse/nuxt/10.3.0_nuxt@3.6.5:
+    resolution: {integrity: sha512-Dmkm9H5Ubq279+FHhlJtlFP99wKrn2apuo4hk/0GbEi/6+zif7MJRtAjDBBV4VjmY6XV3kO8dQR8940FStbxsA==}
+    peerDependencies:
+      nuxt: ^3.0.0
+    dependencies:
+      '@nuxt/kit': 3.6.5
+      '@vueuse/core': 10.3.0
+      '@vueuse/metadata': 10.3.0
+      local-pkg: 0.4.3
+      nuxt: 3.6.5_@types+node@18.17.4
+      vue-demi: 0.14.5
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - rollup
+      - supports-color
+      - vue
     dev: true
 
   /@vueuse/shared/10.3.0:

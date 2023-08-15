@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     "@nuxt/devtools",
     "nuxt-mapbox",
     "@nuxtjs/supabase",
+    "@vueuse/nuxt",
   ],
   // Optionally change the default prefix.
   headlessui: {
