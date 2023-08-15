@@ -9,8 +9,11 @@ const { locale, availableLocales } = useI18n();
       <div
         class="max-w-7xl mx-auto flex justify-between items-center px-4 text-sm"
       >
-        <NuxtLink to="/">
-          <Icon name="logos:nuxt-icon" class="h-8 w-8" />
+        <NuxtLink to="/" class="flex items-center">
+          <NuxtImg
+            src="https://curacavi.s3.amazonaws.com/logo.webp"
+            class="h-8 w-8"
+          />
         </NuxtLink>
         <Listbox v-model="locale">
           <div class="relative">
@@ -75,6 +78,8 @@ const { locale, availableLocales } = useI18n();
         </Listbox>
       </div>
     </header>
-    <slot />
+    <div class="max-w-5xl mx-auto px-4 py-2">
+      <slot />
+    </div>
   </main>
 </template>
