@@ -55,8 +55,8 @@ onMounted(() => {
         />
         <div>
           <p class="flex flex-wrap">
-            <span class="font-semibold pr-1 break-all">Web page:</span>
-            <a :href="colegio.url">
+            <span class="font-semibold pr-1">Web page:</span>
+            <a :href="colegio.url" class="break-all">
               {{ colegio.url }}
             </a>
           </p>
