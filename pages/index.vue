@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 const colegios = [
   {
     rbd: 25642,
@@ -563,17 +564,21 @@ const colegios = [
 ];
 
 const autoridadStore = useAutoridadStore()
+const colegioStore = useColegioStore()
 
 const loadingAlcalde = ref(false)
 const loadingConcejales = ref(false)
+const loadingColegios = ref(false)
 
 const handleSearch = async () => {
   loadingAlcalde.value = true
   loadingConcejales.value = true
+  loadingColegios.value = true
   await autoridadStore.fetchAlcaldes()
   loadingAlcalde.value = false
   await autoridadStore.fetchConcejales()
   loadingConcejales.value = false
+  await colegioStore.fetchColegios()
 }
 
 await handleSearch()
@@ -659,14 +664,14 @@ await handleSearch()
       >
         <ClientOnly>
           <NuxtLink
-            :to="`/colegio/${colegio.rbd}`"
-            v-for="colegio in colegios"
+            :to="`/colegio/${colegio.id}`"
+            v-for="colegio in colegioStore.colegios"
             :key="colegio.rbd"
             class="border border-slate-300 rounded-md hover:shadow-md transition duration-500 ease-in-out"
           >
             <div class="relative text-sm font-medium">
               <NuxtImg
-                :src="colegio.imagenes[0].nombre"
+                :src="colegio.cover_image ?? 'https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg'"
                 :alt="colegio.nombre"
                 class="w-full aspect-[5/6] object-cover rounded-t-md"
               />
@@ -695,7 +700,7 @@ await handleSearch()
                 />
               </div>
               <p>
-                {{ colegio.sedes[0].direccion.calle }}
+                {{ colegio.calle }}
               </p>
             </div>
           </NuxtLink>
