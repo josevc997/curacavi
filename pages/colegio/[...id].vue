@@ -28,9 +28,13 @@ const colegio = computed(() => {
 // });
 
 colegioStore.fetchColegioById(id.value);
-onMounted(() => {
-  colegioStore.fetchColegioById(id.value);
-});
+watch(
+  id,
+  () => {
+    colegioStore.fetchColegioById(id.value);
+  },
+  { immediate: true }
+);
 </script>
 <template>
   <div class="grid grid-cols-12 gap-y-8 sm:gap-x-4 py-4">
