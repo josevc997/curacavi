@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import mapboxgl from "mapbox-gl";
+
 const route = useRoute();
 const id = computed(() => {
   return Number(route.params.id);
@@ -11,21 +13,15 @@ const colegio = computed(() => {
     return colegioStore.selectedColegio;
   }
 });
-// const edad = computed(() => {
-//   if (colegio.value) {
-//     const today = new Date();
-//     const dateAgo = new Date(colegio.value.fecha_nacimiento);
-//     let yearsAgo = today.getFullYear() - dateAgo.getFullYear();
-//     const monthAgo = today.getMonth() - dateAgo.getMonth();
-//     const dayAgo = today.getDate() - dateAgo.getDate();
-
-//     if (monthAgo > 0 || (monthAgo === 0 && dayAgo > 0)) {
-//       yearsAgo--;
-//     }
-//     const age = yearsAgo;
-//     return age;
-//   }
-// });
+const coordenadas = computed(() => {
+  if (colegio.value) {
+    const coordenadasArray = JSON.parse(colegio.value.coordenadas) as [
+      number,
+      number
+    ];
+    return new mapboxgl.LngLat(coordenadasArray[0], coordenadasArray[1]);
+  }
+});
 
 colegioStore.fetchColegioById(id.value);
 watch(
@@ -39,10 +35,10 @@ watch(
 <template>
   <div class="grid grid-cols-12 gap-y-8 sm:gap-x-4 py-4">
     <template v-if="colegio">
+      <h1 class="text-2xl font-bold col-span-12">{{ colegio.nombre }}</h1>
       <div
         class="col-span-12 sm:col-span-5 md:col-span-4 lg:col-span-3 grid gap-4 h-fit sm:sticky sm:top-14"
       >
-        <h1 class="text-2xl font-bold">{{ colegio.nombre }}</h1>
         <NuxtImg
           :src="
             colegio.cover_image ??
@@ -72,13 +68,25 @@ watch(
             <span class="font-semibold pr-1">Telefono: </span>
             {{ colegio.telefono }}
           </p>
+          <p class="flex flex-wrap break-all">
+            <span class="font-semibold pr-1">Dirección: </span>
+            {{ colegio.calle }}
+          </p>
+          <p>
+            <span class="font-semibold pr-1">Dependencia: </span>
+            {{ colegio.dependencia }}
+          </p>
+          <p>
+            <span class="font-semibold pr-1">Director: </span>
+            {{ colegio.director }}
+          </p>
         </div>
       </div>
       <div
         class="col-span-12 sm:col-span-7 md:col-span-8 lg:col-span-9 flex flex-col gap-4"
       >
         <div class="gap-2 grid">
-          <h2 class="text-lg font-medium pb-2">Descripción</h2>
+          <h2 class="text-lg font-semibold pb-2">Descripción</h2>
           <template v-if="colegio.resumenProyecto">
             <p
               v-for="paragraph in colegio.resumenProyecto.split('\r\n')"
@@ -88,8 +96,10 @@ watch(
             </p>
           </template>
         </div>
-        <h3>Dirección: {{ colegio.calle }}</h3>
-        <section v-if="colegio.coordenadas" class="relative h-96 w-full">
+        <section
+          v-if="colegio.coordenadas && coordenadas"
+          class="relative h-96 w-full"
+        >
           <MapboxMap
             :map-id="`colegio.${colegio.id}`"
             style="
@@ -99,14 +109,14 @@ watch(
             "
             :options="{
               style: 'mapbox://styles/mapbox/light-v11', // style URL
-              center: JSON.parse(colegio.coordenadas), // starting position
+              center: coordenadas, // starting position
               zoom: 14, // starting zoom
             }"
           >
             <MapboxDefaultMarker
               marker-id="marker1"
               :options="{}"
-              :lnglat="JSON.parse(colegio.coordenadas)"
+              :lnglat="coordenadas"
             >
             </MapboxDefaultMarker>
           </MapboxMap>
