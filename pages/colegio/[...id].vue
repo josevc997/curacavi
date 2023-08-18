@@ -88,6 +88,29 @@ watch(
             </p>
           </template>
         </div>
+        <h3>Dirección: {{ colegio.calle }}</h3>
+        <section v-if="colegio.coordenadas" class="relative h-96 w-full">
+          <MapboxMap
+            :map-id="`colegio.${colegio.id}`"
+            style="
+              border-radius: 20px;
+              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            "
+            :options="{
+              style: 'mapbox://styles/mapbox/light-v11', // style URL
+              center: JSON.parse(colegio.coordenadas), // starting position
+              zoom: 14, // starting zoom
+            }"
+          >
+            <MapboxDefaultMarker
+              marker-id="marker1"
+              :options="{}"
+              :lnglat="JSON.parse(colegio.coordenadas)"
+            >
+            </MapboxDefaultMarker>
+          </MapboxMap>
+        </section>
       </div>
     </template>
   </div>
