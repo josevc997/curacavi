@@ -7,9 +7,7 @@
           <div class="w-full border-t border-indigo-600"></div>
         </div>
         <div class="relative flex -inset-y-0.5">
-          <span class="bg-slate-50 pr-2 text-lg font-semibold text-indigo-600"
-            ><slot
-          /></span>
+          <span class="bg-slate-50 pr-2 text-indigo-600"><slot /></span>
         </div>
       </div>
     </div>

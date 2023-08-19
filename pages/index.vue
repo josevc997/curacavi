@@ -1,31 +1,32 @@
 <script setup lang="ts">
-const autoridadStore = useAutoridadStore()
-const colegioStore = useColegioStore()
+const autoridadStore = useAutoridadStore();
+const colegioStore = useColegioStore();
 
-const loadingAlcalde = ref(false)
-const loadingConcejales = ref(false)
-const loadingColegios = ref(false)
+const loadingAlcalde = ref(false);
+const loadingConcejales = ref(false);
+const loadingColegios = ref(false);
 
 const handleSearch = async () => {
-  loadingAlcalde.value = true
-  loadingConcejales.value = true
-  loadingColegios.value = true
-  await autoridadStore.fetchAlcaldes()
-  loadingAlcalde.value = false
-  await autoridadStore.fetchConcejales()
-  loadingConcejales.value = false
-  await colegioStore.fetchColegios()
-}
+  loadingAlcalde.value = true;
+  loadingConcejales.value = true;
+  loadingColegios.value = true;
+  await autoridadStore.fetchAlcaldes();
+  loadingAlcalde.value = false;
+  await autoridadStore.fetchConcejales();
+  loadingConcejales.value = false;
+  await colegioStore.fetchColegios();
+};
 
-await handleSearch()
-
+await handleSearch();
 </script>
 <template>
-  <div >
+  <div>
     <section class="py-10">
-      <h3 class="text-xl font-medium">Autoridades comunales</h3>
+      <DividerWithLeftTitle class="pb-4 text-xl font-medium"
+        >Autoridades comunales</DividerWithLeftTitle
+      >
       <div
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 pt-4"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 pt-4"
       >
         <ClientOnly>
           <NuxtLink
@@ -46,9 +47,7 @@ await handleSearch()
                 <h3 class="font-medium text-lg">
                   {{ item.name }}
                 </h3>
-                <p class="break-all text-xs">{{
-                  item.email
-                }}</p>
+                <p class="break-all text-xs">{{ item.email }}</p>
               </div>
             </div>
             <NuxtImg
@@ -72,13 +71,10 @@ await handleSearch()
                 Concejal
               </p>
               <div>
-              <h3 class="font-medium text-lg">
-                {{ item.name }}
-              </h3>
-              <p class="break-all text-xs">{{
-                item.email
-              }}</p>
-  
+                <h3 class="font-medium text-lg">
+                  {{ item.name }}
+                </h3>
+                <p class="break-all text-xs">{{ item.email }}</p>
               </div>
             </div>
             <NuxtImg
@@ -92,50 +88,33 @@ await handleSearch()
     </section>
 
     <section class="py-10">
-      <h3 class="text-xl font-medium">Colegios</h3>
+      <DividerWithLeftTitle class="py-4 text-xl font-medium"
+        >Colegios</DividerWithLeftTitle
+      >
       <div
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 pt-4"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-4 gap-y-8 pt-4"
       >
         <ClientOnly>
           <NuxtLink
             :to="`/colegio/${colegio.id}`"
             v-for="colegio in colegioStore.colegios"
             :key="colegio.rbd"
-            class="border border-slate-300 rounded-md hover:shadow-md transition duration-500 ease-in-out"
+            class="relative group overflow-hidden"
           >
-            <div class="relative text-sm font-medium">
-              <NuxtImg
-                :src="colegio.cover_image ?? 'https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg'"
-                :alt="colegio.nombre"
-                class="w-full aspect-[5/6] object-cover rounded-t-md"
-              />
-              <div
-                class="absolute top-0 h-full flex flex-col bg-gradient-to-t from-black/50 to-transparent text-white w-full left-0 justify-between p-2"
-              >
-                <p class="w-fit bg-black/50 px-1 py-0.5 flex items-center gap-1 text-white rounded text-xs">
-                  <div class="flex">
-                    <Icon
-                      name="heroicons:currency-dollar-20-solid"
-                      class="w-4 h-4"
-                    />
-                  </div>
-                  {{ colegio.dependencia }}
-                </p>
-                <p class="w-fit">
-                  {{ colegio.nombre }}
-                </p>
-              </div>
-            </div>
-            <div class="p-2 text-sm items-start flex gap-1">
-              <div class="flex translate-y-0.5">
-                <Icon
-                  name="heroicons:map-pin-20-solid"
-                  class="w-4 h-4 text-slate-600"
-                />
-              </div>
-              <p>
-                {{ colegio.calle }}
-              </p>
+            <NuxtImg
+              class="aspect-[3/2] w-full rounded object-cover group-hover:scale-105 transition-all duration-500 ease-in-out"
+              :src="
+                colegio.cover_image ??
+                'https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg'
+              "
+              :alt="colegio.nombre"
+            />
+            <div
+              class="absolute w-full h-full bg-gradient-to-t from-black/50 group-hover:from-black/80 transition-all duration-500 ease-in to-transparent top-0 rounded flex items-end p-2 text-white"
+            >
+              <h3 class="text-base font-semibold leading-5 tracking-tight">
+                {{ colegio.nombre }}
+              </h3>
             </div>
           </NuxtLink>
         </ClientOnly>
