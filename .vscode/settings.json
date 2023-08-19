@@ -1,3 +1,10 @@
 {
-    "cSpell.language": "en,es"
+  "cSpell.language": "en,es",
+  "cSpell.words": [
+    "heroicons",
+    "lnglat",
+    "mapbox",
+    "mapboxgl",
+    "Nuxt"
+  ]
 }

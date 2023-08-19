@@ -2,10 +2,6 @@
 import mapboxgl from "mapbox-gl";
 
 const route = useRoute();
-const id = computed(() => {
-  return Number(route.params.id);
-});
-
 const colegioStore = useColegioStore();
 
 const colegio = computed(() => {
@@ -13,6 +9,7 @@ const colegio = computed(() => {
     return colegioStore.selectedColegio;
   }
 });
+
 const coordenadas = computed(() => {
   if (colegio.value) {
     const coordenadasArray = JSON.parse(colegio.value.coordenadas) as [
@@ -23,22 +20,27 @@ const coordenadas = computed(() => {
   }
 });
 
-colegioStore.fetchColegioById(id.value);
+colegioStore.fetchColegioById(Number(route.params.id));
+
 watch(
-  id,
-  () => {
-    colegioStore.fetchColegioById(id.value);
-  },
-  { immediate: true }
+  () => route.params.id,
+  (newId, oldId) => {
+    colegioStore.fetchColegioById(Number(route.params.id));
+  }
 );
 </script>
 <template>
   <div class="grid grid-cols-12 gap-y-8 sm:gap-x-4 py-4">
     <template v-if="colegio">
-      <h1 class="text-2xl font-bold col-span-12">{{ colegio.nombre }}</h1>
-      <div
-        class="col-span-12 sm:col-span-5 md:col-span-4 lg:col-span-3 grid gap-4 h-fit sm:sticky sm:top-14"
-      >
+      <div class="col-span-12 flex flex-col gap-4">
+        <div class="leading-tight py-4">
+          <h1 class="text-2xl text-indigo-800 font-bold col-span-12">
+            {{ colegio.nombre }}
+          </h1>
+          <p class="capitalize text-sm font-semibold text-indigo-950">
+            {{ colegio.calle }}
+          </p>
+        </div>
         <NuxtImg
           :src="
             colegio.cover_image ??
@@ -51,42 +53,151 @@ watch(
           :objectFit="'cover'"
           :placeholder="'blur'"
           loading="lazy"
-          class="rounded-md aspect-auto object-cover object-center w-full"
+          class="rounded-md aspect-auto object-fill object-center w-full h-96"
         />
-        <div>
-          <p class="flex flex-wrap">
-            <span class="font-semibold pr-1">Web page:</span>
-            <a :href="colegio.url" class="break-all">
-              {{ colegio.url }}
-            </a>
-          </p>
-          <p class="flex flex-wrap break-all">
-            <span class="font-semibold pr-1">Email: </span>
-            {{ String(colegio?.mail).toLowerCase() }}
-          </p>
-          <p class="flex flex-wrap break-all">
-            <span class="font-semibold pr-1">Telefono: </span>
-            {{ colegio.telefono }}
-          </p>
-          <p class="flex flex-wrap break-all">
-            <span class="font-semibold pr-1">Dirección: </span>
-            {{ colegio.calle }}
-          </p>
-          <p>
-            <span class="font-semibold pr-1">Dependencia: </span>
-            {{ colegio.dependencia }}
-          </p>
-          <p>
-            <span class="font-semibold pr-1">Director: </span>
-            {{ colegio.director }}
-          </p>
-        </div>
-      </div>
-      <div
-        class="col-span-12 sm:col-span-7 md:col-span-8 lg:col-span-9 flex flex-col gap-4"
-      >
-        <div class="gap-2 grid">
-          <h2 class="text-lg font-semibold pb-2">Descripción</h2>
+        <section class="flex flex-col gap-y-2">
+          <DividerWithLeftTitle class="pt-4"
+            >Información de Contacto</DividerWithLeftTitle
+          >
+          <div
+            class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
+          >
+            <div>
+              <h3 class="font-semibold">Correo:</h3>
+            </div>
+            <div class="col-span-2">
+              <a
+                class="break-all hover:text-indigo-600 lowercase w-fit"
+                :href="`mailto:${colegio.mail}`"
+              >
+                {{ colegio.mail }}
+              </a>
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
+          >
+            <h3 class="font-semibold">Teléfono:</h3>
+            <div class="col-span-2">
+              <p>
+                {{ colegio.telefono }}
+              </p>
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
+          >
+            <h3 class="font-semibold">Página web:</h3>
+            <div class="col-span-2">
+              <a
+                class="break-all hover:text-indigo-600"
+                :href="colegio.url"
+                target="_blank"
+              >
+                {{ colegio.url }}
+              </a>
+            </div>
+          </div>
+        </section>
+        <section class="flex flex-col gap-y-2">
+          <DividerWithLeftTitle class="pt-4"
+            >Información Institucional</DividerWithLeftTitle
+          >
+          <div
+            class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
+          >
+            <h3 class="font-semibold">Director:</h3>
+            <div class="col-span-2">
+              <p>
+                {{ colegio.director }}
+              </p>
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
+          >
+            <h3 class="font-semibold">Dependencia:</h3>
+            <div class="col-span-2">
+              <p>
+                {{ colegio.dependencia }}
+              </p>
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
+          >
+            <h3 class="font-semibold">Orientación religiosa:</h3>
+            <div class="col-span-2">
+              <p>
+                {{ colegio.orientacionReligiosa }}
+              </p>
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
+          >
+            <h3 class="font-semibold">Política de Uniforme:</h3>
+            <div class="col-span-2">
+              <p>
+                {{ colegio.politicaUniforme }}
+              </p>
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
+          >
+            <h3 class="font-semibold">Nivel Mínimo:</h3>
+            <div class="col-span-2">
+              <p>
+                {{ colegio.nivelMinimo }}
+              </p>
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
+          >
+            <h3 class="font-semibold">Nivel Máximo:</h3>
+            <div class="col-span-2">
+              <p>
+                {{ colegio.nivelMaximo }}
+              </p>
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
+          >
+            <h3 class="font-semibold">Promedio alumnos por curso:</h3>
+            <div class="col-span-2">
+              <p>
+                {{ colegio.promedioAlumnosPorCurso }}
+              </p>
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
+          >
+            <h3 class="font-semibold">Cantidad docentes:</h3>
+            <div class="col-span-2">
+              <p>
+                {{ colegio.cantidadDocentes }}
+              </p>
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
+          >
+            <h3 class="font-semibold">Alumnos Matriculados:</h3>
+            <div class="col-span-2">
+              <p>
+                {{ colegio.alumnosMatriculados }}
+              </p>
+            </div>
+          </div>
+        </section>
+        <section id="description" class="gap-y-4 grid text-indigo-900">
+          <DividerWithLeftTitle class="pt-4">
+            Descripción
+          </DividerWithLeftTitle>
           <template v-if="colegio.resumenProyecto">
             <p
               v-for="paragraph in colegio.resumenProyecto.split('\r\n')"
@@ -95,31 +206,35 @@ watch(
               {{ paragraph }}
             </p>
           </template>
-        </div>
-        <section
-          v-if="colegio.coordenadas && coordenadas"
-          class="relative h-96 w-full"
-        >
-          <MapboxMap
-            :map-id="`colegio.${colegio.id}`"
-            style="
-              border-radius: 20px;
-              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-                0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            "
-            :options="{
-              style: 'mapbox://styles/mapbox/light-v11', // style URL
-              center: coordenadas, // starting position
-              zoom: 14, // starting zoom
-            }"
+        </section>
+        <section id="map">
+          <DividerWithLeftTitle class="pt-8 pb-4"> Mapa </DividerWithLeftTitle>
+          <!-- <h2 class="text-lg text-indigo-700 font-semibold pb-2">Mapa</h2> -->
+          <div
+            v-if="colegio.coordenadas && coordenadas"
+            class="relative h-96 w-full"
           >
-            <MapboxDefaultMarker
-              marker-id="marker1"
-              :options="{}"
-              :lnglat="coordenadas"
+            <MapboxMap
+              :map-id="`colegio.${colegio.id}`"
+              style="
+                border-radius: 20px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                  0 6px 20px 0 rgba(0, 0, 0, 0.19);
+              "
+              :options="{
+                style: 'mapbox://styles/mapbox/streets-v12', // style URL
+                center: coordenadas, // starting position
+                zoom: 14, // starting zoom
+              }"
             >
-            </MapboxDefaultMarker>
-          </MapboxMap>
+              <MapboxDefaultMarker
+                marker-id="marker1"
+                :options="{}"
+                :lnglat="coordenadas"
+              >
+              </MapboxDefaultMarker>
+            </MapboxMap>
+          </div>
         </section>
       </div>
     </template>

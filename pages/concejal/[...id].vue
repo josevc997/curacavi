@@ -31,9 +31,13 @@ const edad = computed(() => {
 });
 
 autoridadStore.fetchConcejalById(id.value);
-onMounted(() => {
-  autoridadStore.fetchConcejalById(id.value);
-});
+
+watch(
+  () => route.params.id,
+  (newId, oldId) => {
+    autoridadStore.fetchConcejalById(Number(route.params.id));
+  }
+);
 </script>
 <template>
   <div class="grid grid-cols-12 gap-y-8 sm:gap-x-4 py-4">
