@@ -1,124 +1,129 @@
 <script setup lang="ts">
-const autoridadStore = useAutoridadStore();
-const colegioStore = useColegioStore();
-
-const loadingAlcalde = ref(false);
-const loadingConcejales = ref(false);
-const loadingColegios = ref(false);
-
-const handleSearch = async () => {
-  loadingAlcalde.value = true;
-  loadingConcejales.value = true;
-  loadingColegios.value = true;
-  await autoridadStore.fetchAlcaldes();
-  loadingAlcalde.value = false;
-  await autoridadStore.fetchConcejales();
-  loadingConcejales.value = false;
-  await colegioStore.fetchColegios();
-};
-
-await handleSearch();
+definePageMeta({
+  layout: "without-padding",
+});
 </script>
 <template>
   <div>
-    <section class="py-10">
-      <DividerWithLeftTitle class="pb-4 text-xl font-medium"
-        >Autoridades comunales</DividerWithLeftTitle
-      >
+    <div class="bg-gray-900 relative min-h-[calc(100vh-80px)]">
       <div
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 pt-4"
+        class="relative isolate overflow-hidden pt-[21px] min-h-[calc(100vh-80px)]"
       >
-        <ClientOnly>
-          <NuxtLink
-            :to="`/alcalde/${item.id}`"
-            class="border rounded-md relative group overflow-hidden hover:shadow-md transition duration-500 ease-in-out"
-            v-for="item in autoridadStore.alcaldes"
-            :key="item.name"
-          >
+        <div
+          class="h-full w-full absolute top-0 bg-black/30 -z-10 min-h-[calc(100vh-80px)]"
+        />
+        <NuxtImg
+          src="https://curacavi.s3.amazonaws.com/paisaje/Paisaje4.webp"
+          alt="Fondo curacavi"
+          class="absolute inset-0 -z-20 h-full w-full object-cover min-h-[calc(100vh-80px)]"
+        />
+        <div
+          class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+          aria-hidden="true"
+        >
+          <div
+            class="relative lg:top-8 aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-pink-400 to-indigo-400 opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+            style="
+              clip-path: polygon(
+                74.1% 44.1%,
+                100% 61.6%,
+                97.5% 26.9%,
+                85.5% 0.1%,
+                80.7% 2%,
+                72.5% 32.5%,
+                60.2% 62.4%,
+                52.4% 68.1%,
+                47.5% 58.3%,
+                45.2% 34.5%,
+                27.5% 76.7%,
+                0.1% 64.9%,
+                17.9% 100%,
+                27.6% 76.8%,
+                76.1% 97.7%,
+                74.1% 44.1%
+              );
+            "
+          ></div>
+        </div>
+        <div
+          class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 z-0 bg-transparent"
+        >
+          <div class="hidden sm:mb-8 sm:flex sm:justify-center">
             <div
-              class="absolute rounded-md top-0 left-0 bg-gradient-to-t from-slate-950/60 to-transparent py-4 px-3 rounded-br-md w-full h-full flex flex-col justify-between text-slate-50 z-10"
+              class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-200 ring-1 ring-white/50 hover:ring-white/80 hover:text-gray-50 transition duration-500 ease-in-out"
             >
-              <p
-                class="text-sm bg-slate-800/50 rounded-md w-fit px-1 py-0.5 font-medium"
+              Pueblo de la chicha y los dulces chilenos
+              <!-- <a href="#" class="font-semibold text-white"
+                ><span class="absolute inset-0" aria-hidden="true"></span>Read
+                more <span aria-hidden="true">→</span></a
+              > -->
+            </div>
+          </div>
+          <div class="text-center">
+            <h1
+              class="text-4xl font-bold tracking-tight text-white sm:text-6xl"
+            >
+              Curacaví.info
+            </h1>
+            <p class="mt-6 text-lg leading-8 text-gray-300">
+              Resumimos los principales puntos de interés, servicios e
+              informaciones de la comuna de Curacaví, ubicada justo a la mitad
+              entre Santiago y Valparaíso.
+            </p>
+            <!-- <div class="mt-10 flex items-center justify-center gap-x-6">
+              <a
+                href="#"
+                class="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
+                >Get started</a
+              ><a href="#" class="text-sm font-semibold leading-6 text-white"
+                >Learn more <span aria-hidden="true">→</span></a
               >
-                Alcalde
-              </p>
-              <div>
-                <h3 class="font-medium text-lg">
-                  {{ item.name }}
-                </h3>
-                <p class="break-all text-xs">{{ item.email }}</p>
-              </div>
-            </div>
-            <NuxtImg
-              :src="item.image"
-              :alt="item.name"
-              class="w-full aspect-[3/4] object-cover rounded-md group-hover:scale-105 group-hover:transition-all group-hover:duration-300 group-hover:ease-linear group-hover:cursor-pointer -z-20"
-            />
-          </NuxtLink>
-          <NuxtLink
-            :to="`/concejal/${item.id}`"
-            class="border rounded-md relative group overflow-hidden hover:shadow-md transition duration-500 ease-in-out"
-            v-for="item in autoridadStore.concejales"
-            :key="item.name"
+            </div> -->
+          </div>
+        </div>
+        <div></div>
+        <footer class="absolute bottom-0 text-white gap-x-2 w-full z-10">
+          <div
+            class="flex justify-center items-center max-w-7xl mx-auto px-4 py-2"
           >
-            <div
-              class="absolute rounded-md top-0 left-0 bg-gradient-to-t from-slate-950/60 to-transparent py-4 px-3 rounded-br-md w-full h-full flex flex-col justify-between text-slate-50 z-10"
-            >
-              <p
-                class="text-sm bg-slate-800/50 rounded-md w-fit px-1 py-0.5 font-medium"
+            <Icon name="mdi:copyright" class="h-4 w-4" />
+            <p>
+              Desarrollado por
+              <a href="https://www.josevalencia.monster" target="_blank"
+                >José Valencia</a
               >
-                Concejal
-              </p>
-              <div>
-                <h3 class="font-medium text-lg">
-                  {{ item.name }}
-                </h3>
-                <p class="break-all text-xs">{{ item.email }}</p>
-              </div>
-            </div>
-            <NuxtImg
-              :src="item.image"
-              :alt="item.name"
-              class="w-full aspect-[3/4] object-cover rounded-md group-hover:scale-105 group-hover:transition-all group-hover:duration-500 group-hover:ease-in-out group-hover:cursor-pointer -z-20"
-            />
-          </NuxtLink>
-        </ClientOnly>
+            </p>
+          </div>
+        </footer>
+        <div
+          class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100% - 30rem)] z-0 bg-transparent"
+          aria-hidden="true"
+        >
+          <div
+            class="relative left-[calc(50% + 3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-pink-400 to-indigo-400 opacity-20 sm:left-[calc(50% + 36rem)] sm:w-[72.1875rem]"
+            style="
+              clip-path: polygon(
+                74.1% 44.1%,
+                100% 61.6%,
+                97.5% 26.9%,
+                85.5% 0.1%,
+                80.7% 2%,
+                72.5% 32.5%,
+                60.2% 62.4%,
+                52.4% 68.1%,
+                47.5% 58.3%,
+                45.2% 34.5%,
+                27.5% 76.7%,
+                0.1% 64.9%,
+                17.9% 100%,
+                27.6% 76.8%,
+                76.1% 97.7%,
+                74.1% 44.1%
+              );
+            "
+          ></div>
+        </div>
       </div>
-    </section>
-
-    <section class="py-10">
-      <DividerWithLeftTitle class="py-4 text-xl font-medium"
-        >Colegios</DividerWithLeftTitle
-      >
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-4 gap-y-8 pt-4"
-      >
-        <ClientOnly>
-          <NuxtLink
-            :to="`/colegio/${colegio.id}`"
-            v-for="colegio in colegioStore.colegios"
-            :key="colegio.rbd"
-            class="relative group overflow-hidden"
-          >
-            <NuxtImg
-              class="aspect-[3/2] w-full rounded object-cover group-hover:scale-105 transition-all duration-500 ease-in-out"
-              :src="
-                colegio.cover_image ??
-                'https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg'
-              "
-              :alt="colegio.nombre"
-            />
-            <div
-              class="absolute w-full h-full bg-gradient-to-t from-black/50 group-hover:from-black/80 transition-all duration-500 ease-in to-transparent top-0 rounded flex items-end p-2 text-white"
-            >
-              <h3 class="text-base font-semibold leading-5 tracking-tight">
-                {{ colegio.nombre }}
-              </h3>
-            </div>
-          </NuxtLink>
-        </ClientOnly>
-      </div>
-    </section>
+    </div>
   </div>
 </template>

@@ -41,20 +41,17 @@ watch(
             {{ colegio.calle }}
           </p>
         </div>
-        <NuxtImg
-          :src="
-            colegio.cover_image ??
-            'https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg'
-          "
-          :alt="colegio.nombre"
-          :width="300"
-          :height="300"
-          :layout="'responsive'"
-          :objectFit="'cover'"
-          :placeholder="'blur'"
-          loading="lazy"
-          class="rounded-md aspect-auto object-fill object-center w-full h-96"
-        />
+        <div>
+          <NuxtImg
+            :src="
+              colegio.cover_image ??
+              'https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg'
+            "
+            :alt="colegio.nombre"
+            loading="lazy"
+            class="rounded-md object-cover object-center w-full aspect-[5/2]"
+          />
+        </div>
         <section class="flex flex-col gap-y-2">
           <DividerWithLeftTitle class="pt-4"
             >Información de Contacto</DividerWithLeftTitle
