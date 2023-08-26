@@ -2,7 +2,7 @@
 <template>
   <main class="min-h-screen h-full bg-slate-50 text-slate-800 relative">
     <TheNavbar />
-    <div class="max-w-7xl mx-auto px-4 py-2">
+    <div class="max-w-7xl mx-auto px-4 py-2 min-h-[calc(100vh-140px)]">
       <slot />
     </div>
     <footer
