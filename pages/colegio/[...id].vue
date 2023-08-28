@@ -3,6 +3,7 @@ import mapboxgl from "mapbox-gl";
 
 const route = useRoute();
 const colegioStore = useColegioStore();
+const { toTitleCase } = useTextUtils();
 
 const colegio = computed(() => {
   if (colegioStore.selectedColegio) {
@@ -35,10 +36,10 @@ watch(
       <div class="col-span-12 flex flex-col gap-4">
         <div class="leading-tight py-4">
           <h1 class="text-2xl text-indigo-800 font-bold col-span-12">
-            {{ colegio.nombre }}
+            {{ toTitleCase(colegio.nombre) }}
           </h1>
           <p class="capitalize text-sm font-semibold text-indigo-950">
-            {{ colegio.calle }}
+            {{ toTitleCase(colegio.calle) }}
           </p>
         </div>
         <div>

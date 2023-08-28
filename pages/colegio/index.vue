@@ -42,24 +42,32 @@ const dependenciasList = [
 const handleSelect = (item: { value: string; text: string }) => {
   dependencia.value = item.value;
 };
+
+const toTitleCase = (str: string) => {
+  return str.replace(
+    /\w\S*/g,
+    (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+  );
+};
 </script>
 <template>
   <section>
     <DividerWithLeftTitle class="py-4 text-xl font-medium"
       >Colegios</DividerWithLeftTitle
     >
-    <div class="flex flex-wrap gap-x-4 gap-y-2">
-      <div class="flex flex-col flex-grow min-w-[300px] w-2/4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-2">
+      <div class="flex flex-col col-span-1 lg:col-span-2 gap-y-1">
         <label for="filter" class="text-sm font-semibold">Filtrar:</label>
         <input
           v-model="query"
           type="text"
           id="filter"
           name="filter"
-          class="bg-slate-50 border rounded-md border-slate-200 p-2 w-full active:ring-0 focus:ring-0 active:outline-0 focus:outline-indigo-500 focus:outline-1"
+          class="bg-white text-sm border rounded-md border-slate-200 h-10 p-2 w-full active:ring-0 focus:ring-0 active:outline-0 focus:outline-indigo-500 focus:outline-1"
+          placeholder="Nombre del colegio"
         />
       </div>
-      <div class="flex flex-col flex-grow min-w-[300px] w-1/4">
+      <div class="flex flex-col col-span-1 lg:col-span-1 gap-y-1">
         <label for="dependencia" class="text-sm font-semibold"
           >Dependencia:</label
         >
@@ -73,28 +81,16 @@ const handleSelect = (item: { value: string; text: string }) => {
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-4 gap-y-8 pt-4"
     >
       <ClientOnly>
-        <NuxtLink
-          :to="`/colegio/${colegio.id}`"
-          v-for="colegio in filteredColegios"
-          :key="colegio.rbd"
-          class="relative group overflow-hidden"
+        <div
+          v-if="filteredColegios.length === 0"
+          class="bg-indigo-100 col-span-1 sm:col-span-2 lg:col-span-3 border-l-2 border-indigo-600 py-4 px-2 text-indigo-800 text-sm rounded flex items-center gap-x-2"
         >
-          <NuxtImg
-            class="aspect-[3/2] w-full rounded object-cover group-hover:scale-105 transition-all duration-500 ease-in-out"
-            :src="
-              colegio.cover_image ??
-              'https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg'
-            "
-            :alt="colegio.nombre"
-          />
-          <div
-            class="absolute w-full h-full bg-gradient-to-t from-black/50 group-hover:from-black/80 transition-all duration-500 ease-in to-transparent top-0 rounded flex items-end p-2 text-white"
-          >
-            <h3 class="text-base font-semibold leading-5 tracking-tight">
-              {{ colegio.nombre }}
-            </h3>
-          </div>
-        </NuxtLink>
+          <Icon name="heroicons:information-circle-20-solid" class="h-5 w-5" />
+          <p>Colegios no encontrados</p>
+        </div>
+        <template v-for="colegio in filteredColegios" :key="colegio.rbd">
+          <ColegioCard :colegio="colegio" />
+        </template>
       </ClientOnly>
     </div>
   </section>

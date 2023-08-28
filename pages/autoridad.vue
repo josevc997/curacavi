@@ -34,7 +34,7 @@ await handleSearch();
             class="absolute rounded-md top-0 left-0 bg-gradient-to-t from-slate-950/60 to-transparent py-4 px-3 rounded-br-md w-full h-full flex flex-col justify-between text-slate-50 z-10"
           >
             <p
-              class="text-sm bg-slate-800/50 rounded-md w-fit px-1 py-0.5 font-medium"
+              class="text-sm bg-slate-900/30 rounded-full w-fit px-2 py-1 font-medium backdrop-blur-lg"
             >
               Alcalde
             </p>
@@ -61,7 +61,7 @@ await handleSearch();
             class="absolute rounded-md top-0 left-0 bg-gradient-to-t from-slate-950/60 to-transparent py-4 px-3 rounded-br-md w-full h-full flex flex-col justify-between text-slate-50 z-10"
           >
             <p
-              class="text-sm bg-slate-800/50 rounded-md w-fit px-1 py-0.5 font-medium"
+              class="text-sm bg-slate-900/30 rounded-full w-fit px-2 py-1 font-medium backdrop-blur-lg"
             >
               Concejal
             </p>
