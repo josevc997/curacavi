@@ -1,6 +1,28 @@
 import { defineStore } from "pinia";
 import { Candidato } from "types/candidato";
 
+interface Candidatura {
+  id: number;
+  created_at: string;
+  pacto: {
+    id: number;
+    created_at: string;
+    codigo: string;
+    nombre: string;
+    partidos: string;
+  };
+  partido: {
+    id: number;
+    created_at: string;
+    codigo: string;
+    nombre: string;
+  };
+  tipo_autoridad: string;
+  fecha: string;
+  is_active: boolean;
+  id_persona: number;
+}
+
 interface Persona {
   id: number;
   created_at: string;
@@ -10,6 +32,10 @@ interface Persona {
   image: string;
   email: string;
   profesion: string | null;
+}
+
+interface PersonaWithCandidatura extends Persona {
+  candidatura: Candidatura[];
 }
 
 interface Autoridad {
@@ -23,6 +49,10 @@ interface Autoridad {
   Persona: Persona;
 }
 
+interface AutoridadWithCandidatura extends Autoridad {
+  Persona: PersonaWithCandidatura;
+}
+
 // main is the name of the store. It is unique across your application
 // and will appear in devtools
 export const useAutoridadStore = defineStore("autoridades", {
@@ -30,10 +60,10 @@ export const useAutoridadStore = defineStore("autoridades", {
   state: () => ({
     alcaldes: [] as Candidato[],
     concejales: [] as Candidato[],
-    autoridades: [] as Autoridad[],
+    autoridades: [] as AutoridadWithCandidatura[],
     selectedConcejal: {} as Candidato,
     selectedAlcalde: {} as Candidato,
-    selectedAutoridad: {} as Autoridad,
+    selectedAutoridad: {} as AutoridadWithCandidatura,
   }),
   getters: {},
   actions: {
@@ -82,9 +112,9 @@ export const useAutoridadStore = defineStore("autoridades", {
         async () => {
           const { data } = await client
             .from("Autoridad")
-            .select("*, Persona(*)");
+            .select("*, Persona(*, candidatura(*, pacto(*), partido(*)))");
 
-          return data as Autoridad[];
+          return data as AutoridadWithCandidatura[];
         }
       );
       if (autoridades.value) this.autoridades = autoridades.value;
@@ -101,10 +131,10 @@ export const useAutoridadStore = defineStore("autoridades", {
           async () => {
             const { data } = await client
               .from("Autoridad")
-              .select("*, Persona(*)")
+              .select("*, Persona(*, candidatura(*, pacto(*), partido(*)))")
               .eq("id", id);
 
-            return data as Autoridad[];
+            return data as AutoridadWithCandidatura[];
           }
         );
         if (autoridades.value) this.selectedAutoridad = autoridades.value[0];
