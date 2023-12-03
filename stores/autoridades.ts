@@ -65,7 +65,18 @@ export const useAutoridadStore = defineStore("autoridades", {
         selectedAlcalde: {} as Candidato,
         selectedAutoridad: {} as AutoridadWithCandidatura,
     }),
-    getters: {},
+    getters: {
+        candidaturas(): any {
+            return this.selectedAutoridad.Persona.candidatura.sort(function (
+                a,
+                b
+            ) {
+                // Turn your strings into dates, and then subtract them
+                // to get a value that is either negative, positive, or zero.
+                return new Date(a.fecha) - new Date(b.fecha);
+            });
+        },
+    },
     actions: {
         async fetchAlcaldes() {
             const client = useSupabaseClient();

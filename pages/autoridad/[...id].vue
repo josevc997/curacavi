@@ -143,6 +143,12 @@ useHead({
                                                     scope="col"
                                                     class="px-4 py-3"
                                                 >
+                                                    Electo
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    class="px-4 py-3"
+                                                >
                                                     Pacto
                                                 </th>
                                                 <th
@@ -156,8 +162,7 @@ useHead({
                                         <tbody>
                                             <tr
                                                 class="border-b border-slate-300"
-                                                v-for="candidatura in autoridad
-                                                    .Persona.candidatura"
+                                                v-for="candidatura in autoridadStore.candidaturas"
                                             >
                                                 <td
                                                     class="whitespace-nowrap px-4 py-3 font-medium"
@@ -177,6 +182,22 @@ useHead({
                                                             candidatura.tipo_autoridad
                                                         )
                                                     }}
+                                                </td>
+                                                <td
+                                                    class="whitespace-nowrap px-4 py-3 text-center"
+                                                >
+                                                    <Icon
+                                                        v-if="
+                                                            candidatura.is_elected
+                                                        "
+                                                        name="heroicons:check-circle-20-solid"
+                                                        class="h-6 w-6 text-green-700/80"
+                                                    />
+                                                    <Icon
+                                                        v-else
+                                                        name="heroicons:x-circle-20-solid"
+                                                        class="h-6 w-6 text-red-700/80"
+                                                    />
                                                 </td>
                                                 <td
                                                     class="whitespace-nowrap px-4 py-3"
