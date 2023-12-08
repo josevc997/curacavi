@@ -42,7 +42,7 @@ useHead({
     <div class="grid grid-cols-12 gap-y-8 sm:gap-x-4 py-4">
         <template v-if="colegio">
             <div class="col-span-12 flex flex-col gap-4">
-                <div class="leading-tight py-4">
+                <div class="leading-tight pb-4">
                     <h1 class="text-2xl text-indigo-800 font-bold col-span-12">
                         {{ toTitleCase(colegio.nombre) }}
                     </h1>
@@ -58,181 +58,234 @@ useHead({
                         "
                         :alt="colegio.nombre"
                         loading="lazy"
-                        class="rounded-md object-cover object-center w-full aspect-[5/2]"
+                        class="rounded-md object-cover object-center w-full h-80 sm:h-full sm:aspect-[5/2] shadow shadow-indigo-500/40"
                     />
                 </div>
-                <section class="flex flex-col gap-y-2">
-                    <DividerWithLeftTitle class="pt-4"
-                        >Información de Contacto</DividerWithLeftTitle
-                    >
-                    <div
-                        class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
-                    >
+                <section>
+                    <div class="mt-4">
                         <div>
-                            <h3 class="font-semibold">Correo:</h3>
-                        </div>
-                        <div class="col-span-2">
-                            <a
-                                class="break-all hover:text-indigo-600 lowercase w-fit"
-                                :href="`mailto:${colegio.mail}`"
-                            >
-                                {{ colegio.mail }}
-                            </a>
+                            <div class="px-4 sm:px-0">
+                                <h3
+                                    class="text-lg font-semibold leading-7 text-indigo-700"
+                                >
+                                    Información Institucional
+                                </h3>
+                                <p
+                                    class="mt-1 max-w-2xl text-sm leading-6 text-indigo-900"
+                                >
+                                    Información General de la Institución
+                                </p>
+                            </div>
+                            <div class="mt-6">
+                                <dl class="grid grid-cols-1 sm:grid-cols-2">
+                                    <div
+                                        class="border-t border-indigo-600/40 px-4 py-6 sm:col-span-1 col-span-2 sm:px-0"
+                                    >
+                                        <dt
+                                            class="text-sm font-medium leading-6 text-indigo-700"
+                                        >
+                                            Correo
+                                        </dt>
+                                        <dd
+                                            class="mt-1 text-sm leading-6 text-indigo-950 sm:mt-2"
+                                        >
+                                            {{ colegio.mail }}
+                                        </dd>
+                                    </div>
+                                    <div
+                                        class="border-t border-indigo-600/40 px-4 py-6 sm:col-span-1 col-span-2 sm:px-0"
+                                    >
+                                        <dt
+                                            class="text-sm font-medium leading-6 text-indigo-700"
+                                        >
+                                            Telefono
+                                        </dt>
+                                        <dd
+                                            class="mt-1 text-sm leading-6 text-indigo-950 sm:mt-2"
+                                        >
+                                            {{ colegio.telefono }}
+                                        </dd>
+                                    </div>
+                                    <div
+                                        class="border-t border-indigo-600/40 px-4 py-6 sm:col-span-1 sm:px-0"
+                                    >
+                                        <dt
+                                            class="text-sm font-medium leading-6 text-indigo-700"
+                                        >
+                                            Website
+                                        </dt>
+                                        <dd
+                                            class="mt-1 text-sm leading-6 text-indigo-950 sm:mt-2"
+                                        >
+                                            {{ colegio.url }}
+                                        </dd>
+                                    </div>
+                                    <div
+                                        class="border-t border-indigo-600/40 px-4 py-6 sm:col-span-1 col-span-2 sm:px-0"
+                                    >
+                                        <dt
+                                            class="text-sm font-medium leading-6 text-indigo-700"
+                                        >
+                                            Director
+                                        </dt>
+                                        <dd
+                                            class="mt-1 text-sm leading-6 text-indigo-950 sm:mt-2"
+                                        >
+                                            {{ colegio.director }}
+                                        </dd>
+                                    </div>
+                                    <div
+                                        class="border-t border-indigo-600/40 px-4 py-6 sm:col-span-1 col-span-2 sm:px-0"
+                                    >
+                                        <dt
+                                            class="text-sm font-medium leading-6 text-indigo-700"
+                                        >
+                                            Dependencia
+                                        </dt>
+                                        <dd
+                                            class="mt-1 text-sm leading-6 text-indigo-950 sm:mt-2"
+                                        >
+                                            {{ colegio.dependencia }}
+                                        </dd>
+                                    </div>
+                                    <div
+                                        class="border-t border-indigo-600/40 px-4 py-6 sm:col-span-1 col-span-2 sm:px-0"
+                                    >
+                                        <dt
+                                            class="text-sm font-medium leading-6 text-indigo-700"
+                                        >
+                                            Orientación religiosa
+                                        </dt>
+                                        <dd
+                                            class="mt-1 text-sm leading-6 text-indigo-950 sm:mt-2"
+                                        >
+                                            {{ colegio.orientacionReligiosa }}
+                                        </dd>
+                                    </div>
+                                    <div
+                                        class="border-t border-indigo-600/40 px-4 py-6 sm:col-span-1 col-span-2 sm:px-0"
+                                    >
+                                        <dt
+                                            class="text-sm font-medium leading-6 text-indigo-700"
+                                        >
+                                            Política de Uniforme
+                                        </dt>
+                                        <dd
+                                            class="mt-1 text-sm leading-6 text-indigo-950 sm:mt-2"
+                                        >
+                                            {{ colegio.politicaUniforme }}
+                                        </dd>
+                                    </div>
+                                    <div
+                                        class="border-t border-indigo-600/40 px-4 py-6 sm:col-span-1 col-span-2 sm:px-0"
+                                    >
+                                        <dt
+                                            class="text-sm font-medium leading-6 text-indigo-700"
+                                        >
+                                            Nivel Minimo
+                                        </dt>
+                                        <dd
+                                            class="mt-1 text-sm leading-6 text-indigo-950 sm:mt-2"
+                                        >
+                                            {{ colegio.nivelMinimo }}
+                                        </dd>
+                                    </div>
+                                    <div
+                                        class="border-t border-indigo-600/40 px-4 py-6 sm:col-span-1 col-span-2 sm:px-0"
+                                    >
+                                        <dt
+                                            class="text-sm font-medium leading-6 text-indigo-700"
+                                        >
+                                            Nivel Máximo
+                                        </dt>
+                                        <dd
+                                            class="mt-1 text-sm leading-6 text-indigo-950 sm:mt-2"
+                                        >
+                                            {{ colegio.nivelMaximo }}
+                                        </dd>
+                                    </div>
+                                    <div
+                                        class="border-t border-indigo-600/40 px-4 py-6 sm:col-span-1 col-span-2 sm:px-0"
+                                    >
+                                        <dt
+                                            class="text-sm font-medium leading-6 text-indigo-700"
+                                        >
+                                            Promedio alumnos por curso
+                                        </dt>
+                                        <dd
+                                            class="mt-1 text-sm leading-6 text-indigo-950 sm:mt-2"
+                                        >
+                                            {{
+                                                colegio.promedioAlumnosPorCurso
+                                            }}
+                                        </dd>
+                                    </div>
+                                    <div
+                                        class="border-t border-indigo-600/40 px-4 py-6 sm:col-span-1 col-span-2 sm:px-0"
+                                    >
+                                        <dt
+                                            class="text-sm font-medium leading-6 text-indigo-700"
+                                        >
+                                            Cantidad docentes
+                                        </dt>
+                                        <dd
+                                            class="mt-1 text-sm leading-6 text-indigo-950 sm:mt-2"
+                                        >
+                                            {{ colegio.cantidadDocentes }}
+                                        </dd>
+                                    </div>
+                                    <div
+                                        class="border-t border-indigo-600/40 px-4 py-6 col-span-1 sm:px-0"
+                                    >
+                                        <dt
+                                            class="text-sm font-medium leading-6 text-indigo-700"
+                                        >
+                                            Alumnos Matriculados
+                                        </dt>
+                                        <dd
+                                            class="mt-1 text-sm leading-6 text-indigo-950 sm:mt-2"
+                                        >
+                                            {{ colegio.alumnosMatriculados }}
+                                        </dd>
+                                    </div>
+                                    <div
+                                        class="border-t border-indigo-600/40 px-4 py-6 col-span-2 sm:px-0"
+                                    >
+                                        <dt
+                                            class="text-sm font-medium leading-6 text-indigo-700"
+                                        >
+                                            Resumen proyecto educativo
+                                        </dt>
+                                        <dd
+                                            class="mt-1 text-sm leading-6 text-indigo-950 sm:mt-2 grid gap-3"
+                                        >
+                                            <template
+                                                v-if="colegio.resumenProyecto"
+                                            >
+                                                <p
+                                                    v-for="paragraph in colegio.resumenProyecto.split(
+                                                        '\r\n'
+                                                    )"
+                                                    class="text-sm"
+                                                >
+                                                    {{ paragraph }}
+                                                </p>
+                                            </template>
+                                        </dd>
+                                    </div>
+                                </dl>
+                            </div>
                         </div>
                     </div>
-                    <div
-                        class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
-                    >
-                        <h3 class="font-semibold">Teléfono:</h3>
-                        <div class="col-span-2">
-                            <p>
-                                {{ colegio.telefono }}
-                            </p>
-                        </div>
-                    </div>
-                    <div
-                        class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
-                    >
-                        <h3 class="font-semibold">Página web:</h3>
-                        <div class="col-span-2">
-                            <a
-                                class="break-all hover:text-indigo-600"
-                                :href="colegio.url"
-                                target="_blank"
-                            >
-                                {{ colegio.url }}
-                            </a>
-                        </div>
-                    </div>
-                </section>
-                <section class="flex flex-col gap-y-2">
-                    <DividerWithLeftTitle class="pt-4"
-                        >Información Institucional</DividerWithLeftTitle
-                    >
-                    <div
-                        class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
-                    >
-                        <h3 class="font-semibold">Director:</h3>
-                        <div class="col-span-2">
-                            <p>
-                                {{ colegio.director }}
-                            </p>
-                        </div>
-                    </div>
-                    <div
-                        class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
-                    >
-                        <h3 class="font-semibold">Dependencia:</h3>
-                        <div class="col-span-2">
-                            <p>
-                                {{ colegio.dependencia }}
-                            </p>
-                        </div>
-                    </div>
-                    <div
-                        class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
-                    >
-                        <h3 class="font-semibold">Orientación religiosa:</h3>
-                        <div class="col-span-2">
-                            <p>
-                                {{ colegio.orientacionReligiosa }}
-                            </p>
-                        </div>
-                    </div>
-                    <div
-                        class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
-                    >
-                        <h3 class="font-semibold">Política de Uniforme:</h3>
-                        <div class="col-span-2">
-                            <p>
-                                {{ colegio.politicaUniforme }}
-                            </p>
-                        </div>
-                    </div>
-                    <div
-                        class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
-                    >
-                        <h3 class="font-semibold">Nivel Mínimo:</h3>
-                        <div class="col-span-2">
-                            <p>
-                                {{ colegio.nivelMinimo }}
-                            </p>
-                        </div>
-                    </div>
-                    <div
-                        class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
-                    >
-                        <h3 class="font-semibold">Nivel Máximo:</h3>
-                        <div class="col-span-2">
-                            <p>
-                                {{ colegio.nivelMaximo }}
-                            </p>
-                        </div>
-                    </div>
-                    <div
-                        class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
-                    >
-                        <h3 class="font-semibold">
-                            Promedio alumnos por curso:
-                        </h3>
-                        <div class="col-span-2">
-                            <p>
-                                {{ colegio.promedioAlumnosPorCurso }}
-                            </p>
-                        </div>
-                    </div>
-                    <div
-                        class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
-                    >
-                        <h3 class="font-semibold">Cantidad docentes:</h3>
-                        <div class="col-span-2">
-                            <p>
-                                {{ colegio.cantidadDocentes }}
-                            </p>
-                        </div>
-                    </div>
-                    <div
-                        class="grid grid-cols-2 sm:grid-cols-3 text-sm text-indigo-900 sm:gap-2"
-                    >
-                        <h3 class="font-semibold">Alumnos Matriculados:</h3>
-                        <div class="col-span-2">
-                            <p>
-                                {{ colegio.alumnosMatriculados }}
-                            </p>
-                        </div>
-                    </div>
-                </section>
-                <section id="description" class="gap-y-4 grid text-indigo-900">
-                    <DividerWithLeftTitle class="pt-4">
-                        Descripción
-                    </DividerWithLeftTitle>
-                    <template v-if="colegio.resumenProyecto">
-                        <p
-                            v-for="paragraph in colegio.resumenProyecto.split(
-                                '\r\n'
-                            )"
-                            class="text-sm"
-                        >
-                            {{ paragraph }}
-                        </p>
-                    </template>
                 </section>
                 <section id="map">
-                    <DividerWithLeftTitle class="pt-8 pb-4">
-                        Mapa
-                    </DividerWithLeftTitle>
-                    <!-- <h2 class="text-lg text-indigo-700 font-semibold pb-2">Mapa</h2> -->
                     <div
                         v-if="colegio.coordenadas && coordenadas"
                         class="relative h-96 w-full"
                     >
                         <MapboxMap
                             :map-id="`colegio.${colegio.id}`"
-                            style="
-                                border-radius: 20px;
-                                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-                                    0 6px 20px 0 rgba(0, 0, 0, 0.19);
-                            "
+                            style="border-radius: 5px"
                             :options="{
                                 style: 'mapbox://styles/mapbox/streets-v12', // style URL
                                 center: coordenadas, // starting position

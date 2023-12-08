@@ -31,7 +31,7 @@ const edad = computed(() => {
 
 autoridadStore.fetchAutoridadById(id.value);
 watch(
-    () => route.params.id,
+    () => id,
     (newId, oldId) => {
         autoridadStore.fetchAutoridadById(id.value);
     }
@@ -39,20 +39,29 @@ watch(
 
 useHead({
     titleTemplate: (titleChunk) => {
-        return autoridad && autoridad.value && autoridad.value?.Persona.nombre
+        return autoridad &&
+            autoridad.value &&
+            autoridad.value?.Persona &&
+            autoridad.value?.Persona.nombre
             ? `${autoridad.value?.Persona.nombre} - Curacavi`
             : "Colegio - Curacavi";
     },
 });
 </script>
 <template>
-    <div class="grid grid-cols-12 gap-y-8 sm:gap-x-4 py-3">
+    <div class="grid grid-cols-12 gap-y-4 sm:gap-x-4 py-3">
         <template v-if="autoridad && autoridad.Persona">
             <div
-                class="col-span-12 sm:col-span-5 md:col-span-4 lg:col-span-3 grid gap-2 h-fit sm:sticky sm:top-14"
+                class="col-span-12 sm:col-span-5 md:col-span-4 lg:col-span-3 grid gap-2 h-fit sm:sticky"
             >
                 <div>
                     <h1 class="text-2xl font-bold leading-none text-indigo-950">
+                        <NuxtLink
+                            to="/autoridad"
+                            class="flex items-center text-sm font-bold"
+                        >
+                            {{ autoridad.tipo_autoridad }}
+                        </NuxtLink>
                         {{ autoridad.Persona.nombre }}
                     </h1>
                     <p class="text-sm text-indigo-950 leading-tight">
@@ -73,21 +82,28 @@ useHead({
                 <div>
                     <a
                         :href="`mailto:${autoridad.Persona.email}`"
-                        class="text-sm hover:text-indigo-700"
+                        class="hover:text-indigo-700 items-center"
                     >
+                        <Icon name="heroicons:envelope-solid" class="h-4 w-4" />
                         {{ autoridad.Persona.email }}
                     </a>
-                    <p class="text-sm">
-                        {{
-                            useDateFormat(
-                                autoridad.Persona.fecha_nacimiento,
-                                "MMMM DD, YYYY"
-                            ).value
-                        }}
-                        <span class="font-semibold text-indigo-800">
-                            ({{ edad }} Años)
-                        </span>
-                    </p>
+                    <div class="text-sm flex items-center gap-1">
+                        <Icon
+                            name="heroicons:calendar-20-solid"
+                            class="h-4 w-4"
+                        />
+                        <p>
+                            {{
+                                useDateFormat(
+                                    autoridad.Persona.fecha_nacimiento,
+                                    "MMMM DD, YYYY"
+                                ).value
+                            }}
+                            <span class="font-semibold text-indigo-800">
+                                ({{ edad }} Años)
+                            </span>
+                        </p>
+                    </div>
                 </div>
             </div>
             <div
