@@ -80,11 +80,10 @@ useHead({
                 />
             </div>
             <div class="flex flex-col col-span-1 lg:col-span-1 gap-y-1">
-                <label for="dependencia" class="text-sm font-semibold"
-                    >Dependencia:</label
-                >
                 <FormStringSelect
                     :items="dependenciasList"
+                    name="Dependencia:"
+                    name-class="text-sm font-semibold"
                     @handleSelect="handleSelect"
                 />
             </div>

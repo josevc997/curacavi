@@ -92,17 +92,19 @@ useHead({
                             name="heroicons:calendar-20-solid"
                             class="h-4 w-4"
                         />
-                        <p>
-                            {{
-                                useDateFormat(
-                                    autoridad.Persona.fecha_nacimiento,
-                                    "MMMM DD, YYYY"
-                                ).value
-                            }}
-                            <span class="font-semibold text-indigo-800">
-                                ({{ edad }} Años)
-                            </span>
-                        </p>
+                        <ClientOnly>
+                            <p>
+                                {{
+                                    useDateFormat(
+                                        autoridad.Persona.fecha_nacimiento,
+                                        "MMMM DD, YYYY"
+                                    ).value
+                                }}
+                                <span class="font-semibold text-indigo-800">
+                                    ({{ edad }} Años)
+                                </span>
+                            </p>
+                        </ClientOnly>
                     </div>
                 </div>
             </div>
