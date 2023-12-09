@@ -60,12 +60,14 @@ useHead({
 </script>
 <template>
     <section>
-        <DividerWithLeftTitle class="py-4 text-xl font-medium"
-            >Colegios</DividerWithLeftTitle
-        >
         <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-2"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4"
         >
+            <h1
+                class="text-3xl font-medium lg:col-span-3 sm:col-span-2 col-span-1 text-indigo-800"
+            >
+                Colegios
+            </h1>
             <div class="flex flex-col col-span-1 lg:col-span-2 gap-y-1">
                 <label for="filter" class="text-sm font-semibold"
                     >Filtrar:</label
@@ -89,7 +91,7 @@ useHead({
             </div>
         </div>
         <div
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-4 gap-y-8 pt-4"
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 pt-8"
         >
             <ClientOnly>
                 <div

@@ -16,12 +16,14 @@ useHead({
 });
 </script>
 <template>
-    <section class="max-w-7xl mx-auto px-4 py-10">
-        <DividerWithLeftTitle class="pb-4 text-xl font-medium"
-            >Autoridades comunales</DividerWithLeftTitle
+    <section class="">
+        <h1
+            class="text-3xl font-medium lg:col-span-3 sm:col-span-2 col-span-1 text-indigo-800"
         >
+            Autoridades comunales
+        </h1>
         <div
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 pt-4"
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 pt-8"
         >
             <ClientOnly>
                 <NuxtLink
