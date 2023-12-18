@@ -20,7 +20,7 @@ await handleSearch();
         <div class="mt-16 space-y-16 lg:mt-8 lg:space-y-8">
             <article
                 v-for="(blogItem, index) in blogStore.blogList"
-                class="relative isolate flex flex-col gap-[2rem] lg:flex-row"
+                class="relative isolate flex flex-col gap-[2rem] lg:flex-row border rounded-2xl bg-white shadow"
             >
                 <NuxtLink
                     :to="`/blog/${blogItem.id}`"
@@ -33,13 +33,15 @@ await handleSearch();
                                 : 'https://placehold.co/600x400'
                         "
                         alt=""
-                        class="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover"
+                        class="absolute inset-0 h-full w-full lg:rounded-s-2xl lg:rounded-t-none rounded-t-2xl bg-gray-50 object-cover shadow"
                     />
-                    <div
-                        class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"
-                    ></div>
+                    <!-- <div
+                        class="absolute inset-0 rounded-s-2xl ring-1 ring-inset ring-gray-900/10"
+                    ></div> -->
                 </NuxtLink>
-                <div class="flex flex-col justify-between">
+                <div
+                    class="flex flex-col justify-between pt-0 pb-4 pl-4 pr-4 lg:pt-4 lg:pb-4 lg:pl-0 lg:pr-4"
+                >
                     <div>
                         <div
                             class="flex items-center gap-x-4 gap-y-2 text-xs flex-wrap"
@@ -79,24 +81,18 @@ await handleSearch();
                             </p>
                         </div>
                     </div>
-                    <!-- <div class="mt-6 flex border-t border-gray-900/5 pt-6">
-                        <div class="relative flex items-center gap-4">
-                            <img
-                                src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                                alt=""
-                                class="h-10 w-10 rounded-full bg-gray-50"
+                    <div class="flex justify-end">
+                        <NuxtLink
+                            class="items-center flex text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600"
+                            :to="`/blog/${blogItem.id}`"
+                        >
+                            <p>Ver más</p>
+                            <Icon
+                                name="heroicons:chevron-right-20-solid"
+                                class="h-5 w-5"
                             />
-                            <div class="text-sm leading-6">
-                                <p class="font-semibold text-gray-900">
-                                    <a href="#"
-                                        ><span class="absolute inset-0"></span
-                                        >Michael Foster</a
-                                    >
-                                </p>
-                                <p class="text-gray-600">Co-Founder / CTO</p>
-                            </div>
-                        </div>
-                    </div> -->
+                        </NuxtLink>
+                    </div>
                 </div>
             </article>
         </div>
