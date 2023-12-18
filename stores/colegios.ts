@@ -1,14 +1,9 @@
 import { defineStore } from "pinia";
 import type { Colegio } from "~/types/colegio";
 
-// main is the name of the store. It is unique across your application
-// and will appear in devtools
 export const useColegioStore = defineStore("colegios", {
-    // a function that returns a fresh state
     state: () => ({
         colegios: [] as Colegio[],
-        // concejales: [] as Colegio[],
-        // selectedConcejal: {} as Colegio,
         selectedColegio: {} as Colegio,
     }),
     getters: {},

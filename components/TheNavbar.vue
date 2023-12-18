@@ -3,6 +3,7 @@ const NuxtLink = resolveComponent("nuxt-link");
 const navigation = [
     { name: "Colegios", href: "/colegio" },
     { name: "Autoridades", href: "/autoridad" },
+    { name: "Blog", href: "/blog" },
 ];
 </script>
 <template>
