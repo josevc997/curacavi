@@ -37,6 +37,16 @@ export default defineNuxtConfig({
                 dir: "content",
             },
         },
+        navigation: {
+            fields: ["author", "created_at", "image", "description"],
+        },
+        markdown: {
+            tags: {
+                h1: "MyCustomH1",
+                h5: "MyCustomH5",
+                p: "MyCustomParagraph",
+            },
+        },
     },
     image: {
         dir: "assets/img",
