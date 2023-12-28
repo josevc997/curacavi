@@ -32,7 +32,7 @@ export default defineNuxtConfig({
             // overwrite default source AKA `content` directory
             content: {
                 driver: "fs",
-                prefix: "/docs", // All contents inside this source will be prefixed with `/docs`
+                prefix: "/blog", // All contents inside this source will be prefixed with `/blog`
                 base: path.resolve(__dirname, "content"),
                 dir: "content",
             },
