@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const docsQuery = await queryContent("docs").sort({ created_at: -1 });
+const docsQuery = queryContent("docs").sort({ created_at: -1 });
 const { data: navigation } = await useAsyncData("navigation", () =>
     fetchContentNavigation(docsQuery)
 );
