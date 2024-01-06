@@ -12,7 +12,7 @@
             <Icon name="mdi:copyright" class="h-4 w-4" />
             <!-- </div> -->
             <p>
-                <a href="https://www.josevalencia.monster" target="_blank">
+                <a href="https://www.josevalencia.cl" target="_blank">
                     Desarrollado por José Valencia</a
                 >
             </p>

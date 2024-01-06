@@ -89,7 +89,7 @@ definePageMeta({
                         <p>
                             Desarrollado por
                             <a
-                                href="https://www.josevalencia.monster"
+                                href="https://www.josevalencia.cl"
                                 target="_blank"
                                 >José Valencia</a
                             >
