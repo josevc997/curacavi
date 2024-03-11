@@ -26,13 +26,19 @@
     "nuxt-icon": "^0.4.2",
     "nuxt-mapbox": "^1.5.6",
     "postcss": "^8.4.32",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.4.0"
   },
   "type": "module",
   "dependencies": {
-    "@hotjar/browser": "^1.0.9",
     "@pinia/nuxt": "^0.4.11",
     "pinia": "^2.1.7"
   },
-  "packageManager": "pnpm@7.25.1"
+  "packageManager": "pnpm@7.25.1",
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-tailwindcss"
+    ]
+  }
 }

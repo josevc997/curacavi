@@ -31,9 +31,9 @@ const edad = computed(() => {
 
 autoridadStore.fetchAutoridadById(id.value);
 watch(
-    () => id,
+    () => route.params.id,
     (newId, oldId) => {
-        autoridadStore.fetchAutoridadById(id.value);
+        autoridadStore.fetchAutoridadById(Number(newId));
     }
 );
 
@@ -52,7 +52,7 @@ useHead({
     <div class="grid grid-cols-12 gap-y-4 sm:gap-x-4 py-3">
         <template v-if="autoridad && autoridad.Persona">
             <div
-                class="col-span-12 sm:col-span-5 md:col-span-4 lg:col-span-3 grid gap-2 h-fit sm:sticky"
+                class="col-span-12 sm:col-span-5 md:col-span-4 lg:col-span-3 grid gap-2 h-fit sm:sticky grid-cols-1"
             >
                 <div>
                     <h1 class="text-2xl font-bold leading-none text-indigo-950">

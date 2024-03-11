@@ -1,12 +1,4 @@
 <script lang="ts" setup>
-import Hotjar from "@hotjar/browser";
-
-const config = useRuntimeConfig();
-
-const siteId = 3818691;
-const hotjarVersion = 6;
-
-Hotjar.init(siteId, hotjarVersion);
 useHead({
     title: "Curacavi",
     meta: [
