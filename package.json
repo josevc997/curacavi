@@ -20,7 +20,7 @@
     "@vueuse/nuxt": "^10.7.0",
     "autoprefixer": "^10.4.16",
     "mapbox-gl": "^2.15.0",
-    "nuxt": "^3.9.0",
+    "nuxt": "^3.11.1",
     "nuxt-gtag": "^1.1.2",
     "nuxt-headlessui": "^1.1.5",
     "nuxt-icon": "^0.4.2",
