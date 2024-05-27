@@ -20,6 +20,7 @@ export interface Candidatura {
     codigo: string;
     nombre: string;
     partidos: string;
+    image: string;
   };
   partido: {
     id: number;
@@ -30,6 +31,7 @@ export interface Candidatura {
   tipo_autoridad: string;
   fecha: string;
   is_active: boolean;
+  is_elected: boolean;
   id_persona: number;
 }
 

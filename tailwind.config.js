@@ -15,6 +15,9 @@ module.exports = {
         "xxs": '450px',
         "xs": '540px',
         ...defaultTheme.screens,
+      },
+      fontFamily: {
+        'sans': ['"Poppins"', ...defaultTheme.fontFamily.sans],
       }
     },
   },

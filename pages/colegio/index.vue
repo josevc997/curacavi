@@ -64,7 +64,7 @@ useHead({
             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4"
         >
             <h1
-                class="text-3xl font-medium lg:col-span-3 sm:col-span-2 col-span-1 text-indigo-800"
+                class="text-3xl font-medium lg:col-span-3 sm:col-span-2 col-span-1 text-blue-800"
             >
                 Colegios
             </h1>
@@ -77,7 +77,7 @@ useHead({
                     type="text"
                     id="filter"
                     name="filter"
-                    class="bg-white text-sm border rounded-md border-slate-200 h-10 p-2 w-full active:ring-0 focus:ring-0 active:outline-0 focus:outline-indigo-500 focus:outline-1"
+                    class="bg-white text-sm border rounded-md border-slate-200 h-10 p-2 w-full active:ring-0 focus:ring-0 active:outline-0 focus:outline-blue-500 focus:outline-1"
                     placeholder="Nombre del colegio"
                 />
             </div>
@@ -96,7 +96,7 @@ useHead({
             <ClientOnly>
                 <div
                     v-if="filteredColegios.length === 0"
-                    class="bg-indigo-100 col-span-1 sm:col-span-2 lg:col-span-3 border-l-2 border-indigo-600 py-4 px-2 text-indigo-800 text-sm rounded flex items-center gap-x-2"
+                    class="bg-blue-100 col-span-1 sm:col-span-2 lg:col-span-3 border-l-2 border-blue-600 py-4 px-2 text-blue-800 text-sm rounded flex items-center gap-x-2"
                 >
                     <Icon
                         name="heroicons:information-circle-20-solid"

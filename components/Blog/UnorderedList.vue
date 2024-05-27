@@ -20,7 +20,7 @@ const props = defineProps<{
                     <Icon
                         v-if="subsubitem.tag === 'icon'"
                         :name="subsubitem.content"
-                        class="mt-1 h-5 w-5 flex-none text-indigo-600"
+                        class="mt-1 h-5 w-5 flex-none text-blue-600"
                         aria-hidden="true"
                     />
                     <span v-if="subsubitem.tag === 'span'">

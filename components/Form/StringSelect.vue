@@ -22,7 +22,7 @@ const handleSelect = (item: { value: string; text: string }) => {
         <div class="relative">
             <ListboxLabel :class="nameClass">{{ name }}</ListboxLabel>
             <ListboxButton
-                class="relative w-full cursor-default h-10 rounded bg-white py-2 pl-3 pr-10 text-left border focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-300 sm:text-sm"
+                class="relative w-full cursor-default h-10 rounded bg-white py-2 pl-3 pr-10 text-left border focus:outline-none focus-visible:border-blue-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-300 sm:text-sm"
             >
                 <span class="block truncate">{{ selectedItem.text }}</span>
                 <span

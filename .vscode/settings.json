@@ -7,5 +7,6 @@
     "mapboxgl",
     "Nuxt",
     "Valparaíso"
-  ]
+  ],
+  "editor.formatOnSave": true
 }

@@ -22,7 +22,7 @@ definePageMeta({
                     aria-hidden="true"
                 >
                     <div
-                        class="relative lg:top-8 aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-pink-400 to-indigo-400 opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+                        class="relative lg:top-8 aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-pink-400 to-blue-400 opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
                         style="
                             clip-path: polygon(
                                 74.1% 44.1%,
@@ -70,7 +70,7 @@ definePageMeta({
                         <!-- <div class="mt-10 flex items-center justify-center gap-x-6">
               <a
                 href="#"
-                class="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
+                class="rounded-md bg-blue-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400"
                 >Get started</a
               ><a href="#" class="text-sm font-semibold leading-6 text-white"
                 >Learn more <span aria-hidden="true">→</span></a
@@ -101,7 +101,7 @@ definePageMeta({
                     aria-hidden="true"
                 >
                     <div
-                        class="relative left-[calc(50% + 3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-pink-400 to-indigo-400 opacity-20 sm:left-[calc(50% + 36rem)] sm:w-[72.1875rem]"
+                        class="relative left-[calc(50% + 3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-pink-400 to-blue-400 opacity-20 sm:left-[calc(50% + 36rem)] sm:w-[72.1875rem]"
                         style="
                             clip-path: polygon(
                                 74.1% 44.1%,
