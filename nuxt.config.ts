@@ -29,7 +29,7 @@ export default defineNuxtConfig({
   ],
   googleFonts: {
     families: {
-      Poppins: [400, 500, 600, 700, 800, 900],
+      Poppins: true,
     },
   },
   // Optionally change the default prefix.
