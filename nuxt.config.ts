@@ -60,7 +60,7 @@ export default defineNuxtConfig({
   },
   image: {
     provider: "netlify",
-    domains: ["curacavi.s3.amazonaws.com"],
+    domains: ["curacavi.s3.amazonaws.com", "cqvjuorqpvhyuxfdkhpt.supabase.co"],
   },
   auth: {
     baseURL: "http://127.0.0.1:8000/api/users/",
