@@ -55,10 +55,10 @@ useHead({
         class="col-span-12 grid h-fit grid-cols-1 gap-2 sm:sticky sm:col-span-5 md:col-span-4 lg:col-span-3"
       >
         <div>
-          <h1 class="text-2xl font-bold leading-none text-blue-950">
+          <h1 class="text-2xl font-semibold leading-none text-blue-950">
             <NuxtLink
               to="/autoridad"
-              class="flex items-center text-sm font-bold"
+              class="flex items-center text-sm font-semibold"
             >
               {{ autoridad.tipo_autoridad }}
             </NuxtLink>

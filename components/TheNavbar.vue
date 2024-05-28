@@ -42,7 +42,7 @@ const navigation = [
             <div class="flex flex-shrink-0 items-center">
               <NuxtLink
                 to="/"
-                class="flex items-center gap-x-2 text-xl font-bold uppercase text-blue-800"
+                class="flex items-center gap-x-2 text-xl font-semibold uppercase text-blue-800"
               >
                 <NuxtImg
                   src="https://curacavi.s3.amazonaws.com/logo.webp"

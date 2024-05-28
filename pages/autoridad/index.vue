@@ -18,7 +18,7 @@ useHead({
 <template>
   <section class="">
     <h1
-      class="col-span-1 text-3xl font-black text-slate-800 sm:col-span-2 lg:col-span-3"
+      class="col-span-1 text-3xl font-semibold text-slate-800 sm:col-span-2 lg:col-span-3"
     >
       Autoridades comunales
     </h1>

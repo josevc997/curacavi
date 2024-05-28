@@ -18,7 +18,6 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "nuxt-headlessui",
     "@nuxt/content",
-    "@sidebase/nuxt-auth",
     "@pinia/nuxt",
     "@nuxt/devtools",
     "nuxt-mapbox",
@@ -30,7 +29,7 @@ export default defineNuxtConfig({
   ],
   googleFonts: {
     families: {
-      Poppins: true,
+      Poppins: [100, 200, 300, 400, 500, 600, 700, 800, 900],
     },
   },
   // Optionally change the default prefix.
@@ -61,26 +60,6 @@ export default defineNuxtConfig({
   image: {
     provider: "netlify",
     domains: ["curacavi.s3.amazonaws.com", "cqvjuorqpvhyuxfdkhpt.supabase.co"],
-  },
-  auth: {
-    baseURL: "http://127.0.0.1:8000/api/users/",
-    provider: {
-      type: "local",
-      endpoints: {
-        signIn: { path: "/login/", method: "post" },
-        signOut: { path: "/logout/", method: "post" },
-        getSession: { path: "/session/", method: "get" },
-      },
-      pages: {
-        login: "/login",
-      },
-      token: {
-        maxAgeInSeconds: 60 * 60 * 24 * 7,
-        headerName: "Authorization",
-      },
-    },
-    globalAppMiddleware: true,
-    isEnabled: true,
   },
   imports: {
     dirs: ["./stores"],

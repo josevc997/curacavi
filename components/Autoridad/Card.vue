@@ -83,12 +83,12 @@ const getCandidatura = computed(() => {
         <div
           v-else
           :alt="autoridad.Persona.nombre"
-          class="flex h-12 w-12 min-w-12 items-center justify-center rounded-full bg-blue-900 text-2xl font-bold text-white"
+          class="flex h-12 w-12 min-w-12 items-center justify-center rounded-full bg-blue-900 text-2xl font-semibold text-white"
         >
           {{ getCandidatura?.pacto.nombre.charAt(0) }}
         </div>
         <div>
-          <p class="text-sm font-bold">
+          <p class="text-sm font-semibold">
             {{ getCandidatura?.pacto.nombre }}
           </p>
           <p class="text-sm">

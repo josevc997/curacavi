@@ -4,49 +4,44 @@ import type { Colegio } from "~/types/colegio";
 const { toTitleCase } = useTextUtils();
 
 defineProps<{
-    colegio: Colegio;
+  colegio: Colegio;
 }>();
 </script>
 <template>
-    <NuxtLink
-        :to="`/colegio/${colegio.id}`"
-        :key="colegio.rbd"
-        class="border rounded border-slate-300"
-    >
-        <div class="relative group overflow-hidden shadow">
-            <NuxtImg
-                class="aspect-[3/2] w-full rounded object-cover group-hover:scale-105 transition-all duration-500 ease-in-out"
-                :src="
-                    colegio.cover_image ??
-                    'https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg'
-                "
-                :alt="colegio.nombre"
-            />
-            <div
-                class="absolute w-full h-full bg-gradient-to-t from-black/50 group-hover:from-black/80 transition-all duration-500 ease-in to-transparent top-0 rounded flex flex-col justify-between p-2 text-white"
-            >
-                <div
-                    class="w-fit px-2 py-1 rounded-full flex items-center gap-x-1 backdrop-blur-lg bg-slate-900/30"
-                >
-                    <Icon
-                        name="heroicons:currency-dollar-20-solid"
-                        class="h-5 w-5"
-                    />
-                    <p>
-                        {{ toTitleCase(colegio.dependencia) }}
-                    </p>
-                </div>
-                <div>
-                    <h3
-                        class="text-base font-semibold leading-5 tracking-tight"
-                    >
-                        {{ toTitleCase(colegio.nombre) }}
-                    </h3>
-                    <p class="text-sm font-normal text-slate-200">
-                        {{ toTitleCase(colegio.calle) }}
-                    </p>
-                </div>
-            </div>
+  <NuxtLink
+    :to="`/colegio/${colegio.id}`"
+    :key="colegio.rbd"
+    class="overflow-hidden rounded-md border border-slate-300"
+  >
+    <div class="group relative overflow-hidden rounded-md shadow">
+      <NuxtImg
+        class="aspect-[3/2] w-full rounded-md object-cover transition-all duration-500 ease-in-out group-hover:scale-105"
+        :src="
+          colegio.cover_image ??
+          'https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg'
+        "
+        :alt="colegio.nombre"
+      />
+      <div
+        class="absolute left-2 top-2 flex w-fit items-center gap-x-1 rounded bg-blue-600 px-2 py-1 text-white"
+      >
+        <Icon name="heroicons:currency-dollar-20-solid" class="h-5 w-5" />
+        <p>
+          {{ toTitleCase(colegio.dependencia) }}
+        </p>
+      </div>
+      <div
+        class="absolute bottom-0 flex h-3/4 w-full flex-col justify-end rounded-md bg-gradient-to-t from-black via-transparent to-transparent p-2 text-white transition-all duration-500 ease-in"
+      >
+        <div>
+          <h3 class="text-xl font-medium leading-5 tracking-tight">
+            {{ toTitleCase(colegio.nombre) }}
+          </h3>
+          <p class="text-sm font-normal text-slate-200">
+            {{ toTitleCase(colegio.calle) }}
+          </p>
         </div>
-    </NuxtLink>
+      </div>
+    </div>
+  </NuxtLink>
 </template>

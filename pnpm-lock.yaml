@@ -7,7 +7,6 @@ specifiers:
   '@nuxtjs/google-fonts': ^3.2.0
   '@nuxtjs/supabase': ^1.1.4
   '@pinia/nuxt': ^0.4.11
-  '@sidebase/nuxt-auth': 0.6.0-beta.2
   '@types/node': ^18.19.3
   '@vueuse/core': ^10.7.0
   '@vueuse/nuxt': ^10.7.0
@@ -34,7 +33,6 @@ devDependencies:
   '@nuxt/image': 1.7.0
   '@nuxtjs/google-fonts': 3.2.0
   '@nuxtjs/supabase': 1.1.7
-  '@sidebase/nuxt-auth': 0.6.0-beta.2
   '@types/node': 18.19.26
   '@vueuse/core': 10.9.0
   '@vueuse/nuxt': 10.9.0_nuxt@3.11.1
@@ -1802,44 +1800,6 @@ packages:
       shiki: 1.2.1
     dev: true
 
-  /@sidebase/nuxt-auth/0.6.0-beta.2:
-    resolution: {integrity: sha512-T8cm9gx2V/Wn530r0fdI6EfYzsGfOXBIANtK5Dz7VT4PVFnNRy4ifE9zNRnmtYyTMahORyokBOckQyQ2x/JFpQ==}
-    peerDependencies:
-      next-auth: ^4.21.1
-    dependencies:
-      '@nuxt/kit': 3.11.1
-      '@vueuse/core': 9.13.0
-      defu: 6.1.4
-      h3: 1.11.1
-      knitwork: 1.0.0
-      nitropack: 2.9.5
-      requrl: 3.0.2
-      ufo: 1.5.3
-    transitivePeerDependencies:
-      - '@azure/app-configuration'
-      - '@azure/cosmos'
-      - '@azure/data-tables'
-      - '@azure/identity'
-      - '@azure/keyvault-secrets'
-      - '@azure/storage-blob'
-      - '@capacitor/preferences'
-      - '@libsql/client'
-      - '@netlify/blobs'
-      - '@planetscale/database'
-      - '@upstash/redis'
-      - '@vercel/kv'
-      - '@vue/composition-api'
-      - better-sqlite3
-      - drizzle-orm
-      - encoding
-      - idb-keyval
-      - rollup
-      - supports-color
-      - uWebSockets.js
-      - vue
-      - xml2js
-    dev: true
-
   /@sigstore/bundle/2.2.0:
     resolution: {integrity: sha512-5VI58qgNs76RDrwXNhpmyN/jKpq9evV/7f1XrcqcAfvxDl5SeVY/I5Rmfe96ULAV7/FK5dge9RBKGBJPhL1WsQ==}
     engines: {node: ^16.14.0 || >=18.0.0}
@@ -2084,10 +2044,6 @@ packages:
 
   /@types/unist/3.0.2:
     resolution: {integrity: sha512-dqId9J8K/vGi5Zr7oo212BGii5m3q5Hxlkwy3WpYuKPklmBEvsbMYYyLxAQpSffdLl/gdW0XUpKWFvYmyoWCoQ==}
-    dev: true
-
-  /@types/web-bluetooth/0.0.16:
-    resolution: {integrity: sha512-oh8q2Zc32S6gd/j50GowEjKLoOVOwHP/bWVjKJInBwQqdOYMdPrf1oVlelTlyfFK3CKxL1uahMDAr+vy8T7yMQ==}
     dev: true
 
   /@types/web-bluetooth/0.0.20:
@@ -2541,18 +2497,6 @@ packages:
       - '@vue/composition-api'
       - vue
 
-  /@vueuse/core/9.13.0:
-    resolution: {integrity: sha512-pujnclbeHWxxPRqXWmdkKV5OX4Wk4YeK7wusHqRwU0Q7EFusHoqNA/aPhB6KCh9hEqJkLAJo7bb0Lh9b+OIVzw==}
-    dependencies:
-      '@types/web-bluetooth': 0.0.16
-      '@vueuse/metadata': 9.13.0
-      '@vueuse/shared': 9.13.0
-      vue-demi: 0.14.7
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
-    dev: true
-
   /@vueuse/head/2.0.0:
     resolution: {integrity: sha512-ykdOxTGs95xjD4WXE4na/umxZea2Itl0GWBILas+O4oqS7eXIods38INvk3XkJKjqMdWPcpCyLX/DioLQxU1KA==}
     peerDependencies:
@@ -2666,10 +2610,6 @@ packages:
   /@vueuse/metadata/10.9.0:
     resolution: {integrity: sha512-iddNbg3yZM0X7qFY2sAotomgdHK7YJ6sKUvQqbvwnf7TmaVPxS4EJydcNsVejNdS8iWCtDk+fYXr7E32nyTnGA==}
 
-  /@vueuse/metadata/9.13.0:
-    resolution: {integrity: sha512-gdU7TKNAUVlXXLbaF+ZCfte8BjRJQWPCa2J55+7/h+yDtzw3vOoGQDRXzI6pyKyo6bXFT5/QoPE4hAknExjRLQ==}
-    dev: true
-
   /@vueuse/nuxt/10.9.0_nuxt@3.11.1:
     resolution: {integrity: sha512-nC4Efg28Q6E41fUD5R+zM9uT5c+NfaDzaJCpqaEV/qHj+/BNJmkDBK8POLIUsiVOY35d0oD/YxZ+eVizqWBZow==}
     peerDependencies:
@@ -2703,15 +2643,6 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
-
-  /@vueuse/shared/9.13.0:
-    resolution: {integrity: sha512-UrnhU+Cnufu4S6JLCPZnkWh0WwZGUp72ktOF2DFptMlOs3TOdVv8xJN53zhHGARmVOsz5KqOls09+J1NR6sBKw==}
-    dependencies:
-      vue-demi: 0.14.7
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
-    dev: true
 
   /abbrev/1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
@@ -7172,10 +7103,6 @@ packages:
   /require-directory/2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
     engines: {node: '>=0.10.0'}
-
-  /requrl/3.0.2:
-    resolution: {integrity: sha512-f3gjR6d8MhOpn46PP+DSJywbmxi95fxQm3coXBFwognjFLla9X6tr8BdNyaIKNOEkaRbRcm0/zYAqN19N1oyhg==}
-    dev: true
 
   /resolve-alpn/1.2.1:
     resolution: {integrity: sha512-0a1F4l73/ZFZOakJnQ3FvkJ2+gSTQWz/r2KE5OdDY0TxPm5h4GkqkWWfM47T7HsbnOtcJVEF4epCVy6u7Q3K+g==}
