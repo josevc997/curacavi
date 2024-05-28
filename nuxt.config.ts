@@ -59,7 +59,8 @@ export default defineNuxtConfig({
     },
   },
   image: {
-    dir: "assets/img",
+    provider: "netlify",
+    domains: ["curacavi.s3.amazonaws.com"],
   },
   auth: {
     baseURL: "http://127.0.0.1:8000/api/users/",
