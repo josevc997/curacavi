@@ -18,7 +18,6 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "nuxt-headlessui",
     "@nuxt/content",
-    "@nuxtjs/i18n",
     "@sidebase/nuxt-auth",
     "@pinia/nuxt",
     "@nuxt/devtools",
@@ -61,9 +60,6 @@ export default defineNuxtConfig({
   },
   image: {
     dir: "assets/img",
-  },
-  i18n: {
-    /* module options */
   },
   auth: {
     baseURL: "http://127.0.0.1:8000/api/users/",
