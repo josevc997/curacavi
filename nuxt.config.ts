@@ -25,12 +25,26 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@nuxt/image",
     "nuxt-gtag",
-    "@nuxtjs/google-fonts",
+    "@nuxt/fonts",
   ],
-  googleFonts: {
-    families: {
-      Poppins: true,
-    },
+  fonts: {
+    families: [
+      {
+        name: "Poppins",
+        provider: "google",
+        weights: [
+          "100",
+          "200",
+          "300",
+          "400",
+          "500",
+          "600",
+          "700",
+          "800",
+          "900",
+        ],
+      },
+    ],
   },
   // Optionally change the default prefix.
   headlessui: {
