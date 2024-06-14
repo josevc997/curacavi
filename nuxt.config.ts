@@ -76,7 +76,11 @@ export default defineNuxtConfig({
   },
   image: {
     provider: "netlify",
-    domains: ["curacavi.s3.amazonaws.com", "cqvjuorqpvhyuxfdkhpt.supabase.co"],
+    domains: [
+      "curacavi.s3.amazonaws.com",
+      "cqvjuorqpvhyuxfdkhpt.supabase.co",
+      "backend.curacavi.info",
+    ],
   },
   imports: {
     dirs: ["./stores"],
