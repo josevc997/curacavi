@@ -28,6 +28,7 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "nuxt-gtag",
     "@nuxt/fonts",
+    "nuxt-clarity-analytics",
   ],
   fonts: {
     families: [
