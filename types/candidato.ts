@@ -27,6 +27,7 @@ export interface Candidatura {
     created_at: string;
     codigo: string;
     nombre: string;
+    image: string;
   };
   tipo_autoridad: string;
   fecha: string;
@@ -58,11 +59,12 @@ export interface Autoridad {
   is_active: boolean;
   tipo_autoridad: string;
   id_persona: number;
-  Persona: Persona;
+  persona: Persona;
 }
 
 export interface AutoridadWithCandidatura extends Autoridad {
-  Persona: PersonaWithCandidatura;
+  Persona: Persona;
+  candidatura: Candidatura[];
 }
 
 export interface CandidaturaWithPersona extends Candidatura {

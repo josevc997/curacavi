@@ -15,7 +15,7 @@ export const useAutoridadStore = defineStore("autoridades", {
   }),
   getters: {
     candidaturas(): any {
-      return this.selectedAutoridad.Persona.candidatura.sort(function (a, b) {
+      return this.selectedAutoridad.candidatura.sort(function (a, b) {
         // Turn your strings into dates, and then subtract them
         // to get a value that is either negative, positive, or zero.
         return Date.parse(a.fecha) - Date.parse(b.fecha);
@@ -62,13 +62,19 @@ export const useAutoridadStore = defineStore("autoridades", {
     },
 
     async fetchAutoridades() {
-      const client = useSupabaseClient();
+      const config = useRuntimeConfig();
+
+      console.log("Runtime config:", config);
       const { data: autoridades } = await useAsyncData(
         "Autoridad",
         async () => {
-          const { data } = await client
-            .from("Autoridad")
-            .select("*, Persona(*, candidatura(*, pacto(*), partido(*)))");
+          const data = await $fetch(
+            `${config.public.apiBackend}/api/candidato/autoridad/`,
+          );
+
+          // const { data } = await client
+          //   .from("Autoridad")
+          //   .select("*, Persona(*, candidatura(*, pacto(*), partido(*)))");
 
           return data as AutoridadWithCandidatura[];
         },
@@ -77,7 +83,7 @@ export const useAutoridadStore = defineStore("autoridades", {
     },
 
     async fetchAutoridadById(id: number) {
-      const client = useSupabaseClient();
+      const config = useRuntimeConfig();
       const selected = this.autoridades.find((a) => a.id === id);
       if (selected) {
         this.selectedAutoridad = selected;
@@ -85,10 +91,9 @@ export const useAutoridadStore = defineStore("autoridades", {
         const { data: autoridades } = await useAsyncData(
           "Autoridad",
           async () => {
-            const { data } = await client
-              .from("Autoridad")
-              .select("*, Persona(*, candidatura(*, pacto(*), partido(*)))")
-              .eq("id", id);
+            const data = await $fetch(
+              `${config.public.apiBackend}/api/candidato/autoridad/`,
+            );
 
             return data as AutoridadWithCandidatura[];
           },

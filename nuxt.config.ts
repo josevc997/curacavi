@@ -2,7 +2,9 @@ const path = require("path");
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   runtimeConfig: {
+    apiBackend: "",
     public: {
+      apiBackend: "",
       hotjarId: "",
     },
   },

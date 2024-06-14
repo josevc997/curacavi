@@ -7,7 +7,7 @@ const props = defineProps<{
 
 const getCandidatura = computed(() => {
   let candidatura = null as null | Candidatura;
-  for (const current_candidatura of props.autoridad.Persona.candidatura) {
+  for (const current_candidatura of props.autoridad.candidatura) {
     if (candidatura === null && current_candidatura.is_elected) {
       candidatura = current_candidatura;
     } else if (
@@ -39,10 +39,10 @@ const getCandidatura = computed(() => {
         </h2>
         <div>
           <h3 class="text-lg font-medium">
-            {{ autoridad.Persona.nombre }}
+            {{ autoridad.persona.nombre }}
           </h3>
           <p class="break-all text-xs">
-            {{ autoridad.Persona.email }}
+            {{ autoridad.persona.email }}
           </p>
         </div>
       </div>
@@ -50,8 +50,8 @@ const getCandidatura = computed(() => {
         class="h-[300px] w-full xxs:h-[400px] xs:h-full xs:w-[120px] sm:w-[150px] md:w-[200px]"
       >
         <NuxtImg
-          :src="autoridad.Persona.image"
-          :alt="autoridad.Persona.nombre"
+          :src="autoridad.persona.image"
+          :alt="autoridad.persona.nombre"
           class="aspect-[3/4] h-full w-full rounded-b-none rounded-t-md object-cover object-top group-hover:cursor-pointer xs:rounded-l-md xs:rounded-r-none md:aspect-auto"
         />
       </div>
@@ -66,23 +66,29 @@ const getCandidatura = computed(() => {
           {{ autoridad.tipo_autoridad }} <span class="sr-only">Curacavi</span>
         </h2>
         <h3 class="text-lg font-semibold tracking-wide sm:text-xl">
-          {{ autoridad.Persona.nombre }}
+          {{ autoridad.persona.nombre }}
         </h3>
         <p class="line-clamp-1 break-all text-sm sm:text-base">
-          {{ autoridad.Persona.email }}
+          {{ autoridad.persona.email }}
         </p>
       </div>
 
       <div class="mb-4 flex gap-3">
         <NuxtImg
-          v-if="getCandidatura?.pacto.image"
+          v-if="getCandidatura?.partido.image"
+          :src="getCandidatura?.partido.image"
+          :alt="autoridad.persona.nombre"
+          class="h-12 w-12 min-w-12 rounded-full object-cover"
+        />
+        <NuxtImg
+          v-else-if="getCandidatura?.pacto.image"
           :src="getCandidatura?.pacto.image"
-          :alt="autoridad.Persona.nombre"
+          :alt="autoridad.persona.nombre"
           class="h-12 w-12 min-w-12 rounded-full object-cover"
         />
         <div
           v-else
-          :alt="autoridad.Persona.nombre"
+          :alt="autoridad.persona.nombre"
           class="flex h-12 w-12 min-w-12 items-center justify-center rounded-full bg-blue-900 text-2xl font-semibold text-white"
         >
           {{ getCandidatura?.pacto.nombre.charAt(0) }}
