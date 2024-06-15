@@ -176,6 +176,15 @@ useHead({
                           Carga de datos en proceso
                         </td>
                       </tr>
+                      <tr>
+                        <td
+                          colspan="5"
+                          class="px-2 pt-2 text-xs text-neutral-500"
+                        >
+                          * Información obtenida de la base de datos oficial del
+                          servel *
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
