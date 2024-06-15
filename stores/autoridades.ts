@@ -16,66 +16,20 @@ export const useAutoridadStore = defineStore("autoridades", {
   getters: {
     candidaturas(): any {
       return this.selectedAutoridad.candidatura.sort(function (a, b) {
-        // Turn your strings into dates, and then subtract them
-        // to get a value that is either negative, positive, or zero.
         return Date.parse(a.fecha) - Date.parse(b.fecha);
       });
     },
   },
   actions: {
-    async fetchAlcaldes() {
-      const client = useSupabaseClient();
-      const { data: alcaldes } = await useAsyncData("alcalde", async () => {
-        const { data } = await client.from("alcalde").select("*");
-
-        return data as Candidato[];
-      });
-      if (alcaldes.value) this.alcaldes = alcaldes.value;
-    },
-
-    async fetchAlcaldeById(id: number) {
-      const client = useSupabaseClient();
-      const selected = this.alcaldes.find((a) => a.id === id);
-      if (selected) {
-        this.selectedAlcalde = selected;
-      } else {
-        const { data: alcaldes } = await useAsyncData("alcalde", async () => {
-          const { data } = await client
-            .from("alcalde")
-            .select("*")
-            .eq("id", id);
-
-          return data as Candidato[];
-        });
-        if (alcaldes.value) this.selectedAlcalde = alcaldes.value[0];
-      }
-    },
-
-    async fetchConcejales() {
-      const client = useSupabaseClient();
-      const { data: concejales } = await useAsyncData("concejal", async () => {
-        const { data } = await client.from("concejal").select("*");
-
-        return data as Candidato[];
-      });
-      if (concejales.value) this.concejales = concejales.value;
-    },
-
     async fetchAutoridades() {
       const config = useRuntimeConfig();
 
-      console.log("Runtime config:", config);
       const { data: autoridades } = await useAsyncData(
         "Autoridad",
         async () => {
           const data = await $fetch(
             `${config.public.apiBackend}/api/candidato/autoridad/`,
           );
-
-          // const { data } = await client
-          //   .from("Autoridad")
-          //   .select("*, Persona(*, candidatura(*, pacto(*), partido(*)))");
-
           return data as AutoridadWithCandidatura[];
         },
       );
@@ -92,33 +46,13 @@ export const useAutoridadStore = defineStore("autoridades", {
           "Autoridad",
           async () => {
             const data = await $fetch(
-              `${config.public.apiBackend}/api/candidato/autoridad/`,
+              `${config.public.apiBackend}/api/candidato/autoridad/${id}/`,
             );
 
-            return data as AutoridadWithCandidatura[];
+            return data as AutoridadWithCandidatura;
           },
         );
-        if (autoridades.value) this.selectedAutoridad = autoridades.value[0];
-      }
-    },
-    async fetchConcejalById(id: number) {
-      const client = useSupabaseClient();
-      const selected = this.concejales.find((a) => a.id === id);
-      if (selected) {
-        this.selectedConcejal = selected;
-      } else {
-        const { data: concejales } = await useAsyncData(
-          "concejal",
-          async () => {
-            const { data } = await client
-              .from("concejal")
-              .select("*")
-              .eq("id", id);
-
-            return data as Candidato[];
-          },
-        );
-        if (concejales.value) this.selectedConcejal = concejales.value[0];
+        if (autoridades.value) this.selectedAutoridad = autoridades.value;
       }
     },
   },
