@@ -4,7 +4,7 @@ const navigation = [
   { name: "Colegios", href: "/colegio" },
   { name: "Autoridades", href: "/autoridad" },
   { name: "Blog", href: "/blog" },
-  // { name: "Candidatos 2024", href: "/candidato" },
+  { name: "Candidatos 2024", href: "/candidato" },
 ];
 </script>
 <template>

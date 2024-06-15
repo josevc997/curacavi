@@ -68,5 +68,9 @@ export interface AutoridadWithCandidatura extends Autoridad {
 }
 
 export interface CandidaturaWithPersona extends Candidatura {
-  Persona: Persona;
+  persona: Persona;
+}
+
+export interface SearchCandidaturaPayload {
+  año: number;
 }

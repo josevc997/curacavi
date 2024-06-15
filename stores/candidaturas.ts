@@ -1,5 +1,8 @@
 import { defineStore } from "pinia";
-import type { CandidaturaWithPersona } from "~/types/candidato";
+import type {
+  CandidaturaWithPersona,
+  SearchCandidaturaPayload,
+} from "~/types/candidato";
 
 export const useCandidaturaStore = defineStore("candidaturas", {
   state: () => ({
@@ -10,14 +13,16 @@ export const useCandidaturaStore = defineStore("candidaturas", {
   getters: {},
 
   actions: {
-    async fetchCandidaturas() {
-      const client = useSupabaseClient();
+    async fetchCandidaturas(payload: SearchCandidaturaPayload) {
+      const config = useRuntimeConfig();
       const { data: valores } = await useAsyncData("candidatura", async () => {
-        const { data, error } = await client
-          .from("candidatura")
-          .select("*, Persona(*), pacto(*), partido(*)")
-          .gte("fecha", "2021-01-01");
-        if (error) throw error;
+        let url = `${config.public.apiBackend}/api/candidato/candidatura/`;
+        if (payload) {
+          url = `${config.public.apiBackend}/api/candidato/candidatura/?${new URLSearchParams(
+            payload as unknown as Record<string, string>,
+          )}`;
+        }
+        const data = await $fetch(url);
         return data as CandidaturaWithPersona[];
       });
       if (valores.value) this.candidaturas = valores.value;
