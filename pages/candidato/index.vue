@@ -58,15 +58,54 @@ const tipoAutoridadList = computed(() => {
 });
 
 const selectedTipoAutoridad = ref(null as string | null);
+const onlyElected = ref(false);
 
 const filteredCandidaturas = computed(() => {
   if (!selectedTipoAutoridad.value) {
     if (query.value.length > 0) {
-      return candidaturaStore.candidaturas.filter(
-        (candidatura) =>
-          candidatura.persona.nombre
+      return candidaturaStore.candidaturas.filter((candidatura) => {
+        const splittedQuery = query.value.split(" ");
+        const validateName = splittedQuery.every((word) => {
+          return candidatura.persona.nombre
             .toLowerCase()
-            .includes(query.value.toLowerCase()) ||
+            .includes(word.toLowerCase());
+        });
+        console.log(
+          "onlyElected.value",
+          onlyElected.value === true ? candidatura.is_elected === true : true,
+        );
+
+        return (
+          (validateName ||
+            candidatura.partido.nombre
+              .toLowerCase()
+              .includes(query.value.toLowerCase()) ||
+            candidatura.partido.codigo
+              .toLowerCase()
+              .includes(query.value.toLowerCase()) ||
+            candidatura.pacto.nombre
+              .toLowerCase()
+              .includes(query.value.toLowerCase())) &&
+          (onlyElected.value === true ? candidatura.is_elected === true : true)
+        );
+      });
+    }
+    return onlyElected.value
+      ? candidaturaStore.candidaturas.filter(
+          (candidatura) => candidatura.is_elected,
+        )
+      : candidaturaStore.candidaturas;
+  }
+  return candidaturaStore.candidaturas.filter((candidatura) => {
+    if (query.value.length > 0) {
+      const splittedQuery = query.value.split(" ");
+      const validateName = splittedQuery.every((word) => {
+        return candidatura.persona.nombre
+          .toLowerCase()
+          .includes(word.toLowerCase());
+      });
+      return (
+        (validateName ||
           candidatura.partido.nombre
             .toLowerCase()
             .includes(query.value.toLowerCase()) ||
@@ -75,29 +114,15 @@ const filteredCandidaturas = computed(() => {
             .includes(query.value.toLowerCase()) ||
           candidatura.pacto.nombre
             .toLowerCase()
-            .includes(query.value.toLowerCase()),
+            .includes(query.value.toLowerCase())) &&
+        (onlyElected.value === true ? candidatura.is_elected === true : true) &&
+        candidatura.tipo_autoridad === selectedTipoAutoridad.value
       );
     }
-    return candidaturaStore.candidaturas;
-  }
-  return candidaturaStore.candidaturas.filter((candidatura) => {
-    if (query.value.length > 0) {
-      return (
-        candidatura.persona.nombre
-          .toLowerCase()
-          .includes(query.value.toLowerCase()) ||
-        candidatura.partido.nombre
-          .toLowerCase()
-          .includes(query.value.toLowerCase()) ||
-        candidatura.partido.codigo
-          .toLowerCase()
-          .includes(query.value.toLowerCase()) ||
-        candidatura.pacto.nombre
-          .toLowerCase()
-          .includes(query.value.toLowerCase())
-      );
-    }
-    return candidatura.tipo_autoridad === selectedTipoAutoridad.value;
+    return candidatura.tipo_autoridad === selectedTipoAutoridad.value &&
+      onlyElected.value === true
+      ? candidatura.is_elected === true
+      : candidatura.tipo_autoridad === selectedTipoAutoridad.value;
   });
 });
 
@@ -109,7 +134,6 @@ const handleSearch = async () => {
 };
 
 await handleSearch();
-const isShowing = ref(true);
 
 watch(
   () => searchPayload.value.año,
@@ -149,7 +173,7 @@ useHead({
           Elecciones Municipales Curacavi {{ searchPayload.año }}
         </h2>
       </div>
-      <div class="col-span-1 grid 2xl:col-span-2">
+      <div class="col-span-1 grid 2xl:col-span-1">
         <label for="filter" class="text-sm font-semibold">Filtrar:</label>
         <input
           v-model="query"
@@ -157,7 +181,7 @@ useHead({
           id="filter"
           name="filter"
           class="h-10 w-full rounded-md border border-slate-200 bg-white p-2 text-sm focus:outline-1 focus:outline-blue-500 focus:ring-0 active:outline-0 active:ring-0"
-          placeholder="Nombre del colegio"
+          placeholder="Candidato, Partido o Pacto"
         />
       </div>
       <div class="col-span-1 grid">
@@ -169,9 +193,7 @@ useHead({
           @handleSelect="handleSelect"
         />
       </div>
-      <div
-        class="col-span-1 grid sm:col-span-2 lg:col-span-1 lg:col-start-3 2xl:col-span-1 2xl:col-start-4"
-      >
+      <div class="col-span-1 grid sm:col-span-1 lg:col-span-1 2xl:col-span-1">
         <h1 class="text-sm font-semibold text-slate-800">Filtro</h1>
         <div class="flex gap-2">
           <button
@@ -190,6 +212,23 @@ useHead({
             ]"
           >
             {{ tipoAutoridad.value }}
+          </button>
+        </div>
+      </div>
+      <div class="col-span-1 grid sm:col-span-1 lg:col-span-1 2xl:col-span-1">
+        <h1 class="text-sm font-semibold text-slate-800">Filtro</h1>
+        <div class="flex gap-2">
+          <button
+            @click="onlyElected = !onlyElected"
+            key="tipoAutoridad.value"
+            class="h-10 rounded-md px-4 py-2 text-sm shadow-sm outline outline-1 outline-neutral-600/10"
+            :class="[
+              onlyElected
+                ? 'bg-blue-600 text-white'
+                : 'bg-white text-neutral-900',
+            ]"
+          >
+            Solo Electos
           </button>
         </div>
       </div>
