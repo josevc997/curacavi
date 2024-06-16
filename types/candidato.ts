@@ -71,6 +71,10 @@ export interface CandidaturaWithPersona extends Candidatura {
   persona: Persona;
 }
 
+export interface CandidaturaWithCandidaturas extends CandidaturaWithPersona {
+  candidatura_list: Candidatura[];
+}
+
 export interface SearchCandidaturaPayload {
   año: number;
 }

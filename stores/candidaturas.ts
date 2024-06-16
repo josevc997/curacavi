@@ -1,13 +1,13 @@
 import { defineStore } from "pinia";
 import type {
-  CandidaturaWithPersona,
+  CandidaturaWithCandidaturas,
   SearchCandidaturaPayload,
 } from "~/types/candidato";
 
 export const useCandidaturaStore = defineStore("candidaturas", {
   state: () => ({
-    candidaturas: [] as CandidaturaWithPersona[],
-    selectedCandidatura: {} as CandidaturaWithPersona,
+    candidaturas: [] as CandidaturaWithCandidaturas[],
+    selectedCandidatura: {} as CandidaturaWithCandidaturas,
   }),
 
   getters: {},
@@ -23,9 +23,29 @@ export const useCandidaturaStore = defineStore("candidaturas", {
           )}`;
         }
         const data = await $fetch(url);
-        return data as CandidaturaWithPersona[];
+        return data as CandidaturaWithCandidaturas[];
       });
       if (valores.value) this.candidaturas = valores.value;
+    },
+
+    async fetchCandidaturaById(id: number) {
+      const config = useRuntimeConfig();
+      const selected = this.candidaturas.find((a) => a.id === id);
+      if (selected) {
+        this.selectedCandidatura = selected;
+      } else {
+        const { data: autoridades } = await useAsyncData(
+          "Autoridad",
+          async () => {
+            const data = await $fetch(
+              `${config.public.apiBackend}/api/candidato/candidatura/${id}/`,
+            );
+
+            return data as CandidaturaWithCandidaturas;
+          },
+        );
+        if (autoridades.value) this.selectedCandidatura = autoridades.value;
+      }
     },
   },
 });

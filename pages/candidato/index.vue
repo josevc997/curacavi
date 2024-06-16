@@ -112,9 +112,10 @@ await handleSearch();
 const isShowing = ref(true);
 
 watch(
-  () => route.query.fecha,
+  () => searchPayload.value.año,
   (newFecha, oldFecha) => {
     candidaturaStore.fetchCandidaturas(searchPayload.value);
+    console.log("newFecha", newFecha, oldFecha);
   },
 );
 
@@ -140,6 +141,14 @@ useHead({
     <div
       class="grid grid-cols-1 gap-4 pb-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
     >
+      <div class="col-span-1 sm:col-span-2 lg:col-span-3 2xl:col-span-4">
+        <h1 class="text-3xl font-semibold text-slate-800">
+          Candidatos Curacavi {{ searchPayload.año }}
+        </h1>
+        <h2 class="text-xl font-medium text-slate-400">
+          Elecciones Municipales Curacavi {{ searchPayload.año }}
+        </h2>
+      </div>
       <div class="col-span-1 grid 2xl:col-span-2">
         <label for="filter" class="text-sm font-semibold">Filtrar:</label>
         <input
@@ -152,7 +161,7 @@ useHead({
         />
       </div>
       <div class="col-span-1 grid">
-        <FormStringSelect
+        <FormYearSelect
           :items="yearList"
           :selected-value="String(searchPayload.año)"
           name="Año:"
@@ -167,7 +176,11 @@ useHead({
         <div class="flex gap-2">
           <button
             v-for="tipoAutoridad in tipoAutoridadList"
-            @click="selectedTipoAutoridad = tipoAutoridad.value"
+            @click="
+              selectedTipoAutoridad !== tipoAutoridad.value
+                ? (selectedTipoAutoridad = tipoAutoridad.value)
+                : (selectedTipoAutoridad = null)
+            "
             key="tipoAutoridad.value"
             class="h-10 rounded-md px-4 py-2 text-sm shadow-sm outline outline-1 outline-neutral-600/10"
             :class="[

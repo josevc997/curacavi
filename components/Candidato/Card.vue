@@ -8,7 +8,7 @@ const props = defineProps<{
 
 <template>
   <NuxtLink
-    :to="`/autoridad/${candidato.id}`"
+    :to="`/candidato/${candidato.id}`"
     class="group relative flex flex-col overflow-hidden rounded-md border border-slate-300 shadow transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-md"
     :key="candidato.id"
   >
