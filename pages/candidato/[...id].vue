@@ -141,75 +141,10 @@ useHead({
           </div>
         </div>
         <div>
-          <h2 class="mb-2 text-lg font-semibold text-blue-950">Candidaturas</h2>
-          <div class="flex flex-col">
-            <div class="overflow-x-auto rounded-md border border-slate-300">
-              <div class="inline-block min-w-full">
-                <div class="overflow-hidden">
-                  <table class="min-w-full text-left text-sm font-light">
-                    <thead
-                      class="border-b border-slate-300 bg-slate-100 font-medium"
-                    >
-                      <tr>
-                        <th scope="col" class="px-4 py-3">Año</th>
-                        <th scope="col" class="px-4 py-3">Tipo</th>
-                        <th scope="col" class="px-4 py-3">Electo</th>
-                        <th scope="col" class="px-4 py-3">Pacto</th>
-                        <th scope="col" class="px-4 py-3">Partido</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr
-                        class="border-b border-slate-300"
-                        v-for="candidaturaItem in candidatura.candidatura_list"
-                      >
-                        <td class="whitespace-nowrap px-4 py-3 font-medium">
-                          {{
-                            useDateFormat(candidaturaItem.fecha, "YYYY").value
-                          }}
-                        </td>
-                        <td class="whitespace-nowrap px-4 py-3">
-                          {{ toTitleCase(candidaturaItem.tipo_autoridad) }}
-                        </td>
-                        <td class="whitespace-nowrap px-4 py-3 text-center">
-                          <Icon
-                            v-if="candidaturaItem.is_elected"
-                            name="heroicons:check-circle-20-solid"
-                            class="h-6 w-6 text-green-700/80"
-                          />
-                          <Icon
-                            v-else
-                            name="heroicons:x-circle-20-solid"
-                            class="h-6 w-6 text-red-700/80"
-                          />
-                        </td>
-                        <td class="whitespace-nowrap px-4 py-3">
-                          {{ toTitleCase(candidaturaItem.pacto.nombre) }}
-                        </td>
-                        <td class="whitespace-nowrap px-4 py-3">
-                          {{ toTitleCase(candidaturaItem.partido.nombre) }}
-                        </td>
-                      </tr>
-                      <tr v-if="candidatura.candidatura_list.length === 0">
-                        <td colspan="4" class="bg-slate-50 p-2 text-center">
-                          Carga de datos en proceso
-                        </td>
-                      </tr>
-                      <tr>
-                        <td
-                          colspan="5"
-                          class="px-2 pt-2 text-xs text-neutral-500"
-                        >
-                          * Información obtenida de la base de datos oficial del
-                          servel *
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
+          <h2 class="mb-4 text-lg font-semibold text-blue-950">
+            Historial de Candidaturas
+          </h2>
+          <CandidaturaList :candidaturasList="candidatura.candidatura_list" />
         </div>
       </div>
     </template>
