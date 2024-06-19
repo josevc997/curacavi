@@ -5,18 +5,9 @@ defineProps<{
 }>();
 </script>
 <template>
-  <div>
-    <div class="mb-2 grid grid-cols-12">
-      <div
-        class="col-span-10 col-start-3 md:col-span-8 md:col-start-3 lg:col-span-10 lg:col-start-2"
-      >
-        <h4 class="leading-none">Partido y pacto</h4>
-      </div>
-      <div class="hidden justify-end md:col-span-2 md:flex lg:col-span-1">
-        <h4 class="leading-none">Año</h4>
-      </div>
-    </div>
-    <div class="mb-4 h-px bg-neutral-300"></div>
+  <div
+    class="rounded-md bg-white p-2 shadow outline outline-1 outline-neutral-600/10"
+  >
     <div
       v-for="item in candidaturasList"
       class="grid grid-cols-12 gap-x-4 gap-y-2 md:gap-y-4"
@@ -37,22 +28,25 @@ defineProps<{
         </div>
       </div>
       <div class="col-span-10 break-words md:col-span-7 lg:col-span-8">
-        <h3 class="text-base font-semibold">
-          {{ item.tipo_autoridad }}
-        </h3>
         <h2 class="text-base font-semibold">{{ item.partido.nombre }}</h2>
         <p class="text-sm">{{ item.pacto.nombre }}</p>
+        <p class="text-sm">{{ item.votos }} Votos ({{ item.porcentaje }}%)</p>
       </div>
       <div
-        class="col-span-10 col-start-3 flex justify-between md:col-span-3 md:flex-col md:items-end md:justify-center"
+        class="col-span-10 col-start-3 flex items-end justify-between md:col-span-3 md:flex-col md:items-end md:justify-center"
       >
-        <p class="font-medium">
-          {{ item.fecha.slice(0, 4) }}
-        </p>
+        <div>
+          <h3 class="text-base font-medium">
+            {{ item.tipo_autoridad }}
+          </h3>
+          <p class="font-medium">
+            {{ item.fecha.slice(0, 4) }}
+          </p>
+        </div>
         <div
           :class="[
             item.is_elected ? 'bg-green-600' : 'bg-neutral-500/70',
-            'flex w-fit items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-semibold text-white',
+            'flex h-fit w-fit items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-semibold text-white',
           ]"
         >
           <Icon

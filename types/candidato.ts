@@ -34,6 +34,8 @@ export interface Candidatura {
   is_active: boolean;
   is_elected: boolean;
   id_persona: number;
+  votos: number;
+  porcentaje: number;
 }
 
 export interface Persona {
