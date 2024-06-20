@@ -40,7 +40,7 @@ useHead({
 </script>
 <template>
   <div class="grid grid-cols-12 gap-y-8 py-4 sm:gap-x-4">
-    <template v-if="colegio">
+    <template v-if="colegio && colegio.nombre">
       <div class="col-span-12 flex flex-col gap-4">
         <div class="leading-tight text-slate-800">
           <h1 class="col-span-12 text-3xl font-semibold">
@@ -61,162 +61,93 @@ useHead({
             class="h-80 w-full rounded-md object-cover object-center shadow shadow-blue-500/40 sm:aspect-[5/2] sm:h-full"
           />
         </div>
-        <section>
-          <div>
-            <div class="mt-4 sm:px-0">
-              <h3 class="text-xl font-semibold leading-7 text-gray-900">
-                Información de Contacto
-              </h3>
-              <!-- <p class="mt-1 max-w-2xl text-sm leading-4 text-gray-500">
-                Personal details and application.
-              </p> -->
+        <div class="grid grid-cols-12 gap-4">
+          <section
+            class="col-span-12 rounded bg-white p-4 shadow outline outline-1 outline-neutral-600/10 sm:col-span-6 lg:col-span-4"
+          >
+            <h4 class="mb-2 text-lg font-semibold">Información de contacto</h4>
+            <div class="grid grid-cols-1 gap-4">
+              <div class="flex items-center gap-2">
+                <div>
+                  <Icon name="heroicons:envelope-16-solid" />
+                </div>
+                <p class="flex break-all lowercase leading-none">
+                  {{ colegio.mail }}
+                </p>
+              </div>
+              <div class="flex items-center gap-2">
+                <div>
+                  <Icon name="heroicons:phone-16-solid" />
+                </div>
+                <p class="flex lowercase leading-none">
+                  {{ colegio.telefono ?? "+56..." }}
+                </p>
+              </div>
+              <div class="flex items-center gap-2">
+                <div>
+                  <Icon name="heroicons:globe-alt-16-solid" />
+                </div>
+                <p class="flex break-all lowercase leading-none">
+                  {{ colegio.url ?? "http://..." }}
+                </p>
+              </div>
             </div>
-            <div class="mt-6 border-t border-gray-100">
-              <dl class="divide-y divide-gray-100">
-                <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-sm font-medium leading-4 text-gray-900">
-                    Correo
-                  </dt>
-                  <dd
-                    class="mt-1 text-sm leading-4 text-gray-700 sm:col-span-2 sm:mt-0"
-                  >
-                    {{ colegio.mail }}
-                  </dd>
-                </div>
-                <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-sm font-medium leading-4 text-gray-900">
-                    Telefono
-                  </dt>
-                  <dd
-                    class="mt-1 text-sm leading-4 text-gray-700 sm:col-span-2 sm:mt-0"
-                  >
-                    {{ colegio.telefono }}
-                  </dd>
-                </div>
-                <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-sm font-medium leading-4 text-gray-900">
-                    Website
-                  </dt>
-                  <dd
-                    class="mt-1 text-sm leading-4 text-gray-700 sm:col-span-2 sm:mt-0"
-                  >
-                    {{ colegio.url }}
-                  </dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-          <div>
-            <div class="mt-8 sm:px-0">
-              <h3 class="text-xl font-semibold leading-7 text-gray-900">
-                Información Institucional
-              </h3>
-            </div>
-            <div class="mt-6 border-t border-gray-100">
-              <dl class="divide-y divide-gray-100">
-                <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-sm font-medium leading-4 text-gray-900">
-                    Director
-                  </dt>
-                  <dd
-                    class="mt-1 text-sm leading-4 text-gray-700 sm:col-span-2 sm:mt-0"
-                  >
-                    {{ colegio.director }}
-                  </dd>
-                </div>
-                <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-sm font-medium leading-4 text-gray-900">
-                    Dependencia
-                  </dt>
-                  <dd
-                    class="mt-1 text-sm leading-4 text-gray-700 sm:col-span-2 sm:mt-0"
-                  >
-                    {{ colegio.dependencia }}
-                  </dd>
-                </div>
-                <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-sm font-medium leading-4 text-gray-900">
-                    Orientación Religiosa
-                  </dt>
-                  <dd
-                    class="mt-1 text-sm leading-4 text-gray-700 sm:col-span-2 sm:mt-0"
-                  >
-                    {{ colegio.orientacionReligiosa }}
-                  </dd>
-                </div>
-                <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-sm font-medium leading-4 text-gray-900">
-                    Política de uniforme
-                  </dt>
-                  <dd
-                    class="mt-1 text-sm leading-4 text-gray-700 sm:col-span-2 sm:mt-0"
-                  >
-                    {{ colegio.politicaUniforme }}
-                  </dd>
-                </div>
-                <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-sm font-medium leading-4 text-gray-900">
-                    Nivel Mínimo
-                  </dt>
-                  <dd
-                    class="mt-1 text-sm leading-4 text-gray-700 sm:col-span-2 sm:mt-0"
-                  >
-                    {{ colegio.nivelMinimo }}
-                  </dd>
-                </div>
-                <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-sm font-medium leading-4 text-gray-900">
-                    Nivel Máximo
-                  </dt>
-                  <dd
-                    class="mt-1 text-sm leading-4 text-gray-700 sm:col-span-2 sm:mt-0"
-                  >
-                    {{ colegio.nivelMaximo }}
-                  </dd>
-                </div>
-                <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-sm font-medium leading-4 text-gray-900">
-                    Promedio de Alumnos por curso
-                  </dt>
-                  <dd
-                    class="mt-1 text-sm leading-4 text-gray-700 sm:col-span-2 sm:mt-0"
-                  >
-                    {{ colegio.promedioAlumnosPorCurso }}
-                  </dd>
-                </div>
-                <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-sm font-medium leading-4 text-gray-900">
-                    Cantidad de Docentes
-                  </dt>
-                  <dd
-                    class="mt-1 text-sm leading-4 text-gray-700 sm:col-span-2 sm:mt-0"
-                  >
-                    {{ colegio.cantidadDocentes }}
-                  </dd>
-                </div>
-                <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-sm font-medium leading-4 text-gray-900">
-                    Alumnos matriculados
-                  </dt>
-                  <dd
-                    class="mt-1 text-sm leading-4 text-gray-700 sm:col-span-2 sm:mt-0"
-                  >
-                    {{ colegio.alumnosMatriculados }}
-                  </dd>
-                </div>
-                <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt class="text-sm font-medium leading-6 text-gray-900">
-                    Resumen proyecto educativo
-                  </dt>
-                  <dd
-                    class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"
-                  >
-                    {{ colegio.resumenProyecto }}
-                  </dd>
-                </div>
-              </dl>
+          </section>
+          <div
+            class="col-span-12 rounded bg-white p-4 shadow outline outline-1 outline-neutral-600/10 sm:col-span-6 lg:col-span-4"
+          >
+            <h4 class="mb-1 text-lg font-semibold">Información de General</h4>
+            <div class="flex flex-col gap-3">
+              <div>
+                <p class="font-semibold leading-4">Director</p>
+                <p class="capitalize leading-4">
+                  {{ colegio.director.toLowerCase() }}
+                </p>
+              </div>
+              <div>
+                <p class="font-semibold leading-4">Dependencia</p>
+                <p class="leading-4">{{ colegio.dependencia }}</p>
+              </div>
+              <div>
+                <p class="font-semibold leading-4">Orientación Religiosa</p>
+                <p class="leading-4">{{ colegio.orientacionReligiosa }}</p>
+              </div>
             </div>
           </div>
+          <div
+            class="col-span-12 rounded bg-white p-4 shadow outline outline-1 outline-neutral-600/10 sm:col-span-6 lg:col-span-4"
+          >
+            <h4 class="mb-1 text-lg font-semibold">
+              Información de Institucional
+            </h4>
+            <div class="flex flex-col gap-3">
+              <div>
+                <p class="font-semibold leading-4">Cursos</p>
+                <p class="leading-4">
+                  {{ colegio.nivelMinimo }} - {{ colegio.nivelMaximo }}
+                </p>
+              </div>
+              <div>
+                <p class="font-semibold leading-4">Alumnos Matriculados</p>
+                <p class="capitalize leading-4">
+                  {{ colegio.alumnosMatriculados }} ({{
+                    colegio.promedioAlumnosPorCurso
+                  }}
+                  por curso aprox)
+                </p>
+              </div>
+              <div>
+                <p class="font-semibold leading-4">Cantidad de docentes</p>
+                <p class="leading-4">{{ colegio.cantidadDocentes }} Docentes</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <section
+          class="rounded bg-white p-4 shadow outline outline-1 outline-neutral-600/10"
+        >
+          <h4 class="text-lg font-semibold">Resumen Proyecto Educativo</h4>
+          {{ colegio.resumenProyecto }}
         </section>
         <section id="map">
           <div
