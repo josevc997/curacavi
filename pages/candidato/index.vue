@@ -185,34 +185,38 @@ useHead({
         />
       </div>
       <div class="col-span-1 grid">
-        <FormYearSelect
-          :items="yearList"
-          :selected-value="String(searchPayload.año)"
-          name="Año:"
-          name-class="text-sm font-semibold"
-          @handleSelect="handleSelect"
-        />
+        <ClientOnly>
+          <FormYearSelect
+            :items="yearList"
+            :selected-value="String(searchPayload.año)"
+            name="Año:"
+            name-class="text-sm font-semibold"
+            @handleSelect="handleSelect"
+          />
+        </ClientOnly>
       </div>
       <div class="col-span-1 grid sm:col-span-1 lg:col-span-1 2xl:col-span-1">
         <h1 class="text-sm font-semibold text-slate-800">Filtro</h1>
         <div class="flex gap-2">
-          <button
-            v-for="tipoAutoridad in tipoAutoridadList"
-            @click="
-              selectedTipoAutoridad !== tipoAutoridad.value
-                ? (selectedTipoAutoridad = tipoAutoridad.value)
-                : (selectedTipoAutoridad = null)
-            "
-            key="tipoAutoridad.value"
-            class="h-10 rounded-md px-4 py-2 text-sm shadow-sm outline outline-1 outline-neutral-600/10"
-            :class="[
-              selectedTipoAutoridad === tipoAutoridad.value
-                ? 'bg-blue-600 text-white'
-                : 'bg-white text-neutral-900',
-            ]"
-          >
-            {{ tipoAutoridad.value }}
-          </button>
+          <ClientOnly>
+            <button
+              v-for="tipoAutoridad in tipoAutoridadList"
+              @click="
+                selectedTipoAutoridad !== tipoAutoridad.value
+                  ? (selectedTipoAutoridad = tipoAutoridad.value)
+                  : (selectedTipoAutoridad = null)
+              "
+              key="tipoAutoridad.value"
+              class="h-10 rounded-md px-4 py-2 text-sm shadow-sm outline outline-1 outline-neutral-600/10"
+              :class="[
+                selectedTipoAutoridad === tipoAutoridad.value
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-white text-neutral-900',
+              ]"
+            >
+              {{ tipoAutoridad.value }}
+            </button>
+          </ClientOnly>
         </div>
       </div>
       <div class="col-span-1 grid sm:col-span-1 lg:col-span-1 2xl:col-span-1">

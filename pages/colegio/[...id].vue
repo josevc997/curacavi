@@ -13,10 +13,7 @@ const colegio = computed(() => {
 
 const coordenadas = computed(() => {
   if (colegio.value) {
-    const coordenadasArray = JSON.parse(colegio.value.coordenadas) as [
-      number,
-      number,
-    ];
+    const coordenadasArray = [colegio.value.longitud, colegio.value.latitud];
     return new mapboxgl.LngLat(coordenadasArray[0], coordenadasArray[1]);
   }
 });
@@ -46,8 +43,11 @@ useHead({
           <h1 class="col-span-12 text-3xl font-semibold">
             {{ toTitleCase(colegio.nombre) }}
           </h1>
-          <p class="text-lg font-semibold capitalize text-slate-600">
-            {{ toTitleCase(colegio.calle) }}
+          <p
+            v-if="colegio.direccion"
+            class="text-lg font-semibold capitalize text-slate-600"
+          >
+            {{ toTitleCase(colegio.direccion) }}
           </p>
         </div>
         <div>
@@ -65,31 +65,40 @@ useHead({
           <section
             class="col-span-12 rounded bg-white p-4 shadow outline outline-1 outline-neutral-600/10 sm:col-span-6 lg:col-span-4"
           >
-            <h4 class="mb-2 text-lg font-semibold">Información de contacto</h4>
-            <div class="grid grid-cols-1 gap-4">
-              <div class="flex items-center gap-2">
-                <div>
-                  <Icon name="heroicons:envelope-16-solid" />
+            <h4 class="mb-1 text-lg font-semibold">Información de contacto</h4>
+            <div class="grid grid-cols-1 gap-3">
+              <div>
+                <p class="font-semibold leading-6">Correo</p>
+                <div class="flex items-center gap-2">
+                  <div class="flex items-center">
+                    <Icon name="heroicons:envelope-16-solid" />
+                  </div>
+                  <p class="flex break-all lowercase leading-4">
+                    {{ colegio.email }}
+                  </p>
                 </div>
-                <p class="flex break-all lowercase leading-none">
-                  {{ colegio.mail }}
-                </p>
               </div>
-              <div class="flex items-center gap-2">
-                <div>
-                  <Icon name="heroicons:phone-16-solid" />
+              <div>
+                <p class="font-semibold leading-6">Telefono</p>
+                <div class="flex items-center gap-2">
+                  <div class="flex items-center">
+                    <Icon name="heroicons:phone-16-solid" />
+                  </div>
+                  <p class="flex lowercase leading-4">
+                    {{ colegio.telefono ?? "+56..." }}
+                  </p>
                 </div>
-                <p class="flex lowercase leading-none">
-                  {{ colegio.telefono ?? "+56..." }}
-                </p>
               </div>
-              <div class="flex items-center gap-2">
-                <div>
-                  <Icon name="heroicons:globe-alt-16-solid" />
+              <div>
+                <p class="font-semibold leading-6">Website</p>
+                <div class="flex items-center gap-2">
+                  <div class="flex items-center">
+                    <Icon name="heroicons:globe-alt-16-solid" />
+                  </div>
+                  <p class="flex break-all lowercase leading-4">
+                    {{ colegio.url ?? "http://..." }}
+                  </p>
                 </div>
-                <p class="flex break-all lowercase leading-none">
-                  {{ colegio.url ?? "http://..." }}
-                </p>
               </div>
             </div>
           </section>
@@ -99,18 +108,18 @@ useHead({
             <h4 class="mb-1 text-lg font-semibold">Información de General</h4>
             <div class="flex flex-col gap-3">
               <div>
-                <p class="font-semibold leading-4">Director</p>
+                <p class="font-semibold leading-6">Director</p>
                 <p class="capitalize leading-4">
-                  {{ colegio.director.toLowerCase() }}
+                  {{ colegio?.director?.toLowerCase() || "No disponible" }}
                 </p>
               </div>
               <div>
-                <p class="font-semibold leading-4">Dependencia</p>
-                <p class="leading-4">{{ colegio.dependencia }}</p>
+                <p class="font-semibold leading-6">Dependencia</p>
+                <p class="leading-4">{{ colegio.dependencia_principal }}</p>
               </div>
               <div>
-                <p class="font-semibold leading-4">Orientación Religiosa</p>
-                <p class="leading-4">{{ colegio.orientacionReligiosa }}</p>
+                <p class="font-semibold leading-6">Orientación Religiosa</p>
+                <p class="leading-4">{{ colegio.orientacion_religiosa }}</p>
               </div>
             </div>
           </div>
@@ -122,23 +131,25 @@ useHead({
             </h4>
             <div class="flex flex-col gap-3">
               <div>
-                <p class="font-semibold leading-4">Cursos</p>
+                <p class="font-semibold leading-6">Cursos</p>
                 <p class="leading-4">
-                  {{ colegio.nivelMinimo }} - {{ colegio.nivelMaximo }}
+                  {{ colegio.nivel_minimo }} - {{ colegio.nivel_maximo }}
                 </p>
               </div>
               <div>
-                <p class="font-semibold leading-4">Alumnos Matriculados</p>
+                <p class="font-semibold leading-6">Alumnos Matriculados</p>
                 <p class="capitalize leading-4">
-                  {{ colegio.alumnosMatriculados }} ({{
-                    colegio.promedioAlumnosPorCurso
+                  {{ colegio.matricula_total }} ({{
+                    colegio.promedio_alumnos_curso
                   }}
                   por curso aprox)
                 </p>
               </div>
               <div>
-                <p class="font-semibold leading-4">Cantidad de docentes</p>
-                <p class="leading-4">{{ colegio.cantidadDocentes }} Docentes</p>
+                <p class="font-semibold leading-6">Cantidad de docentes</p>
+                <p class="leading-4">
+                  {{ colegio.cantidad_docentes }} Docentes
+                </p>
               </div>
             </div>
           </div>
@@ -147,16 +158,145 @@ useHead({
           class="rounded bg-white p-4 shadow outline outline-1 outline-neutral-600/10"
         >
           <h4 class="text-lg font-semibold">Resumen Proyecto Educativo</h4>
-          {{ colegio.resumenProyecto }}
+          {{ colegio.resumen_proyecto || "No disponible" }}
+        </section>
+        <section
+          class="-mx-4 bg-white ring-1 ring-gray-300 sm:mx-0 sm:rounded-lg"
+        >
+          <h4
+            class="bg-neutral-50 px-4 py-2 text-lg font-semibold sm:rounded-t-lg"
+          >
+            Niveles Educativos
+          </h4>
+          <table
+            class="min-w-full divide-y divide-gray-300 border-t border-gray-300"
+          >
+            <thead>
+              <tr>
+                <th
+                  scope="col"
+                  class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                >
+                  Codigo
+                </th>
+                <th
+                  scope="col"
+                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell"
+                >
+                  Nivel Educativo
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <template
+                v-for="(enseñanza_item, enseñanzaIdx) in colegio.enseñanzas"
+              >
+                <tr
+                  :key="enseñanza_item.codigo"
+                  v-if="
+                    colegio.enseñanzas.length > 1 && enseñanza_item.codigo !== 0
+                  "
+                >
+                  <td
+                    :class="[
+                      enseñanzaIdx === 0 ? '' : 'border-t border-gray-200',
+                      'relative py-4 pl-4 pr-3 text-sm sm:pl-6',
+                    ]"
+                  >
+                    <div class="font-medium text-gray-900">
+                      {{ enseñanza_item.codigo }}
+                    </div>
+                  </td>
+                  <td
+                    :class="[
+                      enseñanzaIdx === 0 ? '' : 'border-t border-gray-200',
+                      'px-3 py-3.5 text-sm text-gray-500 lg:table-cell',
+                    ]"
+                  >
+                    {{ enseñanza_item.nombre }}
+                  </td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </section>
+        <section
+          class="-mx-4 bg-white ring-1 ring-gray-300 sm:mx-0 sm:rounded-lg"
+        >
+          <h4
+            class="bg-neutral-50 px-4 py-2 text-lg font-semibold sm:rounded-t-lg"
+          >
+            Especialidades
+          </h4>
+          <table
+            class="min-w-full divide-y divide-gray-300 border-t border-gray-300"
+          >
+            <thead>
+              <tr>
+                <th
+                  scope="col"
+                  class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                >
+                  Codigo
+                </th>
+                <th
+                  scope="col"
+                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell"
+                >
+                  Especialidad
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <template
+                v-for="(
+                  especialidad_item, especialidadIdx
+                ) in colegio.especialidades"
+              >
+                <tr
+                  :key="especialidad_item.codigo"
+                  v-if="
+                    (colegio.especialidades.length > 1 &&
+                      especialidad_item.codigo !== 0) ||
+                    colegio.especialidades.length == 1
+                  "
+                >
+                  <td
+                    :class="[
+                      especialidadIdx === 0 ? '' : 'border-t border-gray-200',
+                      'relative py-4 pl-4 pr-3 text-sm sm:pl-6',
+                    ]"
+                  >
+                    <div class="font-medium text-gray-900">
+                      {{ especialidad_item.codigo }}
+                    </div>
+                  </td>
+                  <td
+                    :class="[
+                      especialidadIdx === 0 ? '' : 'border-t border-gray-200',
+                      'px-3 py-3.5 text-sm text-gray-500 lg:table-cell',
+                    ]"
+                  >
+                    {{ especialidad_item.nombre }}
+                  </td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
         </section>
         <section id="map">
           <div
-            v-if="colegio.coordenadas && coordenadas"
+            v-if="colegio.latitud && colegio.longitud && coordenadas"
             class="relative h-96 w-full"
           >
             <MapboxMap
               :map-id="`colegio.${colegio.id}`"
-              style="border-radius: 5px"
+              style="
+                border-radius: 5px;
+                box-shadow:
+                  0 1px 3px 0 rgb(0 0 0 / 0.1),
+                  0 1px 2px -1px rgb(0 0 0 / 0.1);
+              "
               :options="{
                 style: 'mapbox://styles/mapbox/streets-v12', // style URL
                 center: coordenadas, // starting position

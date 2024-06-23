@@ -27,7 +27,7 @@ defineProps<{
       >
         <Icon name="heroicons:currency-dollar-20-solid" class="h-5 w-5" />
         <p>
-          {{ toTitleCase(colegio.dependencia) }}
+          {{ toTitleCase(colegio.dependencia_principal) }}
         </p>
       </div>
       <div
@@ -37,8 +37,11 @@ defineProps<{
           <h3 class="text-xl font-medium leading-5 tracking-tight">
             {{ toTitleCase(colegio.nombre) }}
           </h3>
-          <p class="text-sm font-normal text-slate-200">
-            {{ toTitleCase(colegio.calle) }}
+          <p
+            v-if="colegio.direccion"
+            class="text-sm font-normal text-slate-200"
+          >
+            {{ toTitleCase(colegio.direccion) }}
           </p>
         </div>
       </div>

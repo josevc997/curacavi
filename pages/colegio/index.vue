@@ -15,7 +15,8 @@ const filteredColegios = computed(() => {
     return colegioStore.colegios.filter(
       (colegio) =>
         colegio.nombre.toLowerCase().includes(query.value.toLowerCase()) &&
-        colegio.dependencia.toLowerCase() === dependencia.value.toLowerCase(),
+        colegio.dependencia_principal.toLowerCase() ===
+          dependencia.value.toLowerCase(),
     );
   } else if (query.value && query.value.length >= 3) {
     return colegioStore.colegios.filter((colegio) =>
@@ -24,7 +25,8 @@ const filteredColegios = computed(() => {
   } else if (dependencia.value) {
     return colegioStore.colegios.filter(
       (colegio) =>
-        colegio.dependencia.toLowerCase() === dependencia.value.toLowerCase(),
+        colegio.dependencia_principal.toLowerCase() ===
+        dependencia.value.toLowerCase(),
     );
   }
   return colegioStore.colegios;
@@ -32,13 +34,26 @@ const filteredColegios = computed(() => {
 
 const dependencia = ref("");
 
-const dependenciasList = [
-  { value: "", text: "Selecciona una opcion" },
-  { value: "PARTICULAR", text: "PARTICULAR" },
-  { value: "PARTICULAR SUBVENCIONADO", text: "PARTICULAR SUBVENCIONADO" },
-  { value: "PUBLICO", text: "PUBLICO" },
-];
+// const dependenciasList = [
+//   { value: "", text: "Selecciona una opcion" },
+//   { value: "PARTICULAR", text: "PARTICULAR" },
+//   { value: "PARTICULAR SUBVENCIONADO", text: "PARTICULAR SUBVENCIONADO" },
+//   { value: "PUBLICO", text: "PUBLICO" },
+// ];
 
+const dependenciasList = computed(() => {
+  const dependencias = [{ value: "", text: "Selecciona una opcion" }];
+  colegioStore.colegios.map((colegio) => {
+    const dependenciaItem = {
+      value: colegio.dependencia_principal,
+      text: toTitleCase(colegio.dependencia_principal),
+    };
+    if (!dependencias.find((d) => d.value === dependenciaItem.value)) {
+      dependencias.push(dependenciaItem);
+    }
+  });
+  return dependencias;
+});
 const handleSelect = (item: { value: string; text: string }) => {
   dependencia.value = item.value;
 };
@@ -58,7 +73,7 @@ useHead({
   <section>
     <div class="grid grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-2 lg:grid-cols-2">
       <h1
-        class="col-span-1 text-3xl font-semibold text-slate-800 sm:col-span-2 lg:col-span-3"
+        class="col-span-1 text-3xl font-semibold text-slate-800 sm:col-span-2 lg:col-span-2"
       >
         Colegios
       </h1>
@@ -74,12 +89,14 @@ useHead({
         />
       </div>
       <div class="col-span-1 flex flex-col gap-y-1 lg:col-span-1">
-        <FormStringSelect
-          :items="dependenciasList"
-          name="Dependencia:"
-          name-class="text-sm font-semibold"
-          @handleSelect="handleSelect"
-        />
+        <ClientOnly>
+          <FormStringSelect
+            :items="dependenciasList"
+            name="Dependencia:"
+            name-class="text-sm font-semibold"
+            @handleSelect="handleSelect"
+          />
+        </ClientOnly>
       </div>
     </div>
     <div
