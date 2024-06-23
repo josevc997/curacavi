@@ -161,7 +161,7 @@ useHead({
           {{ colegio.resumen_proyecto || "No disponible" }}
         </section>
         <section
-          class="-mx-4 bg-white ring-1 ring-gray-300 sm:mx-0 sm:rounded-lg"
+          class="overflow-hidden rounded-lg bg-white ring-1 ring-gray-300"
         >
           <h4
             class="bg-neutral-50 px-4 py-2 text-lg font-semibold sm:rounded-t-lg"
@@ -221,7 +221,7 @@ useHead({
           </table>
         </section>
         <section
-          class="-mx-4 bg-white ring-1 ring-gray-300 sm:mx-0 sm:rounded-lg"
+          class="overflow-hidden rounded-lg bg-white ring-1 ring-gray-300"
         >
           <h4
             class="bg-neutral-50 px-4 py-2 text-lg font-semibold sm:rounded-t-lg"
