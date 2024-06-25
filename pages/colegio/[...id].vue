@@ -158,7 +158,14 @@ useHead({
           class="rounded bg-white p-4 shadow outline outline-1 outline-neutral-600/10"
         >
           <h4 class="text-lg font-semibold">Resumen Proyecto Educativo</h4>
-          {{ colegio.resumen_proyecto || "No disponible" }}
+          <template v-if="colegio.resumen_proyecto">
+            <p
+              v-for="paragraph in colegio.resumen_proyecto.split('\r\n')"
+              class="text-sm"
+            >
+              {{ paragraph }}
+            </p>
+          </template>
         </section>
         <section
           class="overflow-hidden rounded-lg bg-white ring-1 ring-gray-300"
