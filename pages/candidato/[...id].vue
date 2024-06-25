@@ -120,6 +120,20 @@ useHead({
               </p>
             </ClientOnly>
           </div>
+          <div
+            v-if="candidatura.persona.redes_sociales.length > 0"
+            class="mt-2 flex flex-wrap gap-2"
+          >
+            <p class="w-full text-sm font-semibold">Redes Sociales</p>
+            <NuxtLink
+              v-for="(red_social, index) in candidatura.persona.redes_sociales"
+              :key="index"
+              :to="red_social.url"
+              target="_blank"
+            >
+              <Icon :name="red_social.icono" class="size-8 drop-shadow" />
+            </NuxtLink>
+          </div>
         </div>
       </div>
       <div

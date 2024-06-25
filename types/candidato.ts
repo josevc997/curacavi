@@ -38,6 +38,12 @@ export interface Candidatura {
   porcentaje: number;
 }
 
+interface RedSocial {
+  url: string;
+  nombre: string;
+  icono: string;
+}
+
 export interface Persona {
   id: number;
   created_at: string;
@@ -47,6 +53,7 @@ export interface Persona {
   image: string;
   email: string;
   profesion: string | null;
+  redes_sociales: RedSocial[];
 }
 
 export interface PersonaWithCandidatura extends Persona {
