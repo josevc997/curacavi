@@ -1,7 +1,6 @@
 const path = require("path");
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: false,
   runtimeConfig: {
     apiBackend: "",
     public: {
@@ -75,14 +74,14 @@ export default defineNuxtConfig({
       },
     },
   },
-  // image: {
-  //   provider: "netlify",
-  //   domains: [
-  //     "curacavi.s3.amazonaws.com",
-  //     "cqvjuorqpvhyuxfdkhpt.supabase.co",
-  //     "backend.curacavi.info",
-  //   ],
-  // },
+  image: {
+    provider: "netlify",
+    domains: [
+      "curacavi.s3.amazonaws.com",
+      "cqvjuorqpvhyuxfdkhpt.supabase.co",
+      "backend.curacavi.info",
+    ],
+  },
   imports: {
     dirs: ["./stores"],
   },
