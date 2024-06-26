@@ -73,9 +73,12 @@ useHead({
                   <div class="flex items-center">
                     <Icon name="heroicons:envelope-16-solid" />
                   </div>
-                  <p class="flex break-all lowercase leading-4">
+                  <NuxtLink
+                    :to="`mailto:${colegio.email}`"
+                    class="flex break-all lowercase leading-4"
+                  >
                     {{ colegio.email }}
-                  </p>
+                  </NuxtLink>
                 </div>
               </div>
               <div>
@@ -84,9 +87,14 @@ useHead({
                   <div class="flex items-center">
                     <Icon name="heroicons:phone-16-solid" />
                   </div>
-                  <p class="flex lowercase leading-4">
+                  <NuxtLink
+                    v-if="colegio.telefono"
+                    :to="`tel:${colegio.telefono}`"
+                    class="flex lowercase leading-4"
+                  >
                     {{ colegio.telefono ?? "+56..." }}
-                  </p>
+                  </NuxtLink>
+                  <p v-else class="flex lowercase leading-4">+56...</p>
                 </div>
               </div>
               <div>
@@ -95,8 +103,16 @@ useHead({
                   <div class="flex items-center">
                     <Icon name="heroicons:globe-alt-16-solid" />
                   </div>
-                  <p class="flex break-all lowercase leading-4">
-                    {{ colegio.url ?? "http://..." }}
+                  <NuxtLink
+                    v-if="colegio.url"
+                    :to="`${colegio.url}`"
+                    target="_blank"
+                    class="flex break-all lowercase leading-4"
+                  >
+                    {{ colegio.url }}
+                  </NuxtLink>
+                  <p v-else class="flex break-all lowercase leading-4">
+                    http://...
                   </p>
                 </div>
               </div>
