@@ -20,7 +20,7 @@ export default defineNuxtConfig({
   modules: [
     "nuxt-icon",
     "nuxt-headlessui",
-    "@nuxt/content",
+    // "@nuxt/content",
     "@pinia/nuxt",
     "@nuxt/devtools",
     "nuxt-mapbox",
@@ -54,27 +54,27 @@ export default defineNuxtConfig({
   headlessui: {
     prefix: "",
   },
-  content: {
-    sources: {
-      // overwrite default source AKA `content` directory
-      content: {
-        driver: "fs",
-        prefix: "/blog", // All contents inside this source will be prefixed with `/blog`
-        base: path.resolve(__dirname, "content"),
-        dir: "content",
-      },
-    },
-    navigation: {
-      fields: ["author", "created_at", "image", "description"],
-    },
-    markdown: {
-      tags: {
-        h1: "MyCustomH1",
-        h5: "MyCustomH5",
-        p: "MyCustomParagraph",
-      },
-    },
-  },
+  // content: {
+  //   sources: {
+  //     // overwrite default source AKA `content` directory
+  //     content: {
+  //       driver: "fs",
+  //       prefix: "/blog", // All contents inside this source will be prefixed with `/blog`
+  //       base: path.resolve(__dirname, "content"),
+  //       dir: "content",
+  //     },
+  //   },
+  //   navigation: {
+  //     fields: ["author", "created_at", "image", "description"],
+  //   },
+  //   markdown: {
+  //     tags: {
+  //       h1: "MyCustomH1",
+  //       h5: "MyCustomH5",
+  //       p: "MyCustomParagraph",
+  //     },
+  //   },
+  // },
   image:
     process.env.PRODUCTION === "true"
       ? {
