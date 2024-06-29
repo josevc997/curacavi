@@ -46,10 +46,11 @@ blogStore.fetchBlogList();
                   }}
                 </time>
                 <a
+                  v-for="(categoria, index) in blogItem.categoria"
                   :key="index"
                   href="#"
                   class="relative z-10 rounded-full bg-gray-100 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-200"
-                  >{{ blogItem.categoria }}</a
+                  >{{ categoria.nombre }}</a
                 >
               </div>
               <div class="group relative">

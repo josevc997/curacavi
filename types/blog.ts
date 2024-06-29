@@ -1,6 +1,12 @@
 import type { Colegio } from "./colegio";
 import type { Persona } from "./candidato";
 
+interface Categoria {
+  id: number;
+  nombre: string;
+  descripcion: string;
+}
+
 export interface BlogItem {
   id: number;
   elementos: Elemento[];
@@ -8,7 +14,7 @@ export interface BlogItem {
   resumen: string;
   imagen: string;
   fecha_creacion: string;
-  categoria: string;
+  categoria: Categoria[];
   colegio: Colegio[];
   persona: Persona[];
 }
