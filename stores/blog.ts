@@ -25,7 +25,7 @@ export const useBlogStore = defineStore("blog", {
     },
 
     async fetchBlogItemById(id: number) {
-      const client = useSupabaseClient();
+      const config = useRuntimeConfig();
       const selected = this.blogList.find((a) => a.id === id);
       if (selected) {
         this.selectedBlog = selected;
