@@ -11,7 +11,6 @@ export default defineNuxtConfig({
   },
   devtools: { enabled: true },
   modules: [
-    "@nuxt/content",
     "@pinia/nuxt",
     "@nuxt/devtools",
     "nuxt-mapbox",
@@ -21,7 +20,7 @@ export default defineNuxtConfig({
     "@nuxt/fonts",
     "nuxt-clarity-analytics",
     "@nuxt/ui",
-    "nuxt-headlessui"
+    "nuxt-headlessui",
   ],
   fonts: {
     families: [
@@ -42,7 +41,6 @@ export default defineNuxtConfig({
       },
     ],
   },
-  // Optionally change the default prefix.
   headlessui: {
     prefix: "",
   },

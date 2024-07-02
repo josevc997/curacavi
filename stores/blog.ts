@@ -1,49 +1,47 @@
 import { defineStore } from "pinia";
+import type { BlogItem } from "~/types/blog";
 
 export const useBlogStore = defineStore("blog", {
-    state: () => ({
-        blogList: [] as any[],
-        selectedBlog: {} as any,
-    }),
-    getters: {},
-    actions: {
-        async fetchBlogList() {
-            const client = useSupabaseClient();
-            const { data: blogListResponse } = await useAsyncData(
-                "Blog",
-                async () => {
-                    const { data } = await client
-                        .from("Blog")
-                        .select("*, Categoria_Blog(Categoria(nombre))")
-                        .eq("is_active", true);
+  state: () => ({
+    blogList: [] as BlogItem[],
+    selectedBlog: {} as BlogItem,
+  }),
+  getters: {},
+  actions: {
+    async fetchBlogList() {
+      const config = useRuntimeConfig();
+      const { data: blogListResponse } = await useAsyncData(
+        "colegio",
+        async () => {
+          let url = `${config.public.apiBackend}/api/noticia/`;
+          const data = await $fetch(url);
 
-                    return data as any;
-                }
-            );
-            if (blogListResponse.value) this.blogList = blogListResponse.value;
+          return data as BlogItem[];
         },
-
-        async fetchBlogItemById(id: number) {
-            const client = useSupabaseClient();
-            const selected = this.blogList.find((a) => a.id === id);
-            if (selected) {
-                this.selectedBlog = selected;
-            } else {
-                const { data: blogItemResponse } = await useAsyncData(
-                    "Blog",
-                    async () => {
-                        const { data } = await client
-                            .from("Blog")
-                            .select("*, Categoria_Blog(Categoria(nombre))")
-                            .eq("is_active", true)
-                            .eq("id", id);
-
-                        return data as any;
-                    }
-                );
-                if (blogItemResponse.value)
-                    this.selectedBlog = blogItemResponse.value[0];
-            }
-        },
+      );
+      if (blogListResponse.value) {
+        this.blogList = blogListResponse.value;
+      }
     },
+
+    async fetchBlogItemById(id: number) {
+      const client = useSupabaseClient();
+      const selected = this.blogList.find((a) => a.id === id);
+      if (selected) {
+        this.selectedBlog = selected;
+      } else {
+        const config = useRuntimeConfig();
+        const { data: blogItemResponse } = await useAsyncData(
+          "colegio",
+          async () => {
+            let url = `${config.public.apiBackend}/api/noticia/${id}/`;
+            const data = await $fetch(url);
+
+            return data as BlogItem;
+          },
+        );
+        if (blogItemResponse.value) this.selectedBlog = blogItemResponse.value;
+      }
+    },
+  },
 });
