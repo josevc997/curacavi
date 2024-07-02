@@ -85,5 +85,5 @@ export interface CandidaturaWithCandidaturas extends CandidaturaWithPersona {
 }
 
 export interface SearchCandidaturaPayload {
-  año: number;
+  annio: number;
 }

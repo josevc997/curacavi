@@ -9,7 +9,7 @@ const router = useRouter();
 
 const searchPayload = computed(() => {
   return {
-    año: route.query.fecha ? Number(route.query.fecha) : 2021,
+    annio: route.query.fecha ? Number(route.query.fecha) : 2021,
   };
 });
 
@@ -136,7 +136,7 @@ const handleSearch = async () => {
 await handleSearch();
 
 watch(
-  () => searchPayload.value.año,
+  () => searchPayload.value.annio,
   (newFecha, oldFecha) => {
     candidaturaStore.fetchCandidaturas(searchPayload.value);
     console.log("newFecha", newFecha, oldFecha);
@@ -167,10 +167,10 @@ useHead({
     >
       <div class="col-span-1 sm:col-span-2 lg:col-span-3 2xl:col-span-4">
         <h1 class="text-3xl font-semibold text-slate-800">
-          Candidatos Curacavi {{ searchPayload.año }}
+          Candidatos Curacavi {{ searchPayload.annio }}
         </h1>
         <h2 class="text-xl font-medium text-slate-400">
-          Elecciones Municipales Curacavi {{ searchPayload.año }}
+          Elecciones Municipales Curacavi {{ searchPayload.annio }}
         </h2>
       </div>
       <div class="col-span-1 grid 2xl:col-span-1">
@@ -188,7 +188,7 @@ useHead({
         <ClientOnly>
           <FormYearSelect
             :items="yearList"
-            :selected-value="String(searchPayload.año)"
+            :selected-value="String(searchPayload.annio)"
             name="Año:"
             name-class="text-sm font-semibold"
             @handleSelect="handleSelect"
