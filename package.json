@@ -13,6 +13,7 @@
     "@nuxt/fonts": "^0.7.0",
     "@nuxt/image": "^1.7.0",
     "@nuxt/ui": "^2.17.0",
+    "@nuxtjs/seo": "2.0.0-rc.11",
     "@types/node": "^18.19.33",
     "@vueuse/core": "^10.10.0",
     "@vueuse/nuxt": "^10.10.0",

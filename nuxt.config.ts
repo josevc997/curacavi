@@ -9,6 +9,12 @@ export default defineNuxtConfig({
       hotjarId: "",
     },
   },
+  site: {
+    url: process.env.SITE_URL,
+    name: process.env.CUSTOM_SITE_NAME,
+    description: process.env.SITE_DESCRIPTION,
+    defaultLocale: "es", // not needed if you have @nuxtjs/i18n installed
+  },
   devtools: { enabled: true },
   modules: [
     "@pinia/nuxt",
@@ -21,6 +27,7 @@ export default defineNuxtConfig({
     "nuxt-clarity-analytics",
     "@nuxt/ui",
     "nuxt-headlessui",
+    "@nuxtjs/seo",
   ],
   fonts: {
     families: [
@@ -70,5 +77,27 @@ export default defineNuxtConfig({
   },
   gtag: {
     id: process.env.GTAG,
+  },
+  ogImage: {
+    enabled: false,
+  },
+  sitemap: {
+    enabled: true,
+    exclude: ["/welcome"],
+  },
+  robots: {
+    enabled: true,
+  },
+  seoExperiments: {
+    enabled: true,
+  },
+  schemaOrg: {
+    enabled: true,
+  },
+  linkChecker: {
+    enabled: true,
+  },
+  seo: {
+    fallbackTitle: false,
   },
 });
