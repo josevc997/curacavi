@@ -40,6 +40,7 @@ watch(
     <NuxtImg
       :src="blogStore.selectedBlog.imagen"
       loading="lazy"
+      :alt="blogStore.selectedBlog.titulo"
       class="h-80 w-full rounded object-cover lg:h-[400px] xl:h-[500px]"
     />
     <component

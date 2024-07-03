@@ -47,6 +47,7 @@ const navigation = [
                 <NuxtImg
                   src="https://curacavi.s3.amazonaws.com/logo.webp"
                   class="h-8 w-8"
+                  alt="Curacaví"
                   loading="lazy"
                 />
                 <p>Curacaví</p>

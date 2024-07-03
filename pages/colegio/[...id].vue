@@ -51,15 +51,36 @@ useHead({
           </p>
         </div>
         <div>
-          <NuxtImg
+          <UCarousel
+            v-slot="{ item }"
+            :items="colegio.images"
+            :ui="{
+              item: 'snap-start basis-full',
+              indicators: {
+                active: 'bg-blue-500 dark:bg-blue-400',
+                inactive: 'border border-black/60',
+              },
+            }"
+            class="overflow-hidden rounded shadow shadow-blue-500/40"
+            indicators
+            arrows
+          >
+            <NuxtImg
+              :src="item.image"
+              height="400"
+              draggable="false"
+              class="h-80 w-full rounded object-cover object-center sm:aspect-[5/2] sm:h-full"
+            />
+          </UCarousel>
+          <!-- <NuxtImg
             :src="
-              colegio.cover_image ??
+              colegio.images[0].image ??
               'https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg'
             "
             :alt="colegio.nombre"
             loading="lazy"
             class="h-80 w-full rounded-md object-cover object-center shadow shadow-blue-500/40 sm:aspect-[5/2] sm:h-full"
-          />
+          /> -->
         </div>
         <div class="grid grid-cols-12 gap-4">
           <section
