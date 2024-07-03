@@ -26,6 +26,7 @@ defineProps<{
       <NuxtImg
         :src="autoridad.persona.image"
         :alt="autoridad.persona.nombre"
+        loading="lazy"
         class="aspect-[3/4] h-full w-full rounded-b-none rounded-t-md object-cover object-top group-hover:cursor-pointer xs:rounded-l-md xs:rounded-r-none md:aspect-auto"
       />
     </div>

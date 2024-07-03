@@ -20,6 +20,7 @@ defineProps<{
           colegio.cover_image ??
           'https://curacavi.s3.amazonaws.com/colegios/placeholder-school.jpg'
         "
+        loading="lazy"
         :alt="colegio.nombre"
       />
       <div

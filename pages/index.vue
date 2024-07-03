@@ -15,6 +15,7 @@ definePageMeta({
         <NuxtImg
           src="https://curacavi.s3.amazonaws.com/paisaje/Paisaje4.webp"
           alt="Fondo curacavi"
+          loading="lazy"
           class="absolute inset-0 -z-20 h-full min-h-[calc(100vh-6rem)] w-full object-cover"
         />
         <div

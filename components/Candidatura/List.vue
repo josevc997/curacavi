@@ -17,6 +17,7 @@ defineProps<{
           v-if="item.partido.image || item.pacto.image"
           :src="item.partido.image || item.pacto.image"
           alt="Foto de perfil"
+          loading="lazy"
           class="size-10 rounded-full shadow outline outline-1 outline-slate-600/10"
         />
         <div

@@ -39,6 +39,7 @@ watch(
   <div v-if="blogStore.selectedBlog">
     <NuxtImg
       :src="blogStore.selectedBlog.imagen"
+      loading="lazy"
       class="h-80 w-full rounded object-cover lg:h-[400px] xl:h-[500px]"
     />
     <component

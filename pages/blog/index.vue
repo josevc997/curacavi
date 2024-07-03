@@ -27,6 +27,7 @@ blogStore.fetchBlogList();
                   ? blogItem.imagen
                   : 'https://placehold.co/600x400'
               "
+              loading="lazy"
               alt=""
               class="absolute inset-0 h-full w-full rounded-t-2xl bg-gray-50 object-cover shadow lg:rounded-s-2xl lg:rounded-tr-none"
             />

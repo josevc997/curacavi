@@ -10,12 +10,14 @@ defineProps<{
       v-if="candidatura.partido.image"
       :src="candidatura.partido.image"
       :alt="candidatura.partido.nombre"
+      loading="lazy"
       class="h-12 w-12 min-w-12 rounded-full object-cover"
     />
     <NuxtImg
       v-else-if="candidatura.pacto.image"
       :src="candidatura.pacto.image"
       :alt="candidatura.pacto.nombre"
+      loading="lazy"
       class="h-12 w-12 min-w-12 rounded-full object-cover"
     />
     <div
