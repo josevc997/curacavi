@@ -16,7 +16,7 @@ export const useAutoridadStore = defineStore("autoridades", {
   getters: {
     candidaturas(): any {
       return this.selectedAutoridad.candidatura.sort(function (a, b) {
-        return Date.parse(a.fecha) - Date.parse(b.fecha);
+        return Date.parse(b.fecha) - Date.parse(a.fecha);
       });
     },
   },

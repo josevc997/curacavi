@@ -33,6 +33,7 @@ export interface Candidatura {
   fecha: string;
   is_active: boolean;
   is_elected: boolean;
+  elected_as: string;
   id_persona: number;
   votos: number;
   porcentaje: number;

@@ -1,3 +1,5 @@
+import type { Image } from "./general";
+
 interface Enseñanza {
   codigo: number;
   nombre: string;
@@ -41,4 +43,5 @@ export interface Colegio {
   regimen: string;
   cover_image: string;
   is_active: boolean;
+  images: Image[];
 }
