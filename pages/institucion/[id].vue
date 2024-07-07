@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import mapboxgl from "mapbox-gl";
+import { horarioToInformationCardList } from "~/utils/institucionUtils";
 
 const route = useRoute();
 const institucionStore = useInstitucionStore();
@@ -88,13 +89,11 @@ useHead({
         <div class="grid grid-cols-12 gap-4">
           <UICardInformation
             title="Información de Contacto"
-            :data="[
-              {
-                key: 'Website',
-                value: institucion.redes_sociales[0].url,
-                type: 'url',
-              },
-            ]"
+            :data="institucion.contactos"
+          />
+          <UICardInformation
+            title="Horarios de Atención"
+            :data="horarioToInformationCardList(institucion.horarios)"
           />
         </div>
         <!-- <div class="grid grid-cols-12 gap-4">
