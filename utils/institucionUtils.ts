@@ -9,3 +9,13 @@ export function horarioToInformationCardList(horarios: Horario[]) {
 
   return horariosList;
 }
+
+export function descriptionToInformationCardList(description: string) {
+  return [
+    {
+      name: "",
+      type: "plaintext",
+      value: description,
+    },
+  ];
+}

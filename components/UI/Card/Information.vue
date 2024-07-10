@@ -60,7 +60,7 @@ const typesWithLink = ["email", "phone", "url"];
       <div v-for="item in data">
         <p class="font-semibold leading-6">{{ item.name }}</p>
         <div class="flex items-center gap-2">
-          <div class="flex items-center">
+          <div v-if="item.type !== 'plaintext'" class="flex items-center">
             <Icon :name="getIcon(item.type)" />
           </div>
           <NuxtLink
@@ -74,33 +74,6 @@ const typesWithLink = ["email", "phone", "url"];
             {{ getValue(item) }}
           </p>
         </div>
-        <!-- <div v-else-if="item.type === 'phone'" class="flex items-center gap-2">
-          <div class="flex items-center">
-            <Icon :name="getIcon(item.type)" />
-          </div>
-          <NuxtLink
-            v-if="item.value"
-            :to="`tel:${item.value}`"
-            class="flex lowercase leading-4"
-          >
-            {{ item.value ?? "+56..." }}
-          </NuxtLink>
-          <p v-else class="flex lowercase leading-4">+56...</p>
-        </div>
-        <div v-else-if="item.type === 'url'" class="flex items-center gap-2">
-          <div class="flex items-center">
-            <Icon name="heroicons:globe-alt-16-solid" />
-          </div>
-          <NuxtLink
-            v-if="item.value"
-            :to="`${item.value}`"
-            target="_blank"
-            class="flex break-all lowercase leading-4"
-          >
-            {{ item.value }}
-          </NuxtLink>
-          <p v-else class="flex break-all lowercase leading-4">http://...</p>
-        </div> -->
       </div>
     </div>
   </div>
