@@ -29,11 +29,14 @@ const edad = computed(() => {
   }
 });
 
-autoridadStore.fetchAutoridadById(id.value);
 watch(
-  () => route.params.id,
-  (newId, oldId) => {
-    autoridadStore.fetchAutoridadById(Number(newId));
+  () => route.params,
+  async (newId, oldId) => {
+    const id = newId.id;
+    autoridadStore.fetchAutoridadById(Number(id));
+  },
+  {
+    immediate: true,
   },
 );
 

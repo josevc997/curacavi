@@ -30,11 +30,14 @@ const edad = computed(() => {
   return "N/A";
 });
 
-candidaturaStore.fetchCandidaturaById(id.value);
 watch(
-  () => route.params.id,
-  (newId, oldId) => {
-    candidaturaStore.fetchCandidaturaById(Number(newId));
+  () => route.params,
+  async (newId, oldId) => {
+    const id = newId.id;
+    candidaturaStore.fetchCandidaturaById(Number(id));
+  },
+  {
+    immediate: true,
   },
 );
 

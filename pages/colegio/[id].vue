@@ -18,12 +18,14 @@ const coordenadas = computed(() => {
   }
 });
 
-colegioStore.fetchColegioById(Number(route.params.id));
-
 watch(
-  () => route.params.id,
-  (newId, oldId) => {
-    colegioStore.fetchColegioById(Number(route.params.id));
+  () => route.params,
+  async (newId, oldId) => {
+    const id = newId.id;
+    colegioStore.fetchColegioById(Number(id));
+  },
+  {
+    immediate: true,
   },
 );
 

@@ -28,9 +28,10 @@ const getComponentType = (tag: string) => {
 };
 
 watch(
-  () => route.params.id,
-  (newId, oldId) => {
-    blogStore.fetchBlogItemById(Number(newId));
+  () => route.params,
+  async (newId, oldId) => {
+    const id = newId.id;
+    blogStore.fetchBlogItemById(Number(id));
   },
   { immediate: true },
 );
