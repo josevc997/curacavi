@@ -5,6 +5,8 @@ import {
   descriptionToInformationCardList,
 } from "~/utils/institucionUtils";
 
+import type { LabelItem } from "~/types/institucion";
+
 const route = useRoute();
 const institucionStore = useInstitucionStore();
 const { toTitleCase } = useTextUtils();
@@ -25,12 +27,34 @@ const coordenadas = computed(() => {
   }
 });
 
-institucionStore.fetchInstitucionItemById(Number(route.params.id));
+const featuresList = computed(() => {
+  const labelList: LabelItem[] = [];
+  if (institucion.value?.mapLayer) {
+    institucion.value?.mapLayer.forEach((element) => {
+      labelList.push({
+        type: "Feature",
+        properties: {
+          description: element.description,
+        },
+        geometry: {
+          properties: {},
+          coordinates: element.labelCoordinates,
+          type: "Point",
+        },
+      });
+    });
+  }
+  return labelList;
+});
 
 watch(
-  () => route.params.id,
-  (newId, oldId) => {
-    institucionStore.fetchInstitucionItemById(Number(route.params.id));
+  () => route.params,
+  async (newId, oldId) => {
+    const id = newId.id;
+    await institucionStore.fetchInstitucionItemById(Number(id));
+  },
+  {
+    immediate: true,
   },
 );
 
@@ -38,7 +62,7 @@ useHead({
   titleTemplate: (titleChunk) => {
     return institucion && institucion.value && institucion.value?.nombre
       ? `${institucion.value?.nombre} - Curacavi`
-      : "Colegio - Curacavi";
+      : "Institucion - Curacavi";
   },
 });
 </script>
@@ -80,6 +104,7 @@ useHead({
             />
           </UCarousel>
         </div>
+        <div></div>
         <div class="grid grid-cols-12 gap-4">
           <UICardInformation
             title="Descripción"
@@ -100,7 +125,7 @@ useHead({
             class="relative h-96 w-full"
           >
             <MapboxMap
-              :map-id="`institucion.${institucion.id}`"
+              :map-id="`institucion-${$route.params.id}`"
               style="
                 border-radius: 5px;
                 box-shadow:
@@ -114,11 +139,83 @@ useHead({
               }"
             >
               <MapboxDefaultMarker
-                :marker-id="`marker${institucion.id}`"
-                :options="{}"
+                :marker-id="`marker-${$route.params.id}`"
+                :options="{
+                  color: '#FF0000',
+                  draggable: false,
+                  description: 'Colegio',
+                  label: 'Colegio',
+                }"
                 :lnglat="coordenadas"
               >
               </MapboxDefaultMarker>
+              <template
+                v-if="
+                  featuresList.length > 0 && institucion.mapLayer.length > 0
+                "
+              >
+                <template v-for="(mapdata, index) in institucion.mapLayer">
+                  <MapboxSource
+                    :source-id="`layer-${$route.params.id}-${index}`"
+                    :source="{
+                      type: 'geojson',
+                      data: {
+                        type: 'FeatureCollection',
+                        features: [
+                          {
+                            type: 'Feature',
+                            properties: {},
+                            geometry: {
+                              coordinates: mapdata.coordinates,
+                              type: 'Polygon',
+                            },
+                          },
+                        ],
+                      },
+                    }"
+                  />
+                  <MapboxLayer
+                    :layer="{
+                      source: `layer-${$route.params.id}-${index}`,
+                      id: `layer-${$route.params.id}-${index}`,
+                      type: 'fill',
+                      paint: {
+                        'fill-opacity': 0.4,
+                        'fill-color': mapdata.color,
+                      },
+                    }"
+                  />
+                </template>
+                <MapboxSource
+                  :source-id="`layer-${$route.params.id}-labels`"
+                  :source="{
+                    type: 'geojson',
+                    data: {
+                      type: 'FeatureCollection',
+                      features: featuresList,
+                    },
+                  }"
+                />
+                <MapboxLayer
+                  :layer="{
+                    source: `layer-${$route.params.id}-labels`,
+                    id: `layer-${$route.params.id}-labels`,
+                    type: 'symbol',
+                    layout: {
+                      'text-field': ['get', 'description'],
+                      'text-variable-anchor': [
+                        'top',
+                        'bottom',
+                        'left',
+                        'right',
+                      ],
+                      'text-radial-offset': 0.5,
+                      'text-justify': 'auto',
+                      'icon-image': ['get', 'icon'],
+                    },
+                  }"
+                />
+              </template>
             </MapboxMap>
           </div>
         </section>

@@ -8,6 +8,7 @@ specifiers:
   '@nuxt/ui': ^2.17.0
   '@nuxtjs/seo': 2.0.0-rc.11
   '@pinia/nuxt': ^0.4.11
+  '@types/mapbox-gl': ^3.1.0
   '@types/node': ^18.19.33
   '@vueuse/core': ^10.10.0
   '@vueuse/nuxt': ^10.10.0
@@ -37,6 +38,7 @@ devDependencies:
   '@nuxt/image': 1.7.0
   '@nuxt/ui': 2.17.0
   '@nuxtjs/seo': 2.0.0-rc.11_clrhzuioyoqq6z7bvefoizib7e
+  '@types/mapbox-gl': 3.1.0
   '@types/node': 18.19.39
   '@vueuse/core': 10.11.0
   '@vueuse/nuxt': 10.11.0_nuxt@3.12.2

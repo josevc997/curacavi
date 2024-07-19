@@ -25,7 +25,6 @@ export const useInstitucionStore = defineStore("institucion", {
     },
 
     async fetchInstitucionItemById(id: number) {
-      const config = useRuntimeConfig();
       const selected = this.institucionList.find((a) => a.id === id);
       if (selected) {
         this.selectedInstitucion = selected;

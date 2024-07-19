@@ -14,6 +14,13 @@ export interface Horario {
   hora_fin: string;
 }
 
+interface MapLayer {
+  coordinates: [number, number][][];
+  description: string;
+  labelCoordinates: [number, number];
+  color: string;
+}
+
 export interface Institucion {
   id: number;
   redes_sociales: RedSocial[];
@@ -26,6 +33,19 @@ export interface Institucion {
   cover_image: string;
   contactos: Contacto[];
   horarios: Horario[];
+  mapLayer: MapLayer[];
+}
+
+export interface LabelItem {
+  type: string;
+  properties: {
+    description: string;
+  };
+  geometry: {
+    properties: {};
+    coordinates: number[];
+    type: string;
+  };
 }
 
 interface RedSocial {
