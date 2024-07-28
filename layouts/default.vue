@@ -6,7 +6,7 @@
       <slot />
     </div>
     <footer
-      class="mx-auto flex max-w-7xl items-center gap-x-2 border-t border-blue-200 px-4 py-4 text-slate-800"
+      class="mx-auto flex max-w-7xl items-center gap-x-2 border-t border-gray-200 px-4 py-4 text-slate-800"
     >
       <!-- <div> -->
       <Icon name="mdi:copyright" class="h-4 w-4" />

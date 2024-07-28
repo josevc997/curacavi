@@ -121,7 +121,12 @@ useHead({
         </div>
         <section id="map">
           <div
-            v-if="institucion.latitud && institucion.longitud && coordenadas"
+            v-if="
+              $route.params.id &&
+              institucion.latitud &&
+              institucion.longitud &&
+              coordenadas
+            "
             class="relative h-96 w-full"
           >
             <MapboxMap
@@ -141,20 +146,18 @@ useHead({
               <MapboxDefaultMarker
                 :marker-id="`marker-${$route.params.id}`"
                 :options="{
-                  color: '#FF0000',
                   draggable: false,
-                  description: 'Colegio',
-                  label: 'Colegio',
                 }"
                 :lnglat="coordenadas"
               >
               </MapboxDefaultMarker>
-              <template
+              <!-- <template
                 v-if="
                   featuresList.length > 0 && institucion.mapLayer.length > 0
                 "
-              >
-                <template v-for="(mapdata, index) in institucion.mapLayer">
+              > -->
+              <template v-if="false">
+                <template v-for="(mapdata, index) in institucion?.mapLayer">
                   <MapboxSource
                     :source-id="`layer-${$route.params.id}-${index}`"
                     :source="{

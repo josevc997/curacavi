@@ -1,24 +1,23 @@
 <script setup lang="ts">
 const NuxtLink = resolveComponent("nuxt-link");
 const navigation = [
+  { name: "Inicio", href: "/" },
   { name: "Colegios", href: "/colegio" },
   // { name: "Instituciones", href: "/institucion" },
-  { name: "Autoridades", href: "/autoridad" },
-  { name: "Candidatos", href: "/candidato" },
-  // {
-  //   name: "Política",
-  //   subNavigation: [
-  //     { name: "Autoridades", href: "/autoridad" },
-  //     { name: "Candidatos", href: "/candidato" },
-  //   ],
-  // },
+  {
+    name: "Política",
+    subNavigation: [
+      { name: "Autoridades", href: "/autoridad" },
+      { name: "Candidatos", href: "/candidato" },
+    ],
+  },
   { name: "Blog", href: "/blog" },
 ];
 </script>
 <template>
   <header class="sticky top-0 z-50 w-full bg-slate-50 text-slate-800 shadow">
-    <BannerUnderConstruction class="" />
-    <Disclosure as="nav" class="bg-slate-50" v-slot="{ open }">
+    <!-- <BannerUnderConstruction class="" /> -->
+    <Disclosure as="nav" class="bg-slate-50" v-slot="{ open, close }">
       <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div class="relative flex h-16 items-center justify-between">
           <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
@@ -68,19 +67,19 @@ const navigation = [
                     v-if="!item.subNavigation"
                     :key="item.name"
                     :to="item.href"
-                    class="rounded-md px-3 py-2 text-sm font-medium text-blue-900 hover:bg-blue-50 hover:text-blue-950"
-                    active-class="bg-blue-50 text-blue-500"
+                    class="rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition duration-200 ease-in-out hover:bg-blue-100 hover:text-blue-950"
+                    active-class="bg-blue-100 text-blue-500 hover:!bg-blue-200 hover:text-blue-950"
                     >{{ item.name }}</NuxtLink
                   >
                   <Menu v-else as="div" class="relative inline-block text-left">
                     <div>
                       <MenuButton
-                        class="inline-flex items-center rounded-md px-3 py-2 text-sm font-medium text-blue-900 hover:bg-blue-50 hover:text-blue-950"
+                        class="trabnsition inline-flex items-center rounded-md px-3 py-2 text-sm font-medium text-slate-700 duration-200 ease-in-out hover:bg-blue-100 hover:text-blue-950"
                       >
                         {{ item.name }}
                         <Icon
                           name="heroicons:chevron-down-20-solid"
-                          class="-mr-1 ml-2 h-5 w-5 text-blue-700 hover:text-blue-600"
+                          class="-mr-1 ml-2 h-5 w-5 text-slate-700 hover:text-blue-600"
                           aria-hidden="true"
                         />
                       </MenuButton>
@@ -102,18 +101,14 @@ const navigation = [
                             v-for="subitem in item.subNavigation"
                             :as="NuxtLink"
                             :to="subitem.href"
+                            v-slot="{ close }"
                           >
                             <button
                               :class="[
-                                // active ? 'bg-violet-500 text-white' : 'text-gray-900',
-                                'group flex w-full items-center rounded-md px-2 py-2 text-sm',
+                                'group flex w-full items-center rounded-md px-2 py-2 text-sm transition-all duration-200 ease-in-out hover:bg-blue-100',
                               ]"
+                              @click="close"
                             >
-                              <!-- :active="active" -->
-                              <!-- <EditIcon
-                  class="mr-2 h-5 w-5 text-violet-400"
-                  aria-hidden="true"
-                /> -->
                               {{ subitem.name }}
                             </button>
                           </MenuItem>
@@ -136,25 +131,26 @@ const navigation = [
                 v-if="!item.subNavigation"
                 :as="NuxtLink"
                 :to="item.href"
-                active-class="bg-blue-50 text-blue-950"
-                class="block rounded-md px-3 py-2 text-base font-medium text-blue-900 hover:bg-blue-50 hover:text-blue-950"
+                @click="close"
+                active-class="bg-blue-100 hover:!bg-blue-200 text-blue-950"
+                class="block rounded-md px-3 py-2 text-base font-medium text-slate-900 transition-all duration-200 ease-in-out hover:bg-blue-100 hover:text-blue-950"
                 >{{ item.name }}</DisclosureButton
               >
               <Disclosure v-else v-slot="{ innerOpen }">
                 <DisclosureButton
-                  class="flex w-full justify-between rounded-md px-3 py-2 text-base font-medium text-blue-900 hover:bg-blue-50"
+                  class="flex w-full justify-between rounded-md px-3 py-2 text-base font-medium text-slate-700 hover:bg-blue-100"
                 >
                   <span>{{ item.name }}</span>
                   <Icon
                     v-if="!innerOpen"
                     name="heroicons:chevron-down-20-solid"
-                    class="-mr-1 ml-2 h-5 w-5 text-blue-700 hover:text-blue-600"
+                    class="-mr-1 ml-2 h-5 w-5 text-slate-700 hover:text-slate-600"
                     aria-hidden="true"
                   />
                   <Icon
                     v-else
                     name="heroicons:chevron-up-20-solid"
-                    class="-mr-1 ml-2 h-5 w-5 text-blue-700 hover:text-blue-600"
+                    class="-mr-1 ml-2 h-5 w-5 text-slate-700 hover:text-slate-600"
                     aria-hidden="true"
                   />
                 </DisclosureButton>
@@ -165,7 +161,8 @@ const navigation = [
                   >
                     <NuxtLink
                       :to="subitem.href"
-                      class="block rounded-md px-3 py-2 text-base font-medium text-blue-900 hover:bg-blue-50 hover:text-blue-950"
+                      class="block rounded-md px-3 py-2 text-base font-medium text-slate-700 hover:bg-blue-100 hover:text-blue-950"
+                      @click="close"
                       >{{ subitem.name }}</NuxtLink
                     ></template
                   ></DisclosurePanel

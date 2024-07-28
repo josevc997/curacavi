@@ -2,6 +2,7 @@ const path = require("path");
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: process.env.SSR_VALUE === "true",
+
   runtimeConfig: {
     apiBackend: "",
     public: {
@@ -9,13 +10,16 @@ export default defineNuxtConfig({
       hotjarId: "",
     },
   },
+
   site: {
     url: process.env.SITE_URL,
     name: process.env.CUSTOM_SITE_NAME,
     description: process.env.SITE_DESCRIPTION,
     defaultLocale: "es", // not needed if you have @nuxtjs/i18n installed
   },
+
   devtools: { enabled: true },
+
   modules: [
     "@pinia/nuxt",
     "@nuxt/devtools",
@@ -29,6 +33,7 @@ export default defineNuxtConfig({
     "nuxt-headlessui",
     "@nuxtjs/seo",
   ],
+
   fonts: {
     families: [
       {
@@ -48,9 +53,11 @@ export default defineNuxtConfig({
       },
     ],
   },
+
   headlessui: {
     prefix: "",
   },
+
   image:
     process.env.PRODUCTION === "true"
       ? {
@@ -62,9 +69,11 @@ export default defineNuxtConfig({
           ],
         }
       : {},
+
   imports: {
     dirs: ["./stores"],
   },
+
   pinia: {
     autoImports: [
       // automatically imports `defineStore`
@@ -72,32 +81,43 @@ export default defineNuxtConfig({
       ["defineStore", "definePiniaStore"], // import { defineStore as definePiniaStore } from 'pinia'
     ],
   },
+
   mapbox: {
     accessToken: process.env.MAPBOX_TOKEN,
   },
+
   gtag: {
     id: process.env.GTAG,
   },
+
   ogImage: {
     enabled: false,
   },
+
   sitemap: {
     enabled: true,
     exclude: ["/welcome"],
   },
+
   robots: {
     enabled: true,
   },
+
   seoExperiments: {
     enabled: true,
   },
+
   schemaOrg: {
     enabled: true,
   },
+
   linkChecker: {
     enabled: true,
   },
+
   seo: {
     fallbackTitle: false,
   },
+
+  compatibilityDate: "2024-07-28",
 });
