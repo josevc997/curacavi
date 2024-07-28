@@ -41,7 +41,7 @@ blogStore.fetchBlogList();
       <h1 class="mb-4 text-3xl font-medium">Noticias Curacaví</h1>
       <div class="grid grid-cols-1 gap-4">
         <UCarousel
-          :items="[...blogStore.blogList, ...blogStore.blogList]"
+          :items="blogStore.blogList"
           :key="blogStore.blogList.length"
           v-slot="{ item: noticia }"
           :ui="{
