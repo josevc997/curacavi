@@ -47,5 +47,27 @@ export const useCandidaturaStore = defineStore("candidaturas", {
         if (autoridades.value) this.selectedCandidatura = autoridades.value;
       }
     },
+
+    async fetchCandidaturasByIdList(idList: number[]) {
+      const config = useRuntimeConfig();
+      const { data: autoridades } = await useAsyncData(
+        "candidaturaByIdList",
+        async () => {
+          let url = `${config.public.apiBackend}/api/candidato/candidatura/`;
+          for (let index = 0; index < idList.length; index++) {
+            const element = idList[index];
+            if (index === 0) {
+              url += `?id=${element}`;
+            } else {
+              url += `&id=${element}`;
+            }
+          }
+          const data = await $fetch(url);
+
+          return data as CandidaturaWithCandidaturas[];
+        },
+      );
+      if (autoridades.value) this.candidaturas = autoridades.value;
+    },
   },
 });

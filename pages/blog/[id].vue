@@ -2,7 +2,9 @@
 import MyCustomParagraph from "~/components/content/MyCustomParagraph.vue";
 import MyCustomH5 from "~/components/content/MyCustomH5.vue";
 import MyCustomH1 from "~/components/content/MyCustomH1.vue";
+import CarouselCandidatura from "~/components/content/CarouselCandidatura.vue";
 import type { BlogItem } from "~/types/blog";
+import OrderedList from "~/components/content/OrderedList.vue";
 
 const config = useRuntimeConfig();
 const route = useRoute();
@@ -19,6 +21,12 @@ const getComponentType = (tag: string) => {
       break;
     case "p":
       return MyCustomParagraph;
+      break;
+    case "CarouselCandidatura":
+      return CarouselCandidatura;
+      break;
+    case "ol":
+      return OrderedList;
       break;
 
     default:
@@ -39,13 +47,21 @@ watch(
 <template>
   <div v-if="blogStore.selectedBlog">
     <NuxtImg
+      v-if="blogStore.selectedBlog.imagen"
       :src="blogStore.selectedBlog.imagen"
       loading="lazy"
       :alt="blogStore.selectedBlog.titulo"
       class="h-80 w-full rounded object-cover lg:h-[400px] xl:h-[500px]"
     />
+    <!-- <div
+      v-else
+      class="flex h-80 w-full items-center justify-center rounded bg-slate-400 object-cover lg:h-[400px] xl:h-[500px]"
+    >
+      <p class="text-5xl font-semibold">No Image</p>
+    </div> -->
     <component
       :is="getComponentType(elemento.tag)"
+      :elemento="elemento"
       v-for="elemento in blogStore.selectedBlog.elementos"
     >
       {{ elemento.contenido }}

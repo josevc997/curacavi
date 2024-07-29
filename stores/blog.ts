@@ -24,6 +24,22 @@ export const useBlogStore = defineStore("blog", {
       }
     },
 
+    async fetchFeaturedBlogList() {
+      const config = useRuntimeConfig();
+      const { data: blogListResponse } = await useAsyncData(
+        "colegio",
+        async () => {
+          let url = `${config.public.apiBackend}/api/noticia/is_featured/`;
+          const data = await $fetch(url);
+
+          return data as BlogItem[];
+        },
+      );
+      if (blogListResponse.value) {
+        this.blogList = blogListResponse.value;
+      }
+    },
+
     async fetchBlogItemById(id: number) {
       const config = useRuntimeConfig();
       const selected = this.blogList.find((a) => a.id === id);

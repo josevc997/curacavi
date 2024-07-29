@@ -70,10 +70,6 @@ const filteredCandidaturas = computed(() => {
             .toLowerCase()
             .includes(word.toLowerCase());
         });
-        console.log(
-          "onlyElected.value",
-          onlyElected.value === true ? candidatura.is_elected === true : true,
-        );
 
         return (
           (validateName ||
@@ -130,7 +126,6 @@ const handleSearch = async () => {
   loadingCandidaturas.value = true;
   await candidaturaStore.fetchCandidaturas(searchPayload.value);
   loadingCandidaturas.value = false;
-  // const { data, error } = await useFetch("http://localhost:8081/candidaturas")
 };
 
 await handleSearch();
@@ -139,7 +134,6 @@ watch(
   () => searchPayload.value.annio,
   (newFecha, oldFecha) => {
     candidaturaStore.fetchCandidaturas(searchPayload.value);
-    console.log("newFecha", newFecha, oldFecha);
   },
 );
 

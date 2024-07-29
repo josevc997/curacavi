@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const blogStore = useBlogStore();
-blogStore.fetchBlogList();
+blogStore.fetchFeaturedBlogList();
 </script>
 <template>
   <div class="grid grid-cols-1 gap-8">
