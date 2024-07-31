@@ -87,7 +87,7 @@ useHead({
           :objectFit="'cover'"
           :placeholder="'blur'"
           loading="lazy"
-          class="aspect-auto w-full rounded-md object-cover object-center"
+          class="aspect-[9/10] w-full rounded-md object-cover object-center"
         />
         <div
           v-else
