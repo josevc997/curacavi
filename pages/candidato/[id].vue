@@ -163,6 +163,33 @@ useHead({
           </h2>
           <CandidaturaList :candidaturasList="candidatura.candidatura_list" />
         </div>
+        <div v-if="candidatura.noticia_list.length > 0">
+          <h2 class="mb-4 text-lg font-semibold text-blue-950">Noticias</h2>
+          <UCarousel
+            :items="candidatura.noticia_list"
+            v-slot="{ item: noticia }"
+            :ui="{
+              item: 'lg:basis-1/2 basis-full rounded-md overflow-hidden snap-center',
+              indicators: {
+                wrapper: 'bottom-2 lg:-bottom-6',
+              },
+            }"
+            :prev-button="{
+              color: 'white',
+              icon: 'i-heroicons-arrow-left-20-solid',
+              class: '-translate-y-10 left-2',
+            }"
+            :next-button="{
+              color: 'white',
+              icon: 'i-heroicons-arrow-right-20-solid',
+              class: '-translate-y-10 right-4',
+            }"
+            indicators
+            arrows
+          >
+            <BlogIndexCard :noticia="noticia" class="md:mx-2 md:first:ml-0" />
+          </UCarousel>
+        </div>
       </div>
     </template>
   </div>

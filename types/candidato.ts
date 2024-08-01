@@ -1,3 +1,5 @@
+import type { BlogItem } from "./blog";
+
 export interface Candidato {
   id: number;
   name: string;
@@ -29,6 +31,7 @@ export interface Candidatura {
     nombre: string;
     image: string;
   };
+  noticia_list: BlogItem[];
   tipo_autoridad: string;
   fecha: string;
   is_active: boolean;
