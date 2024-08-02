@@ -97,6 +97,7 @@ export default defineNuxtConfig({
   sitemap: {
     enabled: true,
     exclude: ["/welcome"],
+    sources: process.env.SSR_VALUE === "true" ? ["/api/__sitemap__/urls"] : [],
   },
 
   robots: {
