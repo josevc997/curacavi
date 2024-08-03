@@ -31,7 +31,10 @@ defineProps<{
       <div class="col-span-10 break-words md:col-span-7 lg:col-span-8">
         <h2 class="text-base font-semibold">{{ item.partido.nombre }}</h2>
         <p class="text-sm">{{ item.pacto.nombre }}</p>
-        <p class="text-sm">{{ item.votos }} Votos ({{ item.porcentaje }}%)</p>
+        <p v-if="!item.in_progress" class="text-sm">
+          {{ item.votos }} Votos ({{ item.porcentaje }}%)
+        </p>
+        <p v-else class="text-sm">Votación Oct 2024</p>
       </div>
       <div
         class="col-span-10 col-start-3 flex items-end justify-between md:col-span-3 md:flex-col md:items-end md:justify-center"
@@ -46,19 +49,34 @@ defineProps<{
         </div>
         <div
           :class="[
-            item.is_elected ? 'bg-green-600' : 'bg-neutral-500/70',
-            'flex h-fit w-fit items-center justify-center gap-2 rounded-full px-2 py-1 text-xs font-semibold text-white',
+            item.is_elected
+              ? 'bg-green-600'
+              : item.in_progress
+                ? 'bg-blue-500/70'
+                : 'bg-neutral-500/70',
+            'flex h-fit w-fit items-center justify-center gap-1 rounded-full px-2 py-1 text-xs font-semibold text-white',
           ]"
         >
-          <Icon
-            :name="
-              item.is_elected
-                ? 'heroicons:check-circle-16-solid'
-                : 'heroicons:check-circle-16-solid'
-            "
-          />
+          <div class="flex">
+            <Icon
+              :name="
+                item.is_elected
+                  ? 'heroicons:check-circle-16-solid'
+                  : item.in_progress
+                    ? 'heroicons:arrow-path-16-solid'
+                    : 'heroicons:x-circle-16-solid'
+              "
+              class="size-3.5"
+            />
+          </div>
           <p>
-            {{ item.is_elected ? "Electo" : "No electo" }}
+            {{
+              item.is_elected
+                ? "Electo"
+                : item.in_progress
+                  ? "En proceso"
+                  : "No electo"
+            }}
           </p>
         </div>
       </div>
