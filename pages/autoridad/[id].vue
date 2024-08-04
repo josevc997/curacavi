@@ -14,19 +14,13 @@ const autoridad = computed(() => {
   }
 });
 const edad = computed(() => {
-  if (autoridad.value) {
-    const today = new Date();
-    const dateAgo = new Date(autoridad.value.persona.fecha_nacimiento);
-    let yearsAgo = today.getFullYear() - dateAgo.getFullYear();
-    const monthAgo = today.getMonth() - dateAgo.getMonth();
-    const dayAgo = today.getDate() - dateAgo.getDate();
-
-    if (monthAgo > 0 || (monthAgo === 0 && dayAgo > 0)) {
-      yearsAgo--;
-    }
-    const age = yearsAgo;
-    return age;
+  if (autoridad.value && autoridad.value.persona.fecha_nacimiento) {
+    const fechaNacimiento = new Date(autoridad.value.persona.fecha_nacimiento);
+    const edad =
+      new Date(Date.now() - fechaNacimiento.getTime()).getUTCFullYear() - 1970;
+    return edad;
   }
+  return "N/A";
 });
 
 watch(
