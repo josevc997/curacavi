@@ -15,17 +15,12 @@ const candidatura = computed(() => {
 });
 const edad = computed(() => {
   if (candidatura.value && candidatura.value.persona.fecha_nacimiento) {
-    const today = new Date();
-    const dateAgo = new Date(candidatura.value.persona.fecha_nacimiento);
-    let yearsAgo = today.getFullYear() - dateAgo.getFullYear();
-    const monthAgo = today.getMonth() - dateAgo.getMonth();
-    const dayAgo = today.getDate() - dateAgo.getDate();
-
-    if (monthAgo > 0 || (monthAgo === 0 && dayAgo > 0)) {
-      yearsAgo--;
-    }
-    const age = yearsAgo;
-    return age;
+    const fechaNacimiento = new Date(
+      candidatura.value.persona.fecha_nacimiento,
+    );
+    const edad =
+      new Date(Date.now() - fechaNacimiento.getTime()).getUTCFullYear() - 1970;
+    return edad;
   }
   return "N/A";
 });
