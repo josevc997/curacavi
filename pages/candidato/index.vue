@@ -9,7 +9,7 @@ const router = useRouter();
 
 const searchPayload = computed(() => {
   return {
-    annio: route.query.fecha ? Number(route.query.fecha) : 2021,
+    annio: route.query.fecha ? Number(route.query.fecha) : 2024,
   };
 });
 
@@ -45,6 +45,10 @@ const yearList = [
   {
     value: "2021",
     text: "2021",
+  },
+  {
+    value: "2024",
+    text: "2024",
   },
 ];
 

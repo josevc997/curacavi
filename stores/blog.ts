@@ -11,7 +11,7 @@ export const useBlogStore = defineStore("blog", {
     async fetchBlogList() {
       const config = useRuntimeConfig();
       const { data: blogListResponse } = await useAsyncData(
-        "colegio",
+        "noticia-list",
         async () => {
           let url = `${config.public.apiBackend}/api/noticia/`;
           const data = await $fetch(url);
@@ -27,7 +27,7 @@ export const useBlogStore = defineStore("blog", {
     async fetchFeaturedBlogList() {
       const config = useRuntimeConfig();
       const { data: blogListResponse } = await useAsyncData(
-        "colegio",
+        "noticia-featured",
         async () => {
           let url = `${config.public.apiBackend}/api/noticia/is_featured/`;
           const data = await $fetch(url);
@@ -48,7 +48,7 @@ export const useBlogStore = defineStore("blog", {
       } else {
         const config = useRuntimeConfig();
         const { data: blogItemResponse } = await useAsyncData(
-          "colegio",
+          "noticia-detail",
           async () => {
             let url = `${config.public.apiBackend}/api/noticia/${id}/`;
             const data = await $fetch(url);

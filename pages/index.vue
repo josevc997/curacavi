@@ -70,13 +70,5 @@ blogStore.fetchFeaturedBlogList();
         </UCarousel>
       </div>
     </div>
-    <!-- <div>
-      <h1 class="mb-4 text-3xl font-medium">Candidatos a Alcalde 2024</h1>
-      <div class="grid grid-cols-3 gap-4">
-        <div class="h-64 w-full rounded border shadow" />
-        <div class="h-64 w-full rounded border shadow" />
-        <div class="h-64 w-full rounded border shadow" />
-      </div>
-    </div> -->
   </div>
 </template>
