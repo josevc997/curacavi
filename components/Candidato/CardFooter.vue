@@ -11,19 +11,19 @@ defineProps<{
       :src="candidatura.partido.image"
       :alt="candidatura.partido.nombre"
       loading="lazy"
-      class="h-12 w-12 min-w-12 rounded-full object-cover"
+      class="size-10 h-12 w-12 min-w-12 rounded-full shadow outline outline-1 outline-black/10"
     />
     <NuxtImg
       v-else-if="candidatura.pacto.image"
       :src="candidatura.pacto.image"
       :alt="candidatura.pacto.nombre"
       loading="lazy"
-      class="h-12 w-12 min-w-12 rounded-full object-cover"
+      class="size-10 h-12 w-12 min-w-12 rounded-full shadow outline outline-1 outline-black/10"
     />
     <div
       v-else
       :alt="candidatura.partido.nombre"
-      class="flex h-12 w-12 min-w-12 items-center justify-center rounded-full bg-blue-900 text-2xl font-semibold text-white"
+      class="flex h-12 w-12 min-w-12 items-center justify-center rounded-full bg-blue-900 text-2xl font-semibold text-white shadow outline outline-1 outline-black/10"
     >
       {{ candidatura.pacto.nombre.charAt(0) }}
     </div>
