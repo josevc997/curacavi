@@ -65,6 +65,12 @@ useHead({
       : "Institucion - Curacavi";
   },
 });
+useHead({
+  title: () =>
+    institucion && institucion.value && institucion.value?.nombre
+      ? `${institucion.value?.nombre}`
+      : "Institucion",
+});
 </script>
 <template>
   <div class="grid grid-cols-12 gap-y-8 py-4 sm:gap-x-4">

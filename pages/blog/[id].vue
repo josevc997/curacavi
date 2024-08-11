@@ -43,6 +43,12 @@ watch(
   },
   { immediate: true },
 );
+useHead({
+  title: () =>
+    blogStore.selectedBlog?.titulo
+      ? `${blogStore.selectedBlog?.titulo}`
+      : `Noticia`,
+});
 </script>
 <template>
   <div v-if="blogStore.selectedBlog">

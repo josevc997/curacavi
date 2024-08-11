@@ -30,11 +30,10 @@ watch(
 );
 
 useHead({
-  titleTemplate: (titleChunk) => {
-    return colegio && colegio.value && colegio.value?.nombre
-      ? `${colegio.value?.nombre} - Curacavi`
-      : "Colegio - Curacavi";
-  },
+  title: () =>
+    colegio && colegio.value && colegio.value?.nombre
+      ? `${colegio.value?.nombre}`
+      : "Colegio",
 });
 </script>
 <template>

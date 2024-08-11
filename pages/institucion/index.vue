@@ -1,6 +1,9 @@
 <script setup lang="ts">
 const institucionStore = useInstitucionStore();
 institucionStore.fetchInstitucionList();
+useHead({
+  title: "Lista de instituciones",
+});
 </script>
 <template>
   <div class="mb-4 text-3xl font-semibold text-slate-800">

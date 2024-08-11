@@ -12,7 +12,7 @@ const handleSearch = async () => {
 await handleSearch();
 
 useHead({
-  title: "Lista de Autoridades - Curacavi",
+  title: "Lista de Autoridades",
 });
 </script>
 <template>

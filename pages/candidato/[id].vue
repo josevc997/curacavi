@@ -37,14 +37,13 @@ watch(
 );
 
 useHead({
-  titleTemplate: (titleChunk) => {
-    return candidatura &&
-      candidatura.value &&
-      candidatura.value?.persona &&
-      candidatura.value?.persona.nombre
-      ? `${candidatura.value?.persona.nombre} - Curacavi`
-      : "Candidatura - Curacavi";
-  },
+  title: () =>
+    candidatura &&
+    candidatura.value &&
+    candidatura.value?.persona &&
+    candidatura.value?.persona.nombre
+      ? `${candidatura.value?.persona.nombre}`
+      : "Candidatura",
 });
 </script>
 <template>

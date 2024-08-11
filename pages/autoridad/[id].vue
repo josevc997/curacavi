@@ -35,14 +35,13 @@ watch(
 );
 
 useHead({
-  titleTemplate: (titleChunk) => {
-    return autoridad &&
-      autoridad.value &&
-      autoridad.value?.persona &&
-      autoridad.value?.persona.nombre
-      ? `${autoridad.value?.persona.nombre} - Curacavi`
-      : "Autoridad - Curacavi";
-  },
+  title: () =>
+    autoridad &&
+    autoridad.value &&
+    autoridad.value?.persona &&
+    autoridad.value?.persona.nombre
+      ? `${autoridad.value?.persona.nombre}`
+      : "Autoridad",
 });
 </script>
 <template>

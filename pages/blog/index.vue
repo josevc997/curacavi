@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import type { BlogItem } from "~/types/blog";
 const blogStore = useBlogStore();
 blogStore.fetchBlogList();
+useHead({
+  title: "Lista de noticias",
+});
 </script>
 <template>
   <div>
@@ -9,7 +11,7 @@ blogStore.fetchBlogList();
       Blog
     </h2>
     <p class="mt-2 text-lg leading-8 text-gray-600">
-      Datos, opiniones y noticias sobre la comuna de Curacavi.
+      Datos, opiniones y noticias sobre la comuna de Curacavi.a
     </p>
     <div class="mt-16 space-y-16 lg:mt-8 lg:space-y-8">
       <template v-if="blogStore.blogList">

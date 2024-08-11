@@ -66,7 +66,7 @@ const toTitleCase = (str: string) => {
 };
 
 useHead({
-  title: "Lista de Colegios - Curacavi",
+  title: "Lista de Colegios",
 });
 </script>
 <template>

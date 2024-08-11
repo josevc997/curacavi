@@ -155,7 +155,7 @@ const handleSelect = (item: { value: string; text: string }) => {
 };
 
 useHead({
-  title: "Lista de Candidaturas - Curacavi",
+  title: "Lista de Candidaturas",
 });
 </script>
 <template>
