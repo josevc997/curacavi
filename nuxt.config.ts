@@ -98,10 +98,13 @@ export default defineNuxtConfig({
     enabled: true,
     exclude: ["/welcome"],
     sources: process.env.SSR_VALUE === "true" ? ["/api/__sitemap__/urls"] : [],
+    autoI18n: false,
+    sitemapName: "sitemap_index.xml",
   },
 
   robots: {
     enabled: true,
+    sitemap: "/sitemap_index.xml",
   },
 
   seoExperiments: {
