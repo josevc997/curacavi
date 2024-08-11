@@ -38,7 +38,7 @@ useHead({
                         ></div> -->
           </NuxtLink>
           <div
-            class="flex flex-col justify-between pb-4 pl-4 pr-4 pt-0 lg:pb-4 lg:pl-0 lg:pr-4 lg:pt-4"
+            class="flex w-full flex-col justify-between pb-4 pl-4 pr-4 pt-0 lg:pb-4 lg:pl-0 lg:pr-4 lg:pt-4"
           >
             <div>
               <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs">
