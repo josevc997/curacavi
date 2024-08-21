@@ -126,6 +126,13 @@ const filteredCandidaturas = computed(() => {
   });
 });
 
+const filteredCandidaturasSorted = computed(() => {
+  return Object.groupBy(
+    filteredCandidaturas.value,
+    ({ pacto, partido }) => pacto.nombre,
+  );
+});
+
 const handleSearch = async () => {
   loadingCandidaturas.value = true;
   await candidaturaStore.fetchCandidaturas(searchPayload.value);
@@ -153,6 +160,8 @@ const handleSelect = (item: { value: string; text: string }) => {
   selectedTipoAutoridad.value = null;
   query.value = "";
 };
+
+const viewAsGrid = ref(true);
 
 useHead({
   title: "Lista de Candidaturas",
@@ -235,8 +244,28 @@ useHead({
         </div>
       </div>
     </div>
+    <div class="mb-4 flex justify-end gap-4">
+      <button
+        @click="viewAsGrid = true"
+        :class="[
+          viewAsGrid ? 'bg-blue-600 text-white' : 'bg-white text-neutral-900',
+        ]"
+        class="h-10 rounded-md px-4 py-2 text-sm shadow-sm outline outline-1 outline-neutral-600/10"
+      >
+        Ver como Grid
+      </button>
+      <button
+        @click="viewAsGrid = false"
+        :class="[
+          !viewAsGrid ? 'bg-blue-600 text-white' : 'bg-white text-neutral-900',
+        ]"
+        class="h-10 rounded-md px-4 py-2 text-sm shadow-sm outline outline-1 outline-neutral-600/10"
+      >
+        Ver como Lista
+      </button>
+    </div>
     <div
-      v-if="filteredCandidaturas.length > 0"
+      v-if="filteredCandidaturas.length > 0 && viewAsGrid"
       class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
     >
       <ClientOnly>
@@ -245,6 +274,31 @@ useHead({
           :key="candidato.id"
           :candidato="candidato"
         />
+      </ClientOnly>
+    </div>
+    <div
+      v-else-if="filteredCandidaturas.length > 0 && !viewAsGrid"
+      class="flex flex-col divide-y divide-slate-200 overflow-hidden rounded border border-slate-200 bg-white shadow-sm"
+    >
+      <ClientOnly>
+        <!-- {{ Object.keys(filteredCandidaturasSorted) }} -->
+        <div
+          v-for="itemName in Object.keys(filteredCandidaturasSorted)"
+          class="divide-y divide-slate-200 odd:bg-black"
+        >
+          <div class="sticky top-0 z-50 w-full bg-white p-2 font-semibold">
+            <p>
+              {{ itemName }}
+            </p>
+          </div>
+          <div>
+            <CandidatoListItem
+              v-for="candidato in filteredCandidaturasSorted[`${itemName}`]"
+              :key="candidato.id"
+              :candidato="candidato"
+            />
+          </div>
+        </div>
       </ClientOnly>
     </div>
     <div
