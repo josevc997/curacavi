@@ -1,4 +1,11 @@
 <script setup lang="ts">
+import MyCustomParagraph from "~/components/content/MyCustomParagraph.vue";
+import MyCustomH5 from "~/components/content/MyCustomH5.vue";
+import MyCustomH3 from "~/components/content/MyCustomH3.vue";
+import MyCustomH1 from "~/components/content/MyCustomH1.vue";
+import CarouselCandidatura from "~/components/content/CarouselCandidatura.vue";
+import OrderedList from "~/components/content/OrderedList.vue";
+
 const route = useRoute();
 const id = computed(() => {
   return Number(route.params.id);
@@ -25,6 +32,44 @@ const edad = computed(() => {
   return "N/A";
 });
 
+const texto = "**perro**: blabla bla";
+
+const getComponentType = (elemento: string) => {
+  switch (elemento.split(" ")[0]) {
+    // case "h5":
+    //   return MyCustomH5;
+    //   break;
+    case "#":
+      return MyCustomH1;
+      break;
+    case "###":
+      return MyCustomH3;
+      break;
+    // case "CarouselCandidatura":
+    //   return CarouselCandidatura;
+    //   break;
+    // case "ol":
+    //   return OrderedList;
+    //   break;
+
+    default:
+      return MyCustomParagraph;
+      break;
+  }
+};
+
+const getElemento = (elemento: string) => {
+  const splittedElement = elemento.split(" ");
+  const firstWord = splittedElement[0];
+  if (firstWord === "#") {
+    return elemento.slice(1);
+  }
+  if (firstWord === "###") {
+    return elemento.slice(3);
+  }
+  return elemento;
+};
+
 watch(
   () => route.params,
   async (newId, oldId) => {
@@ -50,7 +95,7 @@ useHead({
   <div class="grid grid-cols-12 gap-y-4 py-3 sm:gap-x-10">
     <template v-if="candidatura && candidatura.persona">
       <div
-        class="col-span-12 grid h-fit grid-cols-1 gap-2 sm:sticky sm:col-span-5 md:col-span-4 lg:col-span-3"
+        class="top-20 col-span-12 grid h-fit grid-cols-1 gap-2 sm:sticky sm:col-span-5 md:col-span-4 lg:col-span-3"
       >
         <div>
           <h1 class="text-2xl font-semibold leading-none text-blue-950">
@@ -136,14 +181,16 @@ useHead({
       <div
         class="col-span-12 flex flex-col gap-4 sm:col-span-7 md:col-span-8 lg:col-span-9"
       >
-        <div class="grid gap-2">
+        <div class="">
           <h2 class="pb-2 text-lg font-semibold">Descripción</h2>
-          <p
-            v-for="paragraph in candidatura.persona.descripcion?.split('\r\n')"
-            class="text-sm"
+          <component
+            :is="getComponentType(elemento)"
+            :elemento="elemento"
+            v-for="elemento in candidatura.persona.descripcion?.split('\r\n')"
           >
-            {{ paragraph }}
-          </p>
+            {{ getElemento(elemento) }}
+          </component>
+          <!-- </p> -->
           <div
             v-if="!candidatura.persona.descripcion"
             class="rounded-md border-l-2 border-blue-500 bg-blue-100 px-4 py-2 text-sm text-blue-700"

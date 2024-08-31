@@ -3,7 +3,6 @@ import MyCustomParagraph from "~/components/content/MyCustomParagraph.vue";
 import MyCustomH5 from "~/components/content/MyCustomH5.vue";
 import MyCustomH1 from "~/components/content/MyCustomH1.vue";
 import CarouselCandidatura from "~/components/content/CarouselCandidatura.vue";
-import type { BlogItem } from "~/types/blog";
 import OrderedList from "~/components/content/OrderedList.vue";
 
 const config = useRuntimeConfig();
