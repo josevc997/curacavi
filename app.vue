@@ -16,6 +16,13 @@ useHead({
     },
   ],
 });
+defineOgImageComponent("NuxtSeo", {
+  title: "Curacavi.info",
+  description:
+    "Resumimos los principales puntos de interés, servicios e informaciones de la comuna de Curacaví.",
+  theme: "#1e40af",
+  colorMode: "dark",
+});
 </script>
 <template>
   <div>
