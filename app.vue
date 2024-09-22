@@ -21,7 +21,7 @@ defineOgImageComponent("NuxtSeo", {
   description:
     "Resumimos los principales puntos de interés, servicios e informaciones de la comuna de Curacaví.",
   theme: "#1e40af",
-  colorMode: "dark",
+  colorMode: "light",
 });
 </script>
 <template>
