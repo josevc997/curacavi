@@ -112,6 +112,9 @@ useHead({
           <h2 class="text-2xl font-semibold leading-none text-blue-950">
             {{ candidatura.persona.nombre }}
           </h2>
+          <p v-if="candidatura.codigo" class="text-lg font-semibold">
+            VOTA #{{ candidatura.codigo }}
+          </p>
           <p class="text-sm leading-tight text-blue-950">
             {{ candidatura.persona.profesion }}
           </p>

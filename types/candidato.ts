@@ -32,6 +32,7 @@ export interface Candidatura {
     image: string;
   };
   noticia_list: BlogItem[];
+  codigo: string;
   tipo_autoridad: string;
   fecha: string;
   is_active: boolean;
