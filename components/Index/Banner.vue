@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 <template>
   <div
-    class="relative h-[calc(70dvh)] overflow-hidden rounded-md shadow-xl md:h-[calc(50dvh)]"
+    class="relative h-[calc(70dvh)] max-h-[500px] overflow-hidden rounded-md shadow-xl md:h-[calc(50dvh)]"
   >
     <NuxtImg
       src="https://curacavi.s3.amazonaws.com/paisaje/Paisaje4.webp"

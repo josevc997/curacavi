@@ -7,6 +7,7 @@ import type {
 export const useCandidaturaStore = defineStore("candidaturas", {
   state: () => ({
     candidaturas: [] as CandidaturaWithCandidaturas[],
+    updatedCandidaturas: [] as CandidaturaWithCandidaturas[],
     selectedCandidatura: {} as CandidaturaWithCandidaturas,
   }),
 
@@ -68,6 +69,20 @@ export const useCandidaturaStore = defineStore("candidaturas", {
         },
       );
       if (autoridades.value) this.candidaturas = autoridades.value;
+    },
+
+    async fetchUpdatedCandidaturas() {
+      const config = useRuntimeConfig();
+      const { data: autoridades } = await useAsyncData(
+        "candidaturaByIdList",
+        async () => {
+          let url = `${config.public.apiBackend}/api/candidato/candidatura/actualizados/`;
+          const data = await $fetch(url);
+
+          return data as CandidaturaWithCandidaturas[];
+        },
+      );
+      if (autoridades.value) this.updatedCandidaturas = autoridades.value;
     },
   },
 });

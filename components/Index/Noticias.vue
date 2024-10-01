@@ -13,22 +13,17 @@ defineProps<{
         :key="blogList.length"
         v-slot="{ item: noticia }"
         :ui="{
-          item: 'md:basis-1/3 basis-full rounded-md overflow-hidden snap-start',
-          indicators: {
-            wrapper: 'bottom-2',
-          },
+          item: 'md:basis-1/3 basis-full rounded-md overflow-hidden snap-start pb-10',
         }"
         :prev-button="{
-          color: 'primary',
+          color: 'white',
           icon: 'i-heroicons-arrow-left-20-solid',
-          class:
-            'relative left-auto top-auto transform translate-y-0 rounded-none mt-1 rounded z-10 !text-white',
+          class: '-translate-y-14',
         }"
         :next-button="{
-          color: 'primary',
+          color: 'white',
           icon: 'i-heroicons-arrow-right-20-solid',
-          class:
-            'relative right-auto md:mr-2 top-0 transform translate-y-0 rounded-none mt-1 rounded z-10 !text-white',
+          class: '-translate-y-14',
         }"
         class="overflow-hidden"
         arrows
