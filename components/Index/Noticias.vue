@@ -11,7 +11,6 @@ defineProps<{
     <div class="grid grid-cols-1 gap-4">
       <UCarousel
         :items="blogList"
-        :key="blogList.length"
         v-slot="{ item: noticia }"
         :ui="{
           item: 'md:basis-1/3 basis-full rounded-md overflow-hidden snap-start pb-10',
