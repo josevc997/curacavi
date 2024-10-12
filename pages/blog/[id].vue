@@ -4,6 +4,7 @@ import MyCustomH5 from "~/components/content/MyCustomH5.vue";
 import MyCustomH1 from "~/components/content/MyCustomH1.vue";
 import CarouselCandidatura from "~/components/content/CarouselCandidatura.vue";
 import OrderedList from "~/components/content/OrderedList.vue";
+import IFrame from "~/components/content/IFrame.vue";
 
 const config = useRuntimeConfig();
 const route = useRoute();
@@ -27,6 +28,9 @@ const getComponentType = (tag: string) => {
     case "ol":
       return OrderedList;
       break;
+    case "iframe":
+      return IFrame;
+      break;
 
     default:
       return MyCustomParagraph;
@@ -48,28 +52,50 @@ useHead({
       ? `${blogStore.selectedBlog?.titulo}`
       : `Noticia`,
 });
+definePageMeta({
+  layout: "small-board",
+});
 </script>
 <template>
   <div v-if="blogStore.selectedBlog">
-    <NuxtImg
-      v-if="blogStore.selectedBlog.imagen"
-      :src="blogStore.selectedBlog.imagen"
-      loading="lazy"
-      :alt="blogStore.selectedBlog.titulo"
-      class="h-80 w-full rounded object-cover lg:h-[400px] xl:h-[500px]"
-    />
-    <!-- <div
-      v-else
-      class="flex h-80 w-full items-center justify-center rounded bg-slate-400 object-cover lg:h-[400px] xl:h-[500px]"
+    <div
+      v-if="blogStore.selectedBlog.show_imagen"
+      class="mb-2 flex items-center justify-center"
     >
-      <p class="text-5xl font-semibold">No Image</p>
-    </div> -->
-    <component
-      :is="getComponentType(elemento.tag)"
-      :elemento="elemento"
-      v-for="elemento in blogStore.selectedBlog.elementos"
-    >
-      {{ elemento.contenido }}
-    </component>
+      <NuxtImg
+        v-if="blogStore.selectedBlog.imagen"
+        :src="blogStore.selectedBlog.imagen"
+        loading="lazy"
+        :alt="blogStore.selectedBlog.titulo"
+        class="aspect-video w-full rounded object-cover"
+      />
+    </div>
+    <template v-for="elemento in blogStore.selectedBlog.elementos">
+      <div
+        v-if="elemento.tag === 'iframe' && elemento.contenido === 'Not Found'"
+        class="relative mx-auto flex aspect-video w-full max-w-[500px] items-center justify-center rounded"
+      >
+        <NuxtImg
+          :src="blogStore.selectedBlog.imagen"
+          loading="lazy"
+          :alt="blogStore.selectedBlog.titulo"
+          class="mx-auto flex aspect-video w-full max-w-[500px] items-center justify-center rounded object-cover"
+        />
+        <div
+          class="absolute left-0 top-0 flex h-full w-full items-center justify-center bg-black/40"
+        >
+          <p class="text-center text-xl font-bold tracking-wider text-white">
+            Video no encontrado
+          </p>
+        </div>
+      </div>
+      <component
+        v-else
+        :is="getComponentType(elemento.tag)"
+        :elemento="elemento"
+      >
+        {{ elemento.contenido }}
+      </component>
+    </template>
   </div>
 </template>

@@ -2,6 +2,7 @@
 const blogStore = useBlogStore();
 const candidaturaStore = useCandidaturaStore();
 blogStore.fetchFeaturedBlogList();
+blogStore.fetchIndexSectionBlogList();
 const router = useRouter();
 
 const routeName = computed(() => {
@@ -20,9 +21,16 @@ watch(
 </script>
 <template>
   <div class="grid grid-cols-1 gap-8">
-    <IndexBanner />
+    <!-- <IndexBanner /> -->
     <IndexWeather />
-    <IndexNoticias :blog-list="blogStore.blogList" />
     <IndexUpdatedCandidatos />
+    <IndexNoticias
+      :blog-list="blogStore.indexSectionBlogList"
+      section-title="El Late de la Carola"
+    />
+    <IndexNoticias
+      :blog-list="blogStore.featuredBlogList"
+      section-title="Noticias Curacavi"
+    />
   </div>
 </template>

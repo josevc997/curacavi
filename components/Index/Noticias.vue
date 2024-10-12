@@ -2,11 +2,12 @@
 import type { BlogItem } from "~/types/blog";
 defineProps<{
   blogList: BlogItem[];
+  sectionTitle: string;
 }>();
 </script>
 <template>
   <div>
-    <h1 class="mb-4 text-3xl font-medium">Noticias Curacaví</h1>
+    <h1 class="mb-4 text-3xl font-medium">{{ sectionTitle }}</h1>
     <div class="grid grid-cols-1 gap-4">
       <UCarousel
         :items="blogList"

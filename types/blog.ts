@@ -13,6 +13,7 @@ export interface BlogItem {
   titulo: string;
   resumen: string;
   imagen: string;
+  show_imagen: boolean;
   fecha_creacion: string;
   categoria: Categoria[];
   colegio: Colegio[];

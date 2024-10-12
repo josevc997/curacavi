@@ -11,6 +11,7 @@ defineProps<{
       <NuxtLink
         v-if="item.tag === 'Enlace'"
         :to="item.contenido"
+        :target="item.contenido.includes('http') ? '_blank' : '_self'"
         class="mx-1 font-medium text-blue-600 underline"
       >
         {{ item.children[0]?.contenido }}

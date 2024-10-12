@@ -31,7 +31,7 @@ defineProps<{
       <p class="line-clamp-3 text-base">
         {{ noticia.resumen }}
       </p>
-      <div class="flex flex-wrap">
+      <div class="flex flex-wrap gap-1">
         <div
           v-for="item in noticia.categoria"
           class="rounded-full bg-blue-600/80 px-2 py-1 text-sm font-medium text-white hover:bg-blue-600"

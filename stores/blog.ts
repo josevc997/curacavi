@@ -4,6 +4,8 @@ import type { BlogItem } from "~/types/blog";
 export const useBlogStore = defineStore("blog", {
   state: () => ({
     blogList: [] as BlogItem[],
+    featuredBlogList: [] as BlogItem[],
+    indexSectionBlogList: [] as BlogItem[],
     selectedBlog: {} as BlogItem,
   }),
   getters: {},
@@ -36,7 +38,23 @@ export const useBlogStore = defineStore("blog", {
         },
       );
       if (blogListResponse.value) {
-        this.blogList = blogListResponse.value;
+        this.featuredBlogList = blogListResponse.value;
+      }
+    },
+
+    async fetchIndexSectionBlogList() {
+      const config = useRuntimeConfig();
+      const { data: blogListResponse } = await useAsyncData(
+        "noticia-index-section",
+        async () => {
+          let url = `${config.public.apiBackend}/api/noticia/filter_by_categoria/`;
+          const data = await $fetch(url);
+
+          return data as BlogItem[];
+        },
+      );
+      if (blogListResponse.value) {
+        this.indexSectionBlogList = blogListResponse.value;
       }
     },
 

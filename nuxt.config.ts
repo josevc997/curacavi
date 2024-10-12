@@ -91,7 +91,7 @@ export default defineNuxtConfig({
   },
 
   ogImage: {
-    enabled: true,
+    enabled: process.env.SSR_VALUE === "true",
   },
 
   sitemap: {
