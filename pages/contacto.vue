@@ -86,8 +86,9 @@ const onSubmit = async () => {
         }"
         class="col-span-1"
       >
-        <UInput
+        <input
           v-model="formData.nombre"
+          class="focus:ring-primary-500 relative block w-full rounded-md border-0 bg-white px-3 py-2 text-gray-900 placeholder-gray-400 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-75"
           placeholder="Ingrese su nombre"
           size="xl"
         />
@@ -102,7 +103,8 @@ const onSubmit = async () => {
         }"
         class="col-span-1"
       >
-        <UInput
+        <input
+          class="focus:ring-primary-500 relative block w-full rounded-md border-0 bg-white px-3 py-2 text-gray-900 placeholder-gray-400 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-75"
           v-model="formData.apellido"
           placeholder="Ingrese su apellido"
           size="xl"
@@ -118,7 +120,8 @@ const onSubmit = async () => {
         }"
         class="col-span-1 md:col-span-2"
       >
-        <UInput
+        <input
+          class="focus:ring-primary-500 relative block w-full rounded-md border-0 bg-white px-3 py-2 text-gray-900 placeholder-gray-400 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-75"
           v-model="formData.email"
           placeholder="Ingrese su email"
           size="xl"
@@ -152,7 +155,8 @@ const onSubmit = async () => {
         }"
         class="col-span-1 md:col-span-2"
       >
-        <UTextarea
+        <textarea
+          class="focus:ring-primary-500 relative block w-full rounded-md border-0 bg-white px-3 py-2 text-gray-900 placeholder-gray-400 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-75"
           v-model="formData.mensaje"
           placeholder="Ingrese su mensaje"
           size="xl"
