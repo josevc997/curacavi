@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { object, string, number, type InferType } from "yup";
 
+const config = useRuntimeConfig();
+
 const formData = ref({
   nombre: "",
   apellido: "",
@@ -40,7 +42,7 @@ const formStatus: any = ref(null);
 
 const onSubmit = async () => {
   try {
-    await $fetch("http://localhost:8000/api/contacto/", {
+    await $fetch(`${config.public.apiBackend}/api/contacto/`, {
       method: "POST",
       body: {
         nombre: formData.value.nombre,
@@ -64,7 +66,9 @@ const onSubmit = async () => {
 };
 </script>
 <template>
-  <UCard class="md:p-4">
+  <div
+    class="rounded border border-slate-300 bg-white p-4 shadow outline outline-1 outline-slate-300/40 md:p-6"
+  >
     <h2 class="mb-8 text-3xl font-bold md:text-5xl">Formulario de contacto</h2>
     <UForm
       :schema="schema"
@@ -176,5 +180,5 @@ const onSubmit = async () => {
         </UButton>
       </div>
     </UForm>
-  </UCard>
+  </div>
 </template>
