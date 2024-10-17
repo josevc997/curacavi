@@ -6,6 +6,7 @@ const navigation = {
     { name: "Inicio", href: "/" },
     { name: "Colegios", href: "/colegio" },
     { name: "Blog", href: "/blog" },
+    { name: "Contacto", href: "/contacto" },
   ],
   politica: [
     { name: "Autoridades", href: "/autoridad" },
