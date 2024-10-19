@@ -12,6 +12,7 @@ const navigation = [
     ],
   },
   { name: "Blog", href: "/blog" },
+  { name: "Contacto", href: "/contacto" },
 ];
 </script>
 <template>
