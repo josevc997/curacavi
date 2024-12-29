@@ -1,39 +1,38 @@
 <script setup lang="ts">
-import type { AutoridadWithCandidatura, Candidatura } from "~/types/candidato";
+import type { AutoridadWithCandidatura } from "~/types/candidato";
 defineProps<{
   autoridad: AutoridadWithCandidatura;
-  candidatura: Candidatura;
 }>();
 </script>
 <template>
   <div class="mb-2 flex gap-3">
     <NuxtImg
-      v-if="candidatura.partido.image"
-      :src="candidatura.partido.image"
-      :alt="autoridad.persona.nombre"
+      v-if="autoridad.candidatura[0].partido.image"
+      :src="autoridad.candidatura[0].partido.image"
+      :alt="autoridad.candidatura[0].partido.nombre"
       loading="lazy"
-      class="h-12 w-12 min-w-12 rounded-full object-cover"
+      class="size-10 h-12 w-12 min-w-12 rounded-full shadow outline outline-1 outline-black/10"
     />
     <NuxtImg
-      v-else-if="candidatura.pacto.image"
-      :src="candidatura.pacto.image"
-      :alt="autoridad.persona.nombre"
+      v-else-if="autoridad.candidatura[0].pacto.image"
+      :src="autoridad.candidatura[0].pacto.image"
+      :alt="autoridad.candidatura[0].pacto.nombre"
       loading="lazy"
-      class="h-12 w-12 min-w-12 rounded-full object-cover"
+      class="size-10 h-12 w-12 min-w-12 rounded-full shadow outline outline-1 outline-black/10"
     />
     <div
       v-else
-      :alt="autoridad.persona.nombre"
-      class="flex h-12 w-12 min-w-12 items-center justify-center rounded-full bg-blue-900 text-2xl font-semibold text-white"
+      :alt="autoridad.candidatura[0].partido.nombre"
+      class="flex h-12 w-12 min-w-12 items-center justify-center rounded-full bg-blue-900 text-2xl font-semibold text-white shadow outline outline-1 outline-black/10"
     >
-      {{ candidatura.pacto.nombre.charAt(0) }}
+      {{ autoridad.candidatura[0].pacto.nombre.charAt(0) }}
     </div>
     <div>
-      <p class="text-sm font-semibold">
-        {{ candidatura.partido.nombre }}
+      <p class="line-clamp-1 text-sm font-semibold">
+        {{ autoridad.candidatura[0].partido.nombre }}
       </p>
       <p class="line-clamp-1 text-sm text-neutral-500">
-        {{ candidatura.pacto.nombre }}
+        {{ autoridad.candidatura[0].pacto.nombre }}
       </p>
     </div>
   </div>
