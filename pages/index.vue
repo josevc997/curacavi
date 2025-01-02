@@ -1,8 +1,10 @@
 <script setup lang="ts">
-const blogStore = useBlogStore();
-const candidaturaStore = useCandidaturaStore();
-blogStore.fetchFeaturedBlogList();
-blogStore.fetchIndexSectionBlogList();
+// const blogStore = useBlogStore();
+// const candidaturaStore = useCandidaturaStore();
+const autoridadStore = useAutoridadStore();
+const concejoStore = useConcejoStore();
+// blogStore.fetchFeaturedBlogList();
+// blogStore.fetchIndexSectionBlogList();
 const router = useRouter();
 
 const routeName = computed(() => {
@@ -13,7 +15,8 @@ watch(
   routeName,
   (newValue) => {
     if (newValue === "index") {
-      candidaturaStore.fetchUpdatedCandidaturas();
+      autoridadStore.fetchAutoridades();
+      concejoStore.fetchConcejos();
     }
   },
   { immediate: true },
@@ -23,14 +26,15 @@ watch(
   <div class="grid grid-cols-1 gap-8">
     <!-- <IndexBanner /> -->
     <IndexWeather />
-    <IndexUpdatedCandidatos />
-    <IndexNoticias
+    <IndexAutoridades />
+    <IndexConcejos />
+    <!-- <IndexNoticias
       :blog-list="blogStore.indexSectionBlogList"
       section-title="El Late de la Carola"
-    />
-    <IndexNoticias
+    /> -->
+    <!-- <IndexNoticias
       :blog-list="blogStore.featuredBlogList"
       section-title="Noticias Curacavi"
-    />
+    /> -->
   </div>
 </template>
