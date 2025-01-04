@@ -59,7 +59,7 @@ export default defineNuxtConfig({
   },
 
   image:
-    process.env.PRODUCTION === "true"
+    process.env.IMAGE_PROVIDER === "netlify"
       ? {
           provider: "netlify",
           domains: [
