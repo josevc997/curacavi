@@ -68,7 +68,13 @@ export default defineNuxtConfig({
             "backend.curacavi.info",
           ],
         }
-      : {},
+      : {
+          domains: [
+            "curacavi.s3.amazonaws.com",
+            "cqvjuorqpvhyuxfdkhpt.supabase.co",
+            "backend.curacavi.info",
+          ],
+        },
 
   imports: {
     dirs: ["./stores"],
