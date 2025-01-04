@@ -11,6 +11,20 @@ const handleSearch = async () => {
 
 await handleSearch();
 
+const AlcaldeList = computed(() => {
+  if (!autoridadStore.autoridades) return [];
+  return autoridadStore.autoridades.filter(
+    (item) => item.tipo_autoridad === "Alcalde",
+  );
+});
+
+const ConcejalesList = computed(() => {
+  if (!autoridadStore.autoridades) return [];
+  return autoridadStore.autoridades.filter(
+    (item) => item.tipo_autoridad === "Concejal",
+  );
+});
+
 useHead({
   title: "Lista de Autoridades",
 });
@@ -28,9 +42,7 @@ useHead({
     >
       <ClientOnly>
         <AutoridadCard
-          v-for="item in autoridadStore.autoridades.filter(
-            (item) => item.tipo_autoridad === 'Alcalde',
-          )"
+          v-for="item in AlcaldeList"
           :autoridad="item"
           :key="item.id"
         />
@@ -42,9 +54,7 @@ useHead({
     >
       <ClientOnly>
         <AutoridadCard
-          v-for="item in autoridadStore.autoridades.filter(
-            (item) => item.tipo_autoridad === 'Concejal',
-          )"
+          v-for="item in ConcejalesList"
           :autoridad="item"
           :key="item.id"
         />
