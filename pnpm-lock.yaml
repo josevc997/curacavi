@@ -761,8 +761,8 @@ packages:
   '@iconify/utils@2.2.1':
     resolution: {integrity: sha512-0/7J7hk4PqXmxo5PDBDxmnecw5PxklZJfNjIVG9FM0mEfVrvfudS22rYWsqVk6gR3UJ/mSYS90X4R3znXnqfNA==}
 
-  '@iconify/vue@4.2.0':
-    resolution: {integrity: sha512-CMynoz9BDWugDO2B7LU/s8L99dHCiqDGCjCki6bhVx5etZhw9x0BTV7wWRdj82jtl1yQTc+QQRcHQmSvUY6R+g==}
+  '@iconify/vue@4.3.0':
+    resolution: {integrity: sha512-Xq0h6zMrHBbrW8jXJ9fISi+x8oDQllg5hTDkDuxnWiskJ63rpJu9CvJshj8VniHVTbsxCg9fVoPAaNp3RQI5OQ==}
     peerDependencies:
       vue: '>=3'
 
@@ -1068,8 +1068,8 @@ packages:
   '@redocly/config@0.17.1':
     resolution: {integrity: sha512-CEmvaJuG7pm2ylQg53emPmtgm4nW2nxBgwXzbVEHpGas/lGnMyN8Zlkgiz6rPw0unASg6VW3wlz27SOL5XFHYQ==}
 
-  '@redocly/openapi-core@1.26.1':
-    resolution: {integrity: sha512-xRuVZqMVRFzqjbUCpOTra4tbnmQMWsya996omZMV3WgD084Z6OWB3FXflhAp93E/yAmbWlWZpddw758AyoaLSw==}
+  '@redocly/openapi-core@1.27.0':
+    resolution: {integrity: sha512-C3EU9NYbo7bCc9SduHrk6/liUuuBqVfJHOhfbscNCR1443Rdpz3s+bB2Xhso9mdQJT0JjklRn2WTANjavl2Zng==}
     engines: {node: '>=14.19.0', npm: '>=7.0.0'}
 
   '@resvg/resvg-js-android-arm-eabi@2.6.2':
@@ -1322,32 +1322,32 @@ packages:
   '@sec-ant/readable-stream@0.4.1':
     resolution: {integrity: sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg==}
 
-  '@shikijs/core@1.25.1':
-    resolution: {integrity: sha512-0j5k3ZkLTQViOuNzPVyWGoW1zgH3kiFdUT/JOCkTm7TU74mz+dF+NID+YoiCBzHQxgsDpcGYPjKDJRcuVLSt4A==}
+  '@shikijs/core@1.26.1':
+    resolution: {integrity: sha512-yeo7sG+WZQblKPclUOKRPwkv1PyoHYkJ4gP9DzhFJbTdueKR7wYTI1vfF/bFi1NTgc545yG/DzvVhZgueVOXMA==}
 
   '@shikijs/core@1.6.4':
     resolution: {integrity: sha512-WTU9rzZae1p2v6LOxMf6LhtmZOkIHYYW160IuahUyJy7YXPPjyWZLR1ag+SgD22ZMxZtz1gfU6Tccc8t0Il/XA==}
 
-  '@shikijs/engine-javascript@1.25.1':
-    resolution: {integrity: sha512-zQ7UWKnRCfD/Q1M+XOSyjsbhpE0qv8LUnmn82HYCeOsgAHgUZGEDIQ63bbuK3kU5sQg+2CtI+dPfOqD/mjSY9w==}
+  '@shikijs/engine-javascript@1.26.1':
+    resolution: {integrity: sha512-CRhA0b8CaSLxS0E9A4Bzcb3LKBNpykfo9F85ozlNyArxjo2NkijtiwrJZ6eHa+NT5I9Kox2IXVdjUsP4dilsmw==}
 
-  '@shikijs/engine-oniguruma@1.25.1':
-    resolution: {integrity: sha512-iKPMh3H+0USHtWfZ1irfMTH6tGmIUFSnqt3E2K8BgI1VEsqiPh0RYkG2WTwzNiM1/WHN4FzYx/nrKR7PDHiRyw==}
+  '@shikijs/engine-oniguruma@1.26.1':
+    resolution: {integrity: sha512-F5XuxN1HljLuvfXv7d+mlTkV7XukC1cawdtOo+7pKgPD83CAB1Sf8uHqP3PK0u7njFH0ZhoXE1r+0JzEgAQ+kg==}
 
-  '@shikijs/langs@1.25.1':
-    resolution: {integrity: sha512-hdYjq9aRJplAzGe2qF51PR9IDgEoyGb4IkXvr3Ts6lEdg4Z8M/kdknKRo2EIuv3IR/aKkJXTlBQRM+wr3t20Ew==}
+  '@shikijs/langs@1.26.1':
+    resolution: {integrity: sha512-oz/TQiIqZejEIZbGtn68hbJijAOTtYH4TMMSWkWYozwqdpKR3EXgILneQy26WItmJjp3xVspHdiUxUCws4gtuw==}
 
-  '@shikijs/themes@1.25.1':
-    resolution: {integrity: sha512-JO0lDn4LgGqg5QKvgich5ScUmC2okK+LxM9a3iLUH7YMeI2c8UGXThuJv6sZduS7pdJbYQHPrvWq9t/V4GhpbQ==}
+  '@shikijs/themes@1.26.1':
+    resolution: {integrity: sha512-JDxVn+z+wgLCiUhBGx2OQrLCkKZQGzNH3nAxFir4PjUcYiyD8Jdms9izyxIogYmSwmoPTatFTdzyrRKbKlSfPA==}
 
-  '@shikijs/transformers@1.25.1':
-    resolution: {integrity: sha512-uIwVJk9NnoHtEyF0zeL6kDygNh1FDkFXJvKOGieiilS1qa8KHtOwG2hGYOLkFjd2FRMhZSJKjOC94PCzY5xR+w==}
+  '@shikijs/transformers@1.26.1':
+    resolution: {integrity: sha512-IRLJEP7YxkRMsHo367+7qDlpWjsUu6O79pdlUlkcbF1A5TrF1Ln0FBNrgHA/i9p+IKXiiKNATURa6WXh3iq7Uw==}
 
-  '@shikijs/types@1.25.1':
-    resolution: {integrity: sha512-dceqFUoO95eY4tpOj3OGq8wE8EgJ4ey6Me1HQEu5UbwIYszFndEll/bjlB8Kp9wl4fx3uM7n4+y9XCYuDBmcXA==}
+  '@shikijs/types@1.26.1':
+    resolution: {integrity: sha512-d4B00TKKAMaHuFYgRf3L0gwtvqpW4hVdVwKcZYbBfAAQXspgkbWqnFfuFl3MDH6gLbsubOcr+prcnsqah3ny7Q==}
 
-  '@shikijs/vscode-textmate@9.3.1':
-    resolution: {integrity: sha512-79QfK1393x9Ho60QFyLti+QfdJzRQCVLFb97kOIV7Eo9vQU/roINgk7m24uv0a7AUvN//RDH36FLjjK48v0s9g==}
+  '@shikijs/vscode-textmate@10.0.1':
+    resolution: {integrity: sha512-fTIQwLF+Qhuws31iw7Ncl1R3HUDtGwIipiJ9iU+UsDUwMhegFcQKQHd51nZjb7CArq0MvON8rbgCGQYWHUKAdg==}
 
   '@shuding/opentype.js@1.4.0-beta.0':
     resolution: {integrity: sha512-3NgmNyH3l/Hv6EvsWJbsvpcpUba6R8IREQ83nH83cyakCw7uM1arZKNfHwv1Wz6jgqrF/j4x5ELvR6PnK9nTcA==}
@@ -1999,8 +1999,8 @@ packages:
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
-  bare-events@2.5.0:
-    resolution: {integrity: sha512-/E8dDe9dsbLyh2qrZ64PEPadOQ0F4gbl1sUJOrmph7xOiIxfY8vwab/4bFLh4Y88/Hk/ujKcrQKc+ps0mv873A==}
+  bare-events@2.5.1:
+    resolution: {integrity: sha512-Bw2PgKSrZ3uCuSV9WQ998c/GTJTd+9bWj97n7aDQMP8dP/exAZQlJeswPty0ISy+HZD+9Ex+C7CCnc9Q5QJFmQ==}
 
   bare-fs@2.3.5:
     resolution: {integrity: sha512-SlE9eTxifPDJrT6YgemQ1WGFleevzwY+XAP1Xqgl56HtcrisC2CHCZ2tq6dBpcH2TnNxwUEUGhweo+lrQtYuiw==}
@@ -3575,8 +3575,8 @@ packages:
   mapbox-gl@2.15.0:
     resolution: {integrity: sha512-fjv+aYrd5TIHiL7wRa+W7KjtUqKWziJMZUkK5hm8TvJ3OLeNPx4NmW/DgfYhd/jHej8wWL+QJBDbdMMAKvNC0A==}
 
-  mapbox-gl@3.9.1:
-    resolution: {integrity: sha512-KGgS07MOoGSrewRrw0zqPG/2zkUNWYVGhI4+OEGnUGnUR5GV+k6rgKBEZei3U8z9VIrhrO5Qfbh3Da9o7GhX/Q==}
+  mapbox-gl@3.9.2:
+    resolution: {integrity: sha512-ADGW4rJOylwcy9+yGf8HM2sLXLh3An+9PZVQzdpXrSbSNt0dI7e49a6NY35Yf2wbd4hoVyR5M3hy7cQ9sFrC2w==}
 
   markdown-table@3.0.4:
     resolution: {integrity: sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw==}
@@ -3588,8 +3588,8 @@ packages:
     resolution: {integrity: sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==}
     engines: {node: '>= 0.4'}
 
-  mdast-util-find-and-replace@3.0.1:
-    resolution: {integrity: sha512-SG21kZHGC3XRTSUhtofZkBzZTJNM5ecCi0SK2IMKmSXR8vO3peL+kb1O0z7Zl83jKtutG4k5Wv/W7V3/YHvzPA==}
+  mdast-util-find-and-replace@3.0.2:
+    resolution: {integrity: sha512-Tmd1Vg/m3Xz43afeNxDIhWRtFZgM2VLyaf4vSTYwudTyeuTneoL3qtWMA5jeLyz/O1vDJmmV4QuScFCA2tBPwg==}
 
   mdast-util-from-markdown@2.0.2:
     resolution: {integrity: sha512-uZhTV/8NBuw0WHkPTrCqDOl0zVe1BIng5ZtHoDk49ME1qqcjYmmLmOf0gELgcRMxN4w2iuIeVso5/6QymSrgmA==}
@@ -4090,8 +4090,8 @@ packages:
     resolution: {integrity: sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ==}
     engines: {node: '>=12'}
 
-  openapi-typescript@7.4.4:
-    resolution: {integrity: sha512-7j3nktnRzlQdlHnHsrcr6Gqz8f80/RhfA2I8s1clPI+jkY0hLNmnYVKBfuUEli5EEgK1B6M+ibdS5REasPlsUw==}
+  openapi-typescript@7.5.1:
+    resolution: {integrity: sha512-ebOnVlSyfObXR9geTkITBMan2HqmVJV14poVsS2/f2FS1RbiQsZFqh+q5zbrjn1tydSXHE6njUOfEvS3DOVsUQ==}
     hasBin: true
     peerDependencies:
       typescript: ^5.x
@@ -4866,8 +4866,8 @@ packages:
     resolution: {integrity: sha512-AzqKpGKjrj7EM6rKVQEPpB288oCfnrEIuyoT9cyF4nmGa7V8Zk6f7RRqYisX8X9m+Q7bd632aZW4ky7EhbQztA==}
     engines: {node: '>= 0.4'}
 
-  shiki@1.25.1:
-    resolution: {integrity: sha512-/1boRvNYwRW3GLG9Y6dXdnZ/Ha+J5T/5y3hV7TGQUcDSBM185D3FCbXlz2eTGNKG2iWCbWqo+P0yhGKZ4/CUrw==}
+  shiki@1.26.1:
+    resolution: {integrity: sha512-Gqg6DSTk3wYqaZ5OaYtzjcdxcBvX5kCy24yvRJEgjT5U+WHlmqCThLuBUx0juyxQBi+6ug53IGeuQS07DWwpcw==}
 
   shiki@1.6.4:
     resolution: {integrity: sha512-X88chM7w8jnadoZtjPTi5ahCJx9pc9f8GfEkZAEYUTlcUZIEw2D/RY86HI/LkkE7Nj8TQWkiBfaFTJ3VJT6ESg==}
@@ -6348,7 +6348,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@iconify/vue@4.2.0(vue@3.5.13(typescript@5.7.2))':
+  '@iconify/vue@4.3.0(vue@3.5.13(typescript@5.7.2))':
     dependencies:
       '@iconify/types': 2.0.0
       vue: 3.5.13(typescript@5.7.2)
@@ -6420,12 +6420,12 @@ snapshots:
 
   '@mapbox/jsonlint-lines-primitives@2.0.2': {}
 
-  '@mapbox/mapbox-gl-geocoder@5.1.0-beta.0(mapbox-gl@3.9.1)':
+  '@mapbox/mapbox-gl-geocoder@5.1.0-beta.0(mapbox-gl@3.9.2)':
     dependencies:
       '@mapbox/mapbox-sdk': 0.15.6
       events: 3.3.0
       lodash.debounce: 4.0.8
-      mapbox-gl: 3.9.1
+      mapbox-gl: 3.9.2
       nanoid: 3.3.8
       subtag: 0.5.0
       suggestions: 1.7.1
@@ -6524,7 +6524,7 @@ snapshots:
       ohash: 1.1.4
       pathe: 1.1.2
       scule: 1.3.0
-      shiki: 1.25.1
+      shiki: 1.26.1
       slugify: 1.6.6
       socket.io-client: 4.8.1
       ufo: 1.5.4
@@ -6730,7 +6730,7 @@ snapshots:
       '@iconify/collections': 1.0.502
       '@iconify/types': 2.0.0
       '@iconify/utils': 2.2.1
-      '@iconify/vue': 4.2.0(vue@3.5.13(typescript@5.7.2))
+      '@iconify/vue': 4.3.0(vue@3.5.13(typescript@5.7.2))
       '@nuxt/devtools-kit': 1.7.0(magicast@0.3.5)(rollup@4.29.1)(vite@6.0.7(@types/node@18.19.69)(jiti@2.4.2)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.0))
       '@nuxt/kit': 3.15.0(magicast@0.3.5)(rollup@4.29.1)
       consola: 3.3.3
@@ -6970,7 +6970,7 @@ snapshots:
   '@nuxtjs/mdc@0.9.5(magicast@0.3.5)(rollup@4.29.1)':
     dependencies:
       '@nuxt/kit': 3.15.0(magicast@0.3.5)(rollup@4.29.1)
-      '@shikijs/transformers': 1.25.1
+      '@shikijs/transformers': 1.26.1
       '@types/hast': 3.0.4
       '@types/mdast': 4.0.4
       '@vue/compiler-core': 3.5.13
@@ -6998,7 +6998,7 @@ snapshots:
       remark-parse: 11.0.0
       remark-rehype: 11.1.1
       scule: 1.3.0
-      shiki: 1.25.1
+      shiki: 1.26.1
       ufo: 1.5.4
       unified: 11.0.5
       unist-builder: 4.0.0
@@ -7191,7 +7191,7 @@ snapshots:
 
   '@redocly/config@0.17.1': {}
 
-  '@redocly/openapi-core@1.26.1(supports-color@9.4.0)':
+  '@redocly/openapi-core@1.27.0(supports-color@9.4.0)':
     dependencies:
       '@redocly/ajv': 8.11.2
       '@redocly/config': 0.17.1
@@ -7382,46 +7382,46 @@ snapshots:
 
   '@sec-ant/readable-stream@0.4.1': {}
 
-  '@shikijs/core@1.25.1':
+  '@shikijs/core@1.26.1':
     dependencies:
-      '@shikijs/engine-javascript': 1.25.1
-      '@shikijs/engine-oniguruma': 1.25.1
-      '@shikijs/types': 1.25.1
-      '@shikijs/vscode-textmate': 9.3.1
+      '@shikijs/engine-javascript': 1.26.1
+      '@shikijs/engine-oniguruma': 1.26.1
+      '@shikijs/types': 1.26.1
+      '@shikijs/vscode-textmate': 10.0.1
       '@types/hast': 3.0.4
       hast-util-to-html: 9.0.4
 
   '@shikijs/core@1.6.4': {}
 
-  '@shikijs/engine-javascript@1.25.1':
+  '@shikijs/engine-javascript@1.26.1':
     dependencies:
-      '@shikijs/types': 1.25.1
-      '@shikijs/vscode-textmate': 9.3.1
+      '@shikijs/types': 1.26.1
+      '@shikijs/vscode-textmate': 10.0.1
       oniguruma-to-es: 0.10.0
 
-  '@shikijs/engine-oniguruma@1.25.1':
+  '@shikijs/engine-oniguruma@1.26.1':
     dependencies:
-      '@shikijs/types': 1.25.1
-      '@shikijs/vscode-textmate': 9.3.1
+      '@shikijs/types': 1.26.1
+      '@shikijs/vscode-textmate': 10.0.1
 
-  '@shikijs/langs@1.25.1':
+  '@shikijs/langs@1.26.1':
     dependencies:
-      '@shikijs/types': 1.25.1
+      '@shikijs/types': 1.26.1
 
-  '@shikijs/themes@1.25.1':
+  '@shikijs/themes@1.26.1':
     dependencies:
-      '@shikijs/types': 1.25.1
+      '@shikijs/types': 1.26.1
 
-  '@shikijs/transformers@1.25.1':
+  '@shikijs/transformers@1.26.1':
     dependencies:
-      shiki: 1.25.1
+      shiki: 1.26.1
 
-  '@shikijs/types@1.25.1':
+  '@shikijs/types@1.26.1':
     dependencies:
-      '@shikijs/vscode-textmate': 9.3.1
+      '@shikijs/vscode-textmate': 10.0.1
       '@types/hast': 3.0.4
 
-  '@shikijs/vscode-textmate@9.3.1': {}
+  '@shikijs/vscode-textmate@10.0.1': {}
 
   '@shuding/opentype.js@1.4.0-beta.0':
     dependencies:
@@ -8334,12 +8334,12 @@ snapshots:
 
   balanced-match@1.0.2: {}
 
-  bare-events@2.5.0:
+  bare-events@2.5.1:
     optional: true
 
   bare-fs@2.3.5:
     dependencies:
-      bare-events: 2.5.0
+      bare-events: 2.5.1
       bare-path: 2.1.3
       bare-stream: 2.6.1
     optional: true
@@ -10095,7 +10095,7 @@ snapshots:
       tinyqueue: 2.0.3
       vt-pbf: 3.1.3
 
-  mapbox-gl@3.9.1:
+  mapbox-gl@3.9.2:
     dependencies:
       '@mapbox/jsonlint-lines-primitives': 2.0.2
       '@mapbox/mapbox-gl-supported': 3.0.0
@@ -10132,7 +10132,7 @@ snapshots:
 
   math-intrinsics@1.1.0: {}
 
-  mdast-util-find-and-replace@3.0.1:
+  mdast-util-find-and-replace@3.0.2:
     dependencies:
       '@types/mdast': 4.0.4
       escape-string-regexp: 5.0.0
@@ -10161,7 +10161,7 @@ snapshots:
       '@types/mdast': 4.0.4
       ccount: 2.0.1
       devlop: 1.1.0
-      mdast-util-find-and-replace: 3.0.1
+      mdast-util-find-and-replace: 3.0.2
       micromark-util-character: 2.1.1
 
   mdast-util-gfm-footnote@2.0.0:
@@ -10631,7 +10631,7 @@ snapshots:
       node-fetch-native: 1.6.4
       ofetch: 1.4.1
       ohash: 1.1.4
-      openapi-typescript: 7.4.4(typescript@5.7.2)
+      openapi-typescript: 7.5.1(typescript@5.7.2)
       pathe: 1.1.2
       perfect-debounce: 1.0.0
       pkg-types: 1.3.0
@@ -10784,7 +10784,7 @@ snapshots:
   nuxt-icon@0.6.10(magicast@0.3.5)(rollup@4.29.1)(vite@6.0.7(@types/node@18.19.69)(jiti@2.4.2)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.0))(vue@3.5.13(typescript@5.7.2)):
     dependencies:
       '@iconify/collections': 1.0.502
-      '@iconify/vue': 4.2.0(vue@3.5.13(typescript@5.7.2))
+      '@iconify/vue': 4.3.0(vue@3.5.13(typescript@5.7.2))
       '@nuxt/devtools-kit': 1.7.0(magicast@0.3.5)(rollup@4.29.1)(vite@6.0.7(@types/node@18.19.69)(jiti@2.4.2)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.0))
       '@nuxt/kit': 3.15.0(magicast@0.3.5)(rollup@4.29.1)
     transitivePeerDependencies:
@@ -10811,7 +10811,7 @@ snapshots:
       pathe: 1.1.2
       pkg-types: 1.3.0
       radix3: 1.1.2
-      shiki: 1.25.1
+      shiki: 1.26.1
       sirv: 2.0.4
       site-config-stack: 2.2.21(vue@3.5.13(typescript@5.7.2))
       ufo: 1.5.4
@@ -10842,13 +10842,13 @@ snapshots:
 
   nuxt-mapbox@1.6.1(magicast@0.3.5)(rollup@4.29.1)(typescript@5.7.2)(vite@6.0.7(@types/node@18.19.69)(jiti@2.4.2)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.0)):
     dependencies:
-      '@mapbox/mapbox-gl-geocoder': 5.1.0-beta.0(mapbox-gl@3.9.1)
+      '@mapbox/mapbox-gl-geocoder': 5.1.0-beta.0(mapbox-gl@3.9.2)
       '@nuxt/devtools': 1.7.0(rollup@4.29.1)(vite@6.0.7(@types/node@18.19.69)(jiti@2.4.2)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.0))(vue@3.5.13(typescript@5.7.2))
       '@nuxt/kit': 3.15.0(magicast@0.3.5)(rollup@4.29.1)
       '@types/mapbox__mapbox-gl-geocoder': 5.0.0
       '@vueuse/core': 10.11.1(vue@3.5.13(typescript@5.7.2))
       defu: 6.1.4
-      mapbox-gl: 3.9.1
+      mapbox-gl: 3.9.2
       vue: 3.5.13(typescript@5.7.2)
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -10997,7 +10997,7 @@ snapshots:
       nuxt-site-config-kit: 2.2.12(magicast@0.3.5)(rollup@4.29.1)(vue@3.5.13(typescript@5.7.2))
       pathe: 1.1.2
       pkg-types: 1.3.0
-      shiki: 1.25.1
+      shiki: 1.26.1
       sirv: 2.0.4
       site-config-stack: 2.2.12(vue@3.5.13(typescript@5.7.2))
       ufo: 1.5.4
@@ -11233,9 +11233,9 @@ snapshots:
       is-docker: 2.2.1
       is-wsl: 2.2.0
 
-  openapi-typescript@7.4.4(typescript@5.7.2):
+  openapi-typescript@7.5.1(typescript@5.7.2):
     dependencies:
-      '@redocly/openapi-core': 1.26.1(supports-color@9.4.0)
+      '@redocly/openapi-core': 1.27.0(supports-color@9.4.0)
       ansi-colors: 4.1.3
       change-case: 5.4.4
       parse-json: 8.1.0
@@ -11801,7 +11801,7 @@ snapshots:
     dependencies:
       '@types/mdast': 4.0.4
       emoticon: 4.1.0
-      mdast-util-find-and-replace: 3.0.1
+      mdast-util-find-and-replace: 3.0.2
       node-emoji: 2.2.0
       unified: 11.0.5
 
@@ -12059,15 +12059,15 @@ snapshots:
 
   shell-quote@1.8.2: {}
 
-  shiki@1.25.1:
+  shiki@1.26.1:
     dependencies:
-      '@shikijs/core': 1.25.1
-      '@shikijs/engine-javascript': 1.25.1
-      '@shikijs/engine-oniguruma': 1.25.1
-      '@shikijs/langs': 1.25.1
-      '@shikijs/themes': 1.25.1
-      '@shikijs/types': 1.25.1
-      '@shikijs/vscode-textmate': 9.3.1
+      '@shikijs/core': 1.26.1
+      '@shikijs/engine-javascript': 1.26.1
+      '@shikijs/engine-oniguruma': 1.26.1
+      '@shikijs/langs': 1.26.1
+      '@shikijs/themes': 1.26.1
+      '@shikijs/types': 1.26.1
+      '@shikijs/vscode-textmate': 10.0.1
       '@types/hast': 3.0.4
 
   shiki@1.6.4:
@@ -12198,7 +12198,7 @@ snapshots:
       queue-tick: 1.0.1
       text-decoder: 1.2.3
     optionalDependencies:
-      bare-events: 2.5.0
+      bare-events: 2.5.1
 
   string-width@4.2.3:
     dependencies:
