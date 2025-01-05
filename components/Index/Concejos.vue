@@ -26,7 +26,27 @@ const concejoStore = useConcejoStore();
         class: 'z-20',
       }"
     >
-      <div class="aspect-video h-full w-full overflow-hidden !rounded-lg">
+      <div
+        v-if="item.show_as === '2'"
+        class="aspect-video h-full w-full overflow-hidden !rounded-lg"
+      >
+        <NuxtLink :to="item.embed_src" class="relative" target="_blank">
+          <NuxtImg
+            :src="item.image.image"
+            alt="Concejo Municipal"
+            class="aspect-video h-full w-full object-cover"
+          />
+          <div
+            class="absolute left-0 top-0 z-10 h-full w-full bg-opacity-50 bg-gradient-to-b from-black/60 to-transparent to-30% p-4 text-lg text-white"
+          >
+            {{ item.image.name }}
+          </div>
+        </NuxtLink>
+      </div>
+      <div
+        v-else
+        class="aspect-video h-full w-full overflow-hidden !rounded-lg"
+      >
         <iframe
           width="560"
           height="315"
