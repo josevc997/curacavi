@@ -65,14 +65,14 @@ export default defineNuxtConfig({
           domains: [
             "curacavi.s3.amazonaws.com",
             "cqvjuorqpvhyuxfdkhpt.supabase.co",
-            "backend.curacavi.info",
+            "apicuracavi.josevalencia.cl",
           ],
         }
       : {
           domains: [
             "curacavi.s3.amazonaws.com",
             "cqvjuorqpvhyuxfdkhpt.supabase.co",
-            "backend.curacavi.info",
+            "apicuracavi.josevalencia.cl",
           ],
         },
 
